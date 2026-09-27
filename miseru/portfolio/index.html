@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ミセル｜小さなお店のホームページ屋さん</title>
+<meta name="description" content="関西を中心に、小さなお店専門のホームページ制作。スマホ対応1ページ、写真・メニュー・地図・口コミ欄こみ。制作¥40,000買い切り＋保守 年¥10,000。">
+<meta property="og:title" content="ミセル｜小さなお店のホームページ屋さん">
+<meta property="og:description" content="スマホ対応のお店サイトを、わかりやすい料金で。制作例10件を掲載中。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e1014; --panel:#161a21; --line:#272d38; --fg:#eef1f6; --mut:#9aa4b4;
+    --acc:#ffb43a; --acc2:#ff7a59; --ok:#46c08a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Noto Sans JP",system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+  .serif{font-family:"Noto Serif JP",serif}
+
+  /* hero */
+  header.hero{position:relative;overflow:hidden;padding:84px 0 64px;
+    background:
+      radial-gradient(900px 380px at 85% -10%,rgba(255,180,58,.18),transparent),
+      radial-gradient(700px 360px at 5% 10%,rgba(255,122,89,.14),transparent);
+    border-bottom:1px solid var(--line)}
+  .eyebrow{display:inline-block;color:var(--acc);font-weight:700;letter-spacing:.2em;font-size:.78rem;
+    border:1px solid rgba(255,180,58,.4);border-radius:999px;padding:5px 14px;margin-bottom:18px}
+  .hero h1{font-size:clamp(1.9rem,5.4vw,3.3rem);font-weight:900;line-height:1.3;letter-spacing:.01em}
+  .hero h1 .hl{color:var(--acc)}
+  .hero p.sub{color:var(--mut);font-size:clamp(1rem,2.4vw,1.18rem);margin-top:16px;max-width:62ch}
+  .who{display:flex;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap}
+  .who .avatar{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--acc),var(--acc2));
+    display:flex;align-items:center;justify-content:center;font-weight:900;color:#1a1407;font-size:1.4rem;font-family:"Noto Serif JP"}
+  .who .meta b{font-size:1.05rem}
+  .who .meta span{display:block;color:var(--mut);font-size:.85rem}
+  .cta{display:inline-flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+  .btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:11px;padding:13px 22px;transition:transform .15s,opacity .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.primary{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#1a1407}
+  .btn.ghost{border:1px solid var(--line);color:var(--fg)}
+
+  /* stat strip */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+  .stats .s{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;text-align:center}
+  .stats .s .n{font-family:"Noto Serif JP";font-weight:900;font-size:1.9rem;color:var(--acc);line-height:1}
+  .stats .s .l{color:var(--mut);font-size:.82rem;margin-top:6px}
+
+  section{padding:62px 0}
+  .h2{font-size:1.6rem;font-weight:900;margin-bottom:6px}
+  .h2 .em{color:var(--acc)}
+  .lead{color:var(--mut);margin-bottom:30px}
+
+  /* gallery */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+  .card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    text-decoration:none;color:inherit;transition:transform .2s,border-color .2s,box-shadow .2s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-5px);border-color:var(--acc);box-shadow:0 14px 36px rgba(0,0,0,.4)}
+  .card .thumb{aspect-ratio:16/10;width:100%;object-fit:cover;display:block;background:#222}
+  .card .body{padding:14px 16px 16px}
+  .card .tag{display:inline-block;font-size:.7rem;color:var(--acc);border:1px solid rgba(255,180,58,.45);border-radius:999px;padding:1px 9px;margin-bottom:7px}
+  .card h3{font-size:1.08rem;font-weight:800}
+  .card .view{color:var(--mut);font-size:.78rem;margin-top:4px}
+  .card:hover .view{color:var(--acc)}
+
+  /* features */
+  .feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .feat .f{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .feat .f .ic{font-size:1.6rem}
+  .feat .f b{display:block;margin:8px 0 4px;font-size:1.02rem}
+  .feat .f p{color:var(--mut);font-size:.9rem}
+
+  /* price */
+  .price{background:linear-gradient(135deg,rgba(255,180,58,.08),rgba(255,122,89,.06));
+    border:1.5px solid rgba(255,180,58,.4);border-radius:18px;padding:8px 0;overflow:hidden}
+  .price .row{display:flex;justify-content:space-between;align-items:center;padding:20px 26px;flex-wrap:wrap;gap:8px}
+  .price .row + .row{border-top:1px dashed var(--line)}
+  .price .row .l b{font-size:1.15rem}
+  .price .row .l span{display:block;color:var(--mut);font-size:.85rem}
+  .price .row .r{font-family:"Noto Serif JP";font-weight:900;font-size:2rem;color:var(--acc);white-space:nowrap}
+  .price .row .r small{font-size:.95rem;color:var(--mut);font-family:"Noto Sans JP"}
+
+  /* flow */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .flow .st{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;position:relative}
+  .flow .st .n{font-family:"Noto Serif JP";font-weight:900;color:var(--acc);font-size:1.5rem}
+  .flow .st b{display:block;margin:6px 0 3px}
+  .flow .st p{color:var(--mut);font-size:.85rem}
+
+  /* contact */
+  .contact{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:34px;text-align:center}
+  .contact h2{font-size:1.5rem;font-weight:900}
+  .contact p{color:var(--mut);margin:10px 0 20px}
+  .contact .info{display:inline-flex;flex-direction:column;gap:6px;text-align:left;font-size:.98rem}
+  .contact .info span{color:var(--mut)}
+
+  footer{border-top:1px solid var(--line);padding:28px 0 56px;color:var(--mut);font-size:.82rem;text-align:center}
+  .disc{color:#7b8492;font-size:.74rem;margin-top:10px}
+
+  @media(max-width:720px){
+    .stats{grid-template-columns:1fr 1fr}
+    .flow{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">あなたのお店を、スマホでミセル。</span>
+    <h1>小さなお店の、<br><span class="hl">ホームページ屋さん</span>です。</h1>
+    <p class="sub">「うちみたいな小さな店に、ホームページなんて」——そんなお店のために、スマホでサッと見られる1ページを、わかりやすい料金でお作りしています。</p>
+    <div class="who">
+      <div class="avatar">し</div>
+      <div class="meta"><b>しょうま</b><span>ミセル（個人）／出張・オンラインで全国対応</span></div>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="#works">制作した実績を見る ↓</a>
+      <a class="btn ghost" href="#contact">料金・お問い合わせ</a>
+    </div>
+
+    <div class="stats">
+      <div class="s"><div class="n">10<small>件</small></div><div class="l">制作したお店サイト</div></div>
+      <div class="s"><div class="n">¥40,000</div><div class="l">制作費（買い切り）</div></div>
+      <div class="s"><div class="n">100%</div><div class="l">スマホ対応</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="works">
+  <div class="wrap">
+    <div class="h2">こんな<span class="em">サイト</span>を作っています</div>
+    <p class="lead">すべて実際に制作したものです。タップすると本物のサイトが開きます（写真・文言はサンプルです）。</p>
+    <div class="grid">
+      <a class="card" href="../sites/menya-jenny/index.html"><img class="thumb" src="../sites/menya-jenny/img/hero.jpg" alt="麺屋じぇにー" loading="lazy"><div class="body"><span class="tag">ラーメン</span><h3>麺屋じぇにー</h3><div class="view">サイトを見る →</div></div></a>
+      <a class="card" href="../sites/slow-life/index.html"><img class="thumb" src="../sites/slow-life/img/hero.jpg" alt="スローライフ" loading="lazy"><div class="body"><span class="tag">カレー</span><h3>スローライフ</h3><div class="view">サイトを見る →</div></div></a>
+      <a class="card" href="../sites/tatsuya/index.html"><img class="thumb" src="../sites/tatsuya/img/hero.jpg" alt="たつや" loading="lazy"><div class="body"><span class="tag">和食</span><h3>たつや</h3><div class="view">サイトを見る →</div></div></a>
+      <a class="card" href="../sites/nikoichi/index.html"><img class="thumb" src="../sites/nikoichi/img/hero.jpg" alt="にこいち" loading="lazy"><div class="body"><span class="tag">居酒屋・バル</span><h3>にこいち</h3><div class="view">サイトを見る →</div></div></a>
+      <a class="card" href="../sites/irori-kun/index.html"><img class="thumb" src="../sites/irori-kun/img/hero.jpg" alt="いろり燻" loading="lazy"><div class="body"><span class="tag">炭火・燻製</span><h3>いろり燻</h3><div class="view">サイトを見る →</div></div></a>
+      <a class="card" href="../sites/akashiya/index.html"><img class="thumb" src="../sites/akashiya/img/hero.jpg" alt="明石屋" loading="lazy"><div class="body"><span class="tag">海鮮</span><h3>明石屋</h3><div class="view">サイトを見る →</div></div></a>
+      <a class="card" href="../sites/taiyu/index.html"><img class="thumb" src="../sites/taiyu/img/hero.jpg" alt="泰由" loading="lazy"><div class="body"><span class="tag">居酒屋</span><h3>泰由</h3><div class="view">サイトを見る →</div></div></a>
+      <a class="card" href="../sites/kushin/index.html"><img class="thumb" src="../sites/kushin/img/hero.jpg" alt="くしん" loading="lazy"><div class="body"><span class="tag">串・揚げ</span><h3>くしん</h3><div class="view">サイトを見る →</div></div></a>
+      <a class="card" href="../sites/torichan/index.html"><img class="thumb" src="../sites/torichan/img/hero.jpg" alt="とりちゃん" loading="lazy"><div class="body"><span class="tag">鶏・焼き鳥</span><h3>とりちゃん</h3><div class="view">サイトを見る →</div></div></a>
+      <a class="card" href="../sites/horumon/index.html"><img class="thumb" src="../sites/horumon/img/hero.jpg" alt="炭焼きホルモン水産" loading="lazy"><div class="body"><span class="tag">炭火焼肉・ホルモン</span><h3>炭焼きホルモン水産</h3><div class="view">サイトを見る →</div></div></a>
+    </div>
+  </div>
+</section>
+
+<section style="background:#0b0d11">
+  <div class="wrap">
+    <div class="h2">サイトに<span class="em">こみ</span>のもの</div>
+    <p class="lead">どのお店も、これだけ入って¥40,000。追加料金なし。</p>
+    <div class="feat">
+      <div class="f"><div class="ic">📱</div><b>スマホ最適</b><p>お客様の大半はスマホ。指でサッと見られる作りに最初から対応。</p></div>
+      <div class="f"><div class="ic">🍜</div><b>写真・メニュー</b><p>料理やお店の写真、メニューを魅力的にレイアウト。</p></div>
+      <div class="f"><div class="ic">🗺️</div><b>地図・アクセス</b><p>お店の場所を地図で表示。「ここね」がすぐ伝わる。</p></div>
+      <div class="f"><div class="ic">⭐</div><b>お客様の声欄</b><p>口コミ・レビューを載せられる欄つきで信頼感アップ。</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h2"><span class="em">料金</span>はシンプルに2つだけ</div>
+    <p class="lead">わかりにくい見積もりはしません。これだけです。</p>
+    <div class="price">
+      <div class="row"><div class="l"><b>サイト制作費</b><span>スマホ対応1ページ・写真・メニュー・地図・口コミ欄こみ</span></div><div class="r">¥40,000<small> 買い切り</small></div></div>
+      <div class="row"><div class="l"><b>保守・管理費</b><span>ドメイン／サーバー管理・更新サポート・不具合対応こみ</span></div><div class="r">¥10,000<small> ／年（約¥833/月）</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#0b0d11">
+  <div class="wrap">
+    <div class="h2">ご依頼から公開まで <span class="em">最短10日</span></div>
+    <p class="lead">むずかしいことは、ぜんぶこちらで。</p>
+    <div class="flow">
+      <div class="st"><div class="n">1</div><b>ヒアリング</b><p>載せたい写真・メニュー・営業時間をお伺いします。</p></div>
+      <div class="st"><div class="n">2</div><b>制作</b><p>サンプルをお店の内容に仕上げます。</p></div>
+      <div class="st"><div class="n">3</div><b>確認</b><p>仕上がりを見ていただき、微調整します。</p></div>
+      <div class="st"><div class="n">4</div><b>公開</b><p>独自アドレスで公開。あとは安心の保守つき。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <h2>「ちょっと話を聞いてみたい」だけでも大歓迎です</h2>
+      <p>出張・オンライン対応のお店なら、サンプルを作ってお持ちします。お気軽にどうぞ。</p>
+      <div class="info">
+        <div><b>ミセル</b>（担当：しょうま）</div>
+        <div>📞 <span>070-8440-9855</span></div>
+        <div>✉️ <span>kukubb13251@gmail.com</span></div>
+        <div>📍 <span>出張・オンラインで全国対応</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    ミセル ／ 小さなお店のホームページ制作
+    <div class="disc">※掲載している制作例の写真・メニュー・お客様の声はサンプルです。実際の制作ではお店の情報に差し替えます。「ミセル」は当サービスの屋号です。</div>
+  </div>
+</footer>
+
+</body>
+</html>

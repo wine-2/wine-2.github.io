@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>たつや｜三田駅前の和食 – 旬の味と職人の技</title>
+  <meta name="description" content="兵庫県三田市・三田駅から徒歩約3分。旬の素材と丁寧な仕事で紡ぐ、地元三田の和食店「たつや」。">
+  <meta property="og:title" content="たつや｜三田の和食">
+  <meta property="og:description" content="三田駅徒歩約3分。旬の素材と職人の技が光る、地元三田の和食。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:     #1a1612;
+      --cream:   #f5f0e8;
+      --gold:    #b08d57;
+      --gold-lt: #d4af70;
+      --vermil:  #9b2335;
+      --muted:   #6b6259;
+      --rule:    rgba(176,141,87,.35);
+      --fs-base: clamp(15px, 2vw, 17px);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif JP', serif;
+      font-size: var(--fs-base);
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Utility ─── */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+      white-space: nowrap; border: 0;
+    }
+    .section-inner { max-width: 860px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+
+    /* ─── Kamon (CSS 家紋風デコレーション) ─── */
+    .kamon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 54px; height: 54px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .kamon::before {
+      content: '◈';
+      font-size: 22px;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .kamon::after {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border: .5px solid var(--gold);
+      border-radius: 50%;
+    }
+
+    /* ─── Section heading ─── */
+    .sec-head {
+      text-align: center;
+      margin-bottom: clamp(40px, 7vw, 64px);
+    }
+    .sec-head .en {
+      display: block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(10px, 1.8vw, 12px);
+      letter-spacing: .25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .sec-head h2 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 300;
+      letter-spacing: .18em;
+      color: var(--ink);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 14px;
+    }
+    .sec-head h2::after {
+      content: '';
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 40px; height: 1px;
+      background: var(--gold);
+    }
+    .sec-head .sub {
+      display: block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(13px, 2vw, 14px);
+      color: var(--muted);
+      margin-top: 16px;
+      font-weight: 300;
+      letter-spacing: .06em;
+    }
+
+    /* ═══════════════════════════════
+       NAV
+    ═══════════════════════════════ */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(16px, 4vw, 40px);
+      height: 60px;
+      background: rgba(26,22,18,.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .nav-logo {
+      font-size: clamp(17px, 2.5vw, 20px);
+      letter-spacing: .2em;
+      color: var(--gold-lt);
+      font-weight: 400;
+    }
+    .nav-links {
+      display: flex; gap: clamp(20px, 4vw, 36px);
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px;
+      letter-spacing: .15em;
+      color: #ccc;
+      transition: color .25s;
+    }
+    .nav-links a:hover { color: var(--gold-lt); }
+    @media (max-width: 540px) {
+      .nav-links { display: none; }
+    }
+
+    /* ═══════════════════════════════
+       HERO
+    ═══════════════════════════════ */
+    .hero {
+      position: relative;
+      height: 100svh; min-height: 560px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.06);
+      transition: transform 8s ease-out;
+    }
+    .hero.loaded .hero-bg { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(10,8,6,.72) 0%,
+        rgba(10,8,6,.52) 50%,
+        rgba(10,8,6,.64) 100%
+      );
+    }
+    /* 和柄ドット */
+    .hero-pattern {
+      position: absolute; inset: 0; opacity: .06;
+      background-image: radial-gradient(circle, #d4af70 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      text-align: center;
+      color: #fff;
+      padding: 0 clamp(20px, 5vw, 48px);
+    }
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid rgba(212,175,112,.6);
+      padding: 5px 20px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(10px, 1.8vw, 11px);
+      letter-spacing: .28em;
+      color: var(--gold-lt);
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-size: clamp(52px, 12vw, 100px);
+      font-weight: 300;
+      letter-spacing: .22em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 24px rgba(0,0,0,.5);
+    }
+    .hero-catch {
+      font-size: clamp(13px, 2.5vw, 16px);
+      font-weight: 300;
+      letter-spacing: .12em;
+      color: rgba(255,255,255,.82);
+      margin-bottom: 10px;
+    }
+    .hero-sub {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(11px, 1.8vw, 13px);
+      letter-spacing: .18em;
+      color: var(--gold-lt);
+      margin-bottom: 36px;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 38px;
+      border: 1px solid var(--gold-lt);
+      color: var(--gold-lt);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(12px, 2vw, 13px);
+      letter-spacing: .22em;
+      transition: background .3s, color .3s;
+    }
+    .btn-primary:hover {
+      background: var(--gold-lt);
+      color: var(--ink);
+    }
+    .hero-scroll {
+      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center;
+      gap: 8px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 10px; letter-spacing: .2em; color: rgba(255,255,255,.5);
+    }
+    .hero-scroll::after {
+      content: '';
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.5), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%    { transform: scaleY(0); transform-origin: top; }
+      50%   { transform: scaleY(1); transform-origin: top; }
+      50.01%{ transform-origin: bottom; }
+      100%  { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ═══════════════════════════════
+       PHILOSOPHY
+    ═══════════════════════════════ */
+    .sec-philosophy {
+      padding: clamp(72px, 10vw, 112px) 0;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .sec-philosophy::before {
+      content: '';
+      position: absolute; top: 0; left: clamp(12px, 3vw, 28px);
+      width: 1px; height: 100%;
+      background: var(--rule);
+    }
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (min-width: 680px) {
+      .philosophy-grid { grid-template-columns: 1fr 1fr; gap: 60px; }
+    }
+    .philosophy-text p {
+      font-size: clamp(14px, 2.2vw, 16px);
+      font-weight: 300;
+      line-height: 2.1;
+      color: #3a3028;
+      letter-spacing: .06em;
+    }
+    .philosophy-text p + p { margin-top: 20px; }
+    .philosophy-accent {
+      writing-mode: vertical-rl;
+      font-size: clamp(28px, 6vw, 42px);
+      font-weight: 300;
+      letter-spacing: .25em;
+      color: var(--gold);
+      opacity: .22;
+      position: absolute;
+      right: clamp(16px, 4vw, 48px);
+      top: 50%;
+      transform: translateY(-50%);
+      user-select: none;
+      pointer-events: none;
+    }
+    .feature-list {
+      display: flex; flex-direction: column; gap: 20px;
+      margin-top: 32px;
+    }
+    .feature-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 18px 20px;
+      background: #fff;
+      border-left: 3px solid var(--gold);
+      box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .feature-icon {
+      font-size: 22px; line-height: 1; flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .feature-item h3 {
+      font-size: clamp(13px, 2vw, 14px);
+      letter-spacing: .1em;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .feature-item p {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(12px, 1.8vw, 13px);
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* ═══════════════════════════════
+       MENU
+    ═══════════════════════════════ */
+    .sec-menu {
+      padding: clamp(72px, 10vw, 112px) 0;
+      background: #201c18;
+      color: var(--cream);
+      position: relative;
+    }
+    .sec-menu .sec-head h2 { color: var(--cream); }
+    .sec-menu .sec-head .sub { color: rgba(245,240,232,.55); }
+    .sec-menu::before {
+      content: '';
+      position: absolute; inset: 0;
+      opacity: .04;
+      background-image:
+        repeating-radial-gradient(circle at 0 0, transparent 0, #d4af70 1px, transparent 12px),
+        repeating-linear-gradient(transparent, rgba(212,175,112,.3) 1px, transparent 24px);
+      pointer-events: none;
+    }
+    .menu-dish {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(32px, 5vw, 48px);
+      margin-bottom: clamp(40px, 6vw, 56px);
+    }
+    @media (min-width: 600px) {
+      .menu-dish { grid-template-columns: 1fr 1fr; }
+    }
+    .dish-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(212,175,112,.18);
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .dish-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.4);
+    }
+    .dish-card img {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+    .dish-card-body {
+      padding: 20px 22px 24px;
+    }
+    .dish-card-body .tag {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 10px; letter-spacing: .22em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .dish-card-body h3 {
+      font-size: clamp(15px, 2.5vw, 18px);
+      letter-spacing: .12em;
+      margin-bottom: 8px;
+    }
+    .dish-card-body p {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(12px, 1.8vw, 13px);
+      color: rgba(245,240,232,.62);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+    .dish-card-body .price {
+      display: block;
+      margin-top: 12px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px;
+      color: var(--gold-lt);
+      letter-spacing: .08em;
+    }
+
+    /* テーブル形式メニュー */
+    .menu-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .menu-table {
+      width: 100%; border-collapse: collapse;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(13px, 1.8vw, 14px);
+    }
+    .menu-table caption {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(14px, 2.2vw, 16px);
+      letter-spacing: .14em;
+      color: var(--gold-lt);
+      text-align: left;
+      padding-bottom: 12px;
+    }
+    .menu-table th, .menu-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(212,175,112,.12);
+      text-align: left;
+    }
+    .menu-table th {
+      color: var(--gold);
+      font-weight: 400;
+      letter-spacing: .12em;
+      white-space: nowrap;
+      width: 36%;
+    }
+    .menu-table td {
+      color: rgba(245,240,232,.75);
+      font-weight: 300;
+    }
+    .menu-table tr:last-child th,
+    .menu-table tr:last-child td { border-bottom: none; }
+    .menu-table tr:hover th,
+    .menu-table tr:hover td { background: rgba(212,175,112,.05); }
+
+    .menu-tables-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    @media (min-width: 640px) {
+      .menu-tables-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+    }
+    .placeholder-note {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--muted);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(212,175,112,.15);
+      padding: 2px 10px;
+      border-radius: 2px;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+
+    /* ═══════════════════════════════
+       REVIEWS
+    ═══════════════════════════════ */
+    .sec-reviews {
+      padding: clamp(72px, 10vw, 112px) 0;
+      background: #faf6ee;
+      position: relative;
+    }
+    .review-notice {
+      display: block;
+      text-align: center;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: -clamp(20px, 3vw, 32px);
+      margin-bottom: clamp(36px, 5vw, 52px);
+      letter-spacing: .06em;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 640px) {
+      .reviews-grid { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    }
+    .review-card {
+      background: #fff;
+      border: 1px solid rgba(176,141,87,.18);
+      padding: 28px 24px 24px;
+      position: relative;
+    }
+    .review-card::before {
+      content: '\275D';
+      position: absolute; top: 12px; right: 18px;
+      font-size: 48px;
+      color: rgba(176,141,87,.1);
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+    .stars {
+      color: var(--gold);
+      font-size: 15px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .review-text {
+      font-size: clamp(13px, 1.9vw, 14px);
+      font-weight: 300;
+      line-height: 1.9;
+      color: #3a3028;
+      margin-bottom: 16px;
+    }
+    .review-meta {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--muted);
+      border-top: 1px solid rgba(176,141,87,.15);
+      padding-top: 12px;
+    }
+    .review-meta strong { color: var(--ink); font-weight: 400; }
+
+    /* ═══════════════════════════════
+       ACCESS
+    ═══════════════════════════════ */
+    .sec-access {
+      padding: clamp(72px, 10vw, 112px) 0;
+      background: var(--cream);
+    }
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    @media (min-width: 700px) {
+      .access-grid { grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    }
+    .map-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,.12);
+    }
+    .walk-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 14px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .walk-tag::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .info-table {
+      width: 100%; border-collapse: collapse;
+      font-size: clamp(13px, 2vw, 14px);
+    }
+    .info-table th, .info-table td {
+      padding: 14px 4px;
+      border-bottom: 1px solid var(--rule);
+      text-align: left;
+      vertical-align: top;
+    }
+    .info-table th {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 400;
+      letter-spacing: .1em;
+      color: var(--gold);
+      width: 36%;
+      white-space: nowrap;
+    }
+    .info-table td {
+      font-weight: 300;
+      color: #3a3028;
+      line-height: 1.7;
+    }
+    .info-table td .ph {
+      color: var(--muted);
+      font-size: .9em;
+      font-style: italic;
+    }
+    .cta-box {
+      margin-top: 32px;
+      padding: 24px;
+      background: var(--ink);
+      text-align: center;
+    }
+    .cta-box p {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px;
+      letter-spacing: .14em;
+      color: rgba(245,240,232,.6);
+      margin-bottom: 12px;
+    }
+    .cta-tel {
+      display: block;
+      font-size: clamp(22px, 4vw, 28px);
+      letter-spacing: .12em;
+      color: var(--gold-lt);
+      font-weight: 300;
+    }
+    .cta-tel .ph-label {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      display: block;
+      margin-top: 4px;
+      letter-spacing: .06em;
+    }
+
+    /* ═══════════════════════════════
+       FOOTER
+    ═══════════════════════════════ */
+    .site-footer {
+      background: #100e0b;
+      color: rgba(245,240,232,.5);
+      padding: clamp(40px, 7vw, 64px) 0 24px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 300;
+      letter-spacing: .28em;
+      color: var(--gold-lt);
+      margin-bottom: 8px;
+    }
+    .footer-tagline {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px;
+      letter-spacing: .18em;
+      color: rgba(245,240,232,.35);
+      margin-bottom: 28px;
+    }
+    .footer-links {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 20px 32px;
+      list-style: none;
+      margin-bottom: 36px;
+    }
+    .footer-links a {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px;
+      letter-spacing: .12em;
+      color: rgba(245,240,232,.4);
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold-lt); }
+    .footer-rule {
+      width: 1px; height: 40px;
+      background: var(--rule);
+      margin: 0 auto 24px;
+    }
+    .footer-copy {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px;
+      color: rgba(245,240,232,.28);
+      letter-spacing: .06em;
+    }
+    .sample-notice {
+      margin-top: 20px;
+      padding: 14px 20px;
+      background: rgba(255,255,255,.04);
+      border: 1px dashed rgba(212,175,112,.2);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px;
+      color: rgba(245,240,232,.35);
+      letter-spacing: .04em;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="メインナビゲーション">
+  <span class="nav-logo">たつや</span>
+  <ul class="nav-links">
+    <li><a href="#philosophy">想い</a></li>
+    <li><a href="#menu">お品書き</a></li>
+    <li><a href="#reviews">お客様の声</a></li>
+    <li><a href="#access">アクセス</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-label="ヒーローセクション">
+  <img
+    class="hero-bg"
+    src="img/hero.jpg"
+    alt="黒い角皿に盛られた寿司ロールといくら。箸が添えられた和の一皿"
+    width="1600" height="900"
+    fetchpriority="high"
+  >
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-pattern" aria-hidden="true"></div>
+  <div class="hero-content">
+    <span class="hero-badge">SANDA, HYOGO &#8212; 三田駅 徒歩3分</span>
+    <h1 class="hero-title">たつや</h1>
+    <p class="hero-catch">旬の素材と、丁寧な仕事。</p>
+    <p class="hero-sub">三田の四季を、一皿に。</p>
+    <a href="#menu" class="btn-primary">お品書きを見る</a>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">SCROLL</div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="sec-philosophy" id="philosophy" aria-labelledby="phil-heading">
+  <div class="section-inner">
+    <div class="sec-head">
+      <div class="kamon" aria-hidden="true"></div>
+      <span class="en">Our Philosophy</span>
+      <h2 id="phil-heading">お品書きへの想い</h2>
+      <span class="sub">地元・三田の恵みを、職人の手で丁寧に</span>
+    </div>
+
+    <div class="philosophy-grid">
+      <div class="philosophy-text">
+        <p>
+          兵庫県三田市は、清らかな水と豊かな里山に恵まれた土地。
+          「たつや」では、地元農家から届く季節の野菜や、
+          三田牛をはじめとする丹波の幸を、
+          できるかぎりそのまま活かす料理を大切にしています。
+        </p>
+        <p>
+          過剰な装飾より、素材の声を聴く。
+          だしの引き方ひとつに気を配り、
+          お客様が一口目に感じるほっとした笑顔のために、
+          毎日の仕込みを重ねています。
+        </p>
+      </div>
+
+      <div class="feature-list">
+        <div class="feature-item">
+          <span class="feature-icon" aria-hidden="true">&#x1F33F;</span>
+          <div>
+            <h3>地元三田の旬素材</h3>
+            <p>三田の農家・生産者と直接つながり、その季節ならではの食材を厳選してお届けします。</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon" aria-hidden="true">&#x1F375;</span>
+          <div>
+            <h3>毎朝引く本だし</h3>
+            <p>本枯れ節と真昆布を使い、その日の料理に合わせて丁寧にだしを引いています。</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon" aria-hidden="true">&#x1F962;</span>
+          <div>
+            <h3>落ち着いた一人時間にも</h3>
+            <p>カウンター席もご用意。一人でも気兼ねなく、ゆっくりとお過ごしいただけます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class="philosophy-accent" aria-hidden="true">和の心</span>
+</section>
+
+<!-- MENU -->
+<section class="sec-menu" id="menu" aria-labelledby="menu-heading">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="en">Our Menu</span>
+      <h2 id="menu-heading">お品書き</h2>
+      <span class="sub">季節によって内容が変わります。詳しくは店頭にてご確認ください。</span>
+    </div>
+
+    <!-- 写真付きカード -->
+    <div class="menu-dish">
+      <article class="dish-card">
+        <img
+          src="img/dish1.jpg"
+          alt="彩り豊かな旬魚のお造り盛り合わせ"
+          loading="lazy"
+          width="600" height="450"
+        >
+        <div class="dish-card-body">
+          <p class="tag">Sashimi</p>
+          <h3>旬魚のお造り</h3>
+          <p>その日の市場から仕入れた鮮魚を、板前が丁寧に引き立てます。三田の清水で締めた真鯛・鰤など、季節の恵みを。</p>
+          <span class="price">&#165; &#8213; <span class="placeholder-note">価格応相談</span></span>
+        </div>
+      </article>
+
+      <article class="dish-card">
+        <img
+          src="img/dish2.jpg"
+          alt="丁寧に仕上げた和食の煮物の一皿"
+          loading="lazy"
+          width="600" height="450"
+        >
+        <div class="dish-card-body">
+          <p class="tag">Seasonal</p>
+          <h3>旬の煮物・焚き合わせ</h3>
+          <p>季節の根菜と丹波の食材を本だしで丁寧に炊き合わせた一品。滋味深い味わいをゆっくりとお楽しみください。</p>
+          <span class="price">&#165; &#8213; <span class="placeholder-note">価格応相談</span></span>
+        </div>
+      </article>
+    </div>
+
+    <!-- テーブルメニュー -->
+    <div class="menu-tables-grid">
+      <div class="menu-table-wrap">
+        <table class="menu-table">
+          <caption>一品料理（サンプル）</caption>
+          <tbody>
+            <tr>
+              <th scope="row">お造り盛り合わせ</th>
+              <td>&#165; &#8213; <span class="placeholder-note">仮</span></td>
+            </tr>
+            <tr>
+              <th scope="row">焼き魚（旬魚）</th>
+              <td>&#165; &#8213; <span class="placeholder-note">仮</span></td>
+            </tr>
+            <tr>
+              <th scope="row">炊き合わせ</th>
+              <td>&#165; &#8213; <span class="placeholder-note">仮</span></td>
+            </tr>
+            <tr>
+              <th scope="row">天ぷら盛り合わせ</th>
+              <td>&#165; &#8213; <span class="placeholder-note">仮</span></td>
+            </tr>
+            <tr>
+              <th scope="row">〆の鯛茶漬け</th>
+              <td>&#165; &#8213; <span class="placeholder-note">仮</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="menu-table-wrap">
+        <table class="menu-table">
+          <caption>コース（サンプル）</caption>
+          <tbody>
+            <tr>
+              <th scope="row">おまかせコース</th>
+              <td>&#165; &#8213; <span class="placeholder-note">仮</span></td>
+            </tr>
+            <tr>
+              <th scope="row">季節のコース</th>
+              <td>&#165; &#8213; <span class="placeholder-note">仮</span></td>
+            </tr>
+            <tr>
+              <th scope="row">接待・宴会コース</th>
+              <td>&#165; &#8213; <span class="placeholder-note">仮</span></td>
+            </tr>
+            <tr>
+              <th scope="row">お昼のコース</th>
+              <td>&#165; &#8213; <span class="placeholder-note">仮</span></td>
+            </tr>
+            <tr>
+              <th scope="row">ノンアルコース</th>
+              <td>&#165; &#8213; <span class="placeholder-note">仮</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec-reviews" id="reviews" aria-labelledby="reviews-heading">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="en">Customer Voices</span>
+      <h2 id="reviews-heading">お客様の声</h2>
+      <span class="sub">地元三田の方々から、遠方からのお客様まで</span>
+    </div>
+
+    <span class="review-notice">&#xFF0A;掲載イメージ（サンプル）。実際のレビューに差し替えてください。</span>
+
+    <div class="reviews-grid">
+      <article class="review-card">
+        <div class="stars" aria-label="星5つ">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">
+          三田駅近くでこんなに本格的な和食が食べられるとは思いませんでした。
+          お造りの鮮度が抜群で、だしの引き方が丁寧。
+          接待にも使わせていただいています。
+        </p>
+        <p class="review-meta">
+          <strong>40代 会社員・三田市在住</strong><br>
+          ご来店：夜の一品料理
+        </p>
+      </article>
+
+      <article class="review-card">
+        <div class="stars" aria-label="星5つ">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">
+          カウンター席で一人ゆっくり食事できるのがとても嬉しいです。
+          板前さんの手元を見ながらいただく焼き魚は格別。
+          季節ごとに通いたくなるお店です。
+        </p>
+        <p class="review-meta">
+          <strong>50代 女性・神戸市からご来店</strong><br>
+          ご来店：おまかせコース
+        </p>
+      </article>
+
+      <article class="review-card">
+        <div class="stars" aria-label="星5つ">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">
+          地元の食材を大切にした料理が素晴らしい。
+          炊き合わせは優しい味わいで、体が喜ぶ感覚。
+          駅から近いので仕事帰りにふらっと寄れるのも魅力です。
+        </p>
+        <p class="review-meta">
+          <strong>30代 男性・三田市在住</strong><br>
+          ご来店：一品料理・お酒と一緒に
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="sec-access" id="access" aria-labelledby="access-heading">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="en">Access &amp; Hours</span>
+      <h2 id="access-heading">アクセス・営業案内</h2>
+    </div>
+
+    <div class="access-grid">
+      <div>
+        <div class="map-wrap">
+          <iframe
+            title="たつやの地図（OpenStreetMap）"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=135.2251%2C34.8862%2C135.2311%2C34.8882&layer=mapnik&marker=34.8872443%2C135.2280781"
+            style="width:100%;height:300px;border:0;border-radius:12px"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <p class="walk-tag">三田駅から徒歩約3分</p>
+      </div>
+
+      <div>
+        <table class="info-table" aria-label="店舗情報">
+          <tbody>
+            <tr>
+              <th scope="row">店名</th>
+              <td>たつや</td>
+            </tr>
+            <tr>
+              <th scope="row">住所</th>
+              <td><span class="ph">&#12306;&#8213; 兵庫県三田市（正式住所は未確定）</span></td>
+            </tr>
+            <tr>
+              <th scope="row">電話</th>
+              <td><span class="ph">&#8213;&#8213;&#8213;（確定後に掲載）</span></td>
+            </tr>
+            <tr>
+              <th scope="row">営業時間</th>
+              <td><span class="ph">昼：&#8213;：&#8213;&#8213; 〜 &#8213;：&#8213;&#8213;<br>夜：&#8213;：&#8213;&#8213; 〜 &#8213;：&#8213;&#8213;<br>（確定後に掲載）</span></td>
+            </tr>
+            <tr>
+              <th scope="row">定休日</th>
+              <td><span class="ph">&#8213;曜日（確定後に掲載）</span></td>
+            </tr>
+            <tr>
+              <th scope="row">席数</th>
+              <td><span class="ph">&#8213;席（確定後に掲載）</span></td>
+            </tr>
+            <tr>
+              <th scope="row">アクセス</th>
+              <td>JR宝塚線 三田駅 徒歩約3分</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="cta-box" role="complementary" aria-label="ご予約のご案内">
+          <p>ご予約・お問い合わせ</p>
+          <span class="cta-tel">
+            &#8213;&#8213; &#8213;&#8213;&#8213;&#8213; &#8213;&#8213;&#8213;&#8213;
+            <span class="ph-label">電話番号は確定後に掲載いたします</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="section-inner">
+    <p class="footer-logo">たつや</p>
+    <p class="footer-tagline">三田の旬を、丁寧な仕事で</p>
+    <ul class="footer-links">
+      <li><a href="#philosophy">想い</a></li>
+      <li><a href="#menu">お品書き</a></li>
+      <li><a href="#reviews">お客様の声</a></li>
+      <li><a href="#access">アクセス</a></li>
+    </ul>
+    <div class="footer-rule" aria-hidden="true"></div>
+    <p class="footer-copy">&copy; たつや All rights reserved.</p>
+    <div class="sample-notice" role="note">
+      &#x203B;これは提案用サンプルです。掲載の情報・写真・お客様の声はすべて仮のものです。実際の店舗情報・画像・レビューに差し替えてご利用ください。
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ヒーロー画像のケンバーンズ効果を画像ロード後に開始
+  (function () {
+    var hero = document.querySelector('.hero');
+    var bg   = document.querySelector('.hero-bg');
+    function activate() { if (hero) hero.classList.add('loaded'); }
+    if (bg && bg.complete) { activate(); }
+    else if (bg) { bg.addEventListener('load', activate); }
+  })();
+</script>
+
+</body>
+</html>

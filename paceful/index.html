@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paceful｜不規則シフト×ADHDのための、責めないタスク管理アプリ</title>
+<meta name="description" content="夜勤・早番・遅番で予定が変わっても、タスクが勝手についてくる。ADHDと不規則シフトのために作った、責めないタスク管理アプリ。期限切れの赤バッジも、未達の詰め寄りもなし。完全オフライン・無料。">
+<meta name="keywords" content="ADHD,発達障害,不規則シフト,夜勤,早番,遅番,タスク管理,ToDo,先延ばし,看護師,介護,シフト勤務">
+<meta name="theme-color" content="#0f1729">
+<link rel="canonical" href="https://wine-2.github.io/paceful/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Paceful｜不規則シフト×ADHDの、責めないタスク管理">
+<meta property="og:description" content="シフトが変わっても、タスクのほうが合わせてくれる。責めない設計のタスク管理アプリ。">
+<meta property="og:image" content="https://wine-2.github.io/paceful/img/home.png">
+<meta property="og:url" content="https://wine-2.github.io/paceful/">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    --bg-primary: #0f1729;
+    --bg-secondary: #141c32;
+    --bg-card: #1e2a45;
+    --bg-card-hover: #243052;
+    --border: rgba(255,255,255,0.07);
+    --accent-purple: #7c3aed;
+    --accent-blue: #3b82f6;
+    --accent-grad: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    --text-primary: #e8ecf4;
+    --text-secondary: #9aa6be;
+    --text-muted: #5a6478;
+    --high: #ef4444;
+    --med: #f59e0b;
+    --low: #3b82f6;
+    --radius: 18px;
+    --maxw: 1080px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+  .accent-text {
+    background: var(--accent-grad);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ===== ambient glow ===== */
+  .glow {
+    position: fixed; top: -25%; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(124,58,237,0.22), rgba(59,130,246,0.10) 40%, transparent 68%);
+    pointer-events: none; z-index: 0; filter: blur(8px);
+  }
+
+  /* ===== nav ===== */
+  nav {
+    position: sticky; top: 0; z-index: 20;
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    background: rgba(15,23,41,0.72);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; letter-spacing: .2px; }
+  .brand .dot { width: 26px; height: 26px; border-radius: 8px; background: var(--accent-grad); box-shadow: 0 4px 16px rgba(124,58,237,0.5); }
+  .nav-cta { font-size: 14px; font-weight: 600; padding: 9px 16px; border-radius: 999px; background: var(--accent-grad); color: #fff; box-shadow: 0 6px 20px rgba(124,58,237,0.35); transition: transform .18s ease, box-shadow .18s ease; }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 26px rgba(124,58,237,0.5); }
+
+  /* ===== hero ===== */
+  .hero { position: relative; z-index: 1; padding: 72px 0 40px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; color: var(--text-secondary);
+    border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; margin-bottom: 24px;
+    background: rgba(255,255,255,0.02);
+  }
+  .badge .pulse { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 0 0 rgba(52,211,153,.6); animation: pulse 2.4s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(52,211,153,.5);} 70%{box-shadow:0 0 0 9px rgba(52,211,153,0);} 100%{box-shadow:0 0 0 0 rgba(52,211,153,0);} }
+  h1 { font-size: clamp(33px, 5.4vw, 56px); line-height: 1.18; font-weight: 800; letter-spacing: -0.5px; }
+  .sub { margin-top: 20px; font-size: clamp(16px, 2.1vw, 19px); color: var(--text-secondary); max-width: 30em; }
+  .cta-row { margin-top: 34px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .btn-store {
+    display: inline-flex; align-items: center; gap: 11px;
+    background: var(--accent-grad); color: #fff; font-weight: 700; font-size: 16px;
+    padding: 15px 26px; border-radius: 14px; box-shadow: 0 10px 30px rgba(124,58,237,0.4);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .btn-store:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(124,58,237,0.55); }
+  .btn-store svg { width: 22px; height: 22px; fill: #fff; }
+  .price-note { font-size: 14px; color: var(--text-muted); }
+
+  /* phone */
+  .phone-wrap { display: flex; justify-content: center; }
+  .phone {
+    width: 270px; border-radius: 42px; padding: 11px;
+    background: linear-gradient(160deg, #2a3556, #131b30);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.06);
+  }
+  .phone img { width: 100%; display: block; border-radius: 32px; }
+
+  /* ===== section ===== */
+  section.block { position: relative; z-index: 1; padding: 60px 0; }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-blue); margin-bottom: 12px; }
+  h2 { font-size: clamp(26px, 3.6vw, 36px); font-weight: 800; letter-spacing: -0.4px; line-height: 1.3; }
+  .lead { margin-top: 14px; color: var(--text-secondary); font-size: 17px; max-width: 38em; }
+
+  /* problem cards */
+  .cards { margin-top: 38px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 26px 24px; transition: transform .2s ease, background .2s ease;
+  }
+  .card:hover { transform: translateY(-3px); background: var(--bg-card-hover); }
+  .card .emoji { font-size: 26px; }
+  .card h3 { margin-top: 14px; font-size: 18px; font-weight: 700; }
+  .card p { margin-top: 9px; color: var(--text-secondary); font-size: 15px; }
+
+  /* feature rows */
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 64px; }
+  .feature:first-of-type { margin-top: 40px; }
+  .feature.flip .ftext { order: 2; }
+  .feature .phone { width: 248px; }
+  .ftext .tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: rgba(124,58,237,0.16); color: #c4b5fd; margin-bottom: 14px; }
+  .ftext h3 { font-size: clamp(22px, 3vw, 28px); font-weight: 800; line-height: 1.35; }
+  .ftext p { margin-top: 14px; color: var(--text-secondary); font-size: 16px; }
+  .flist { margin-top: 18px; display: flex; flex-direction: column; gap: 11px; }
+  .flist div { display: flex; gap: 11px; align-items: flex-start; font-size: 15px; color: var(--text-primary); }
+  .flist .ck { flex: none; width: 21px; height: 21px; border-radius: 50%; background: var(--accent-grad); display: grid; place-items: center; margin-top: 3px; }
+  .flist .ck svg { width: 12px; height: 12px; fill: #fff; }
+
+  /* mini feature grid */
+  .grid6 { margin-top: 40px; display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .mini { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+  .mini .ic { width: 40px; height: 40px; border-radius: 11px; background: rgba(59,130,246,0.14); display: grid; place-items: center; font-size: 20px; margin-bottom: 13px; }
+  .mini h4 { font-size: 16px; font-weight: 700; }
+  .mini p { margin-top: 7px; font-size: 14px; color: var(--text-secondary); }
+
+  /* maker */
+  .maker { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 44px; margin-top: 8px; }
+  .maker p { font-size: clamp(17px, 2.2vw, 21px); line-height: 1.9; color: var(--text-primary); max-width: 44em; }
+  .maker .who { margin-top: 22px; color: var(--text-muted); font-size: 14px; }
+
+  /* final cta */
+  .final { text-align: center; padding: 80px 0 70px; }
+  .final h2 { max-width: 18em; margin: 0 auto; }
+  .final .sub { margin: 16px auto 0; }
+  .final .cta-row { justify-content: center; }
+
+  footer { border-top: 1px solid var(--border); padding: 30px 0 44px; color: var(--text-muted); font-size: 14px; }
+  .foot-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  footer a { color: var(--text-secondary); }
+  footer a:hover { color: var(--text-primary); }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+    .hero { padding: 48px 0 24px; }
+    .badge, .cta-row { justify-content: center; }
+    .sub { margin-left: auto; margin-right: auto; }
+    .hero-grid .phone-wrap { order: -1; }
+    .cards { grid-template-columns: 1fr; }
+    .feature { grid-template-columns: 1fr; gap: 26px; text-align: center; margin-top: 52px; }
+    .feature.flip .ftext { order: 0; }
+    .feature .phone-wrap { order: -1; }
+    .flist div { text-align: left; }
+    .grid6 { grid-template-columns: 1fr; }
+    .maker { padding: 30px 24px; }
+    .maker p { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="brand"><span class="dot"></span>Paceful</div>
+    <a class="nav-cta" href="https://apps.apple.com/jp/app/id6782889422">App Storeで入手</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge"><span class="pulse"></span>ADHD × 不規則シフトのために作った</div>
+      <h1>不規則シフトでも、<br><span class="accent-text">自分のペース</span>で。</h1>
+      <p class="sub">夜勤・早番・遅番で予定が変わっても、タスクのほうが勝手についてくる。期限切れの赤バッジも、未達の詰め寄りもない。責めないタスク管理アプリ、Paceful。</p>
+      <div class="cta-row">
+        <a class="btn-store" href="https://apps.apple.com/jp/app/id6782889422">
+          <svg viewBox="0 0 384 512"><path d="M318.7 268c-.2-37 16.4-64.9 50-85.6-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 139.5 0 184.9 0 277.2c0 27.3 5 55.5 15 84.6 13.3 38.2 61.3 132 111.4 130.5 26.2-.6 44.7-18.6 78.8-18.6 33.1 0 50.2 18.6 78.5 18.6 50.6-.7 94-86 106.6-124.3-67.8-32-71.6-93.7-71.6-100zM258.7 95.4c28.9-34.3 26.3-65.5 25.5-76.7-25.6 1.5-55.2 17.4-72.1 37-18.6 21-29.5 47-27.2 75.5 27.7 2.1 53-12.2 73.8-35.8z"/></svg>
+          App Storeでダウンロード
+        </a>
+        <span class="price-note">無料・完全オフライン</span>
+      </div>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone"><img src="img/home.png" alt="Pacefulのホーム画面。今日やる1つが大きく表示される" loading="eager"></div>
+    </div>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow">なぜ続かないのか</div>
+    <h2>ふつうのToDoアプリが、<br>シフト勤務だと続かない理由。</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="emoji">🌀</div>
+        <h3>「毎週月曜」が夜勤だと無意味</h3>
+        <p>固定の繰り返し設定は、シフトがズレた瞬間に役に立たなくなる。結局、毎回手で直すことになる。</p>
+      </div>
+      <div class="card">
+        <div class="emoji">🔁</div>
+        <h3>シフト変更でぜんぶ組み直し</h3>
+        <p>早番が遅番に変わっただけで、登録した予定とリマインダーを総入れ替え。面倒で開かなくなる。</p>
+      </div>
+      <div class="card">
+        <div class="emoji">🥀</div>
+        <h3>久しぶりに開くと赤バッジの山</h3>
+        <p>期限切れがずらりと並んで、見た瞬間に気持ちが沈む。それでまた、アプリから離れてしまう。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow">Pacefulがやること</div>
+    <h2>あなたがシフトに合わせるんじゃない。<br><span class="accent-text">タスクのほうが合わせる。</span></h2>
+
+    <div class="feature">
+      <div class="phone-wrap"><div class="phone"><img src="img/calendar.png" alt="シフトをカレンダーに置いていく画面" loading="lazy"></div></div>
+      <div class="ftext">
+        <span class="tag">シフト連動</span>
+        <h3>早番・遅番・夜勤を一度登録するだけ。</h3>
+        <p>あとはカレンダーをタップして「この日は夜勤」と置いていく。タスクに「夜勤の日に出す」を紐づければ、シフトが変わるたびに該当タスクが勝手にスライドする。シフト表の写真読み込みみたいな大げさな仕組みはいらない。</p>
+      </div>
+    </div>
+
+    <div class="feature flip">
+      <div class="ftext">
+        <span class="tag">迷わせない</span>
+        <h3>朝ひらいて、最初に見えるのは「今日やる1つ」だけ。</h3>
+        <p>残りは下にスクロールするまで出てこない。タスクは期限ではなく「やる気の強さ」で3段階。絶対今日・できれば今日・いつか。細かく分けすぎないから、選ぶのに疲れない。</p>
+        <div class="flist">
+          <div><span class="ck"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span>今日の主役を1つに絞る</div>
+          <div><span class="ck"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span>完了すると、ちゃんと手ごたえが返る</div>
+        </div>
+      </div>
+      <div class="phone-wrap"><div class="phone"><img src="img/stats.png" alt="達成を前向きに見せる統計画面" loading="lazy"></div></div>
+    </div>
+
+    <div class="feature">
+      <div class="phone-wrap"><div class="phone"><img src="img/bucket.png" alt="思考のバケツ画面" loading="lazy"></div></div>
+      <div class="ftext">
+        <span class="tag">逃げ道と、責めない設計</span>
+        <h3>頑張れない日は「今日もう限界」を押していい。</h3>
+        <p>軽いタスクが今日のリストから外れて、絶対やるやつだけ残る。罪悪感を最小にして、ちゃんと休める。期限切れを赤くしないし、「N件未達成」も出さない。久しぶりに開いても、フラットに迎える。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow">こまかいけど、効く</div>
+    <h2>毎日ひらきたくなる、小さな工夫。</h2>
+    <div class="grid6">
+      <div class="mini"><div class="ic">🪣</div><h4>思考のバケツ</h4><p>「これやりたいかも」を、タスクにする前にそのまま放り込む。仕分けは後でいい。</p></div>
+      <div class="mini"><div class="ic">🎉</div><h4>完了の手ごたえ</h4><p>チェックした瞬間に弾けて、軽く震える。地味だけど、終わった感がちゃんとある。</p></div>
+      <div class="mini"><div class="ic">🌙</div><h4>時間帯で変わる空気</h4><p>シフトに合わせて画面の色や挨拶が変わる。夜勤明けの朝にも馴染む。</p></div>
+      <div class="mini"><div class="ic">🔒</div><h4>完全ローカル</h4><p>データは端末の中だけ。サーバー送信なし、アカウント登録なし。</p></div>
+      <div class="mini"><div class="ic">🚫</div><h4>広告ゼロ</h4><p>広告もトラッキングもなし。集中をじゃまするものを置かない。</p></div>
+      <div class="mini"><div class="ic">💸</div><h4>無料</h4><p>主要な機能はぜんぶ無料で使える。まず試してから決めればいい。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="maker">
+      <div class="eyebrow">作っている人</div>
+      <p>これを作っているのは、不規則シフトで働きながら、自分が毎日使いたくて開発している個人です。きっちり管理されると逆に動けなくなるタイプの人に、ちょうどいい距離感を目指しています。「赤バッジで詰められるのが嫌い」だから、そう作りました。</p>
+      <div class="who">個人開発 / 当事者目線でつくるタスク管理アプリ</div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>今日から、自分のペースで。</h2>
+    <p class="sub">続かなかったのは、あなたのせいじゃない。アプリのほうが合っていなかっただけ。</p>
+    <div class="cta-row">
+      <a class="btn-store" href="https://apps.apple.com/jp/app/id6782889422">
+        <svg viewBox="0 0 384 512"><path d="M318.7 268c-.2-37 16.4-64.9 50-85.6-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 139.5 0 184.9 0 277.2c0 27.3 5 55.5 15 84.6 13.3 38.2 61.3 132 111.4 130.5 26.2-.6 44.7-18.6 78.8-18.6 33.1 0 50.2 18.6 78.5 18.6 50.6-.7 94-86 106.6-124.3-67.8-32-71.6-93.7-71.6-100zM258.7 95.4c28.9-34.3 26.3-65.5 25.5-76.7-25.6 1.5-55.2 17.4-72.1 37-18.6 21-29.5 47-27.2 75.5 27.7 2.1 53-12.2 73.8-35.8z"/></svg>
+        App Storeでダウンロード
+      </a>
+      <span class="price-note">無料・iPhone対応</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Shouma Satonaka</div>
+    <div><a href="https://apps.apple.com/jp/app/id6782889422">App Store</a> ・ <a href="https://wine-2.github.io/pacemaker-privacy/">プライバシーポリシー</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paceful プライバシーポリシー</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Helvetica Neue", sans-serif;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px;
+  line-height: 1.7;
+  color: #1A2340;
+  background: #ffffff;
+}
+h1 {
+  font-size: 24px;
+  border-bottom: 2px solid #1A2340;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+h2 {
+  font-size: 18px;
+  margin-top: 32px;
+  color: #1A2340;
+}
+p { margin: 12px 0; }
+ul { padding-left: 24px; }
+li { margin: 6px 0; }
+hr {
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  margin: 32px 0;
+}
+a { color: #7C3AED; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta {
+  color: #666;
+  font-size: 14px;
+}
+.lang-switch {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e5e5;
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<h1>Paceful プライバシーポリシー</h1>
+
+<p class="meta">公開日: 2026年6月5日<br>
+最終更新: 2026年6月5日</p>
+
+<hr>
+
+<h2>1. はじめに</h2>
+
+<p>Paceful（以下「本アプリ」）は、不規則シフト勤務者向けのタスク管理iOSアプリです。本ポリシーは、本アプリがユーザーのデータをどう扱うかを説明するものです。</p>
+
+<p>本アプリは個人開発者によって運営されています。</p>
+
+<ul>
+  <li>アプリ名: Paceful</li>
+  <li>運営者: しょうま（個人開発者）</li>
+  <li>連絡先: <a href="mailto:kukubb13251@gmail.com">kukubb13251@gmail.com</a></li>
+</ul>
+
+<h2>2. 収集する情報</h2>
+
+<p>本アプリは、ユーザーから個人情報を一切収集しません。</p>
+
+<p>具体的には次のとおりです。</p>
+
+<ul>
+  <li>アカウント登録は不要です</li>
+  <li>氏名・メールアドレス・電話番号などの情報は求めません</li>
+  <li>利用ログ・操作履歴を外部に送信しません</li>
+  <li>広告SDK・解析SDK・トラッキングSDKを一切組み込んでいません</li>
+  <li>端末識別子（IDFA・IDFV）を取得しません</li>
+  <li>位置情報を取得しません</li>
+</ul>
+
+<h2>3. データの保管場所</h2>
+
+<p>本アプリで作成されたすべてのデータは、ユーザーの端末内にのみ保存されます。</p>
+
+<ul>
+  <li>タスク・シフト・思考バケツの内容: 端末内の SwiftData（ローカルデータベース）に保存</li>
+  <li>アプリの設定値: 端末内の UserDefaults に保存</li>
+  <li>iCloud 同期: 本バージョンでは行いません</li>
+  <li>外部サーバーへの送信: 一切ありません</li>
+</ul>
+
+<p>アプリをアンインストールすると、これらのデータはすべて削除されます。</p>
+
+<h2>4. 第三者への提供</h2>
+
+<p>本アプリは、ユーザーのデータを第三者に提供しません。そもそも収集していないため、提供する対象が存在しません。</p>
+
+<h2>5. 広告について</h2>
+
+<p>本アプリは広告を一切表示しません。広告ネットワークSDKも組み込んでいません。</p>
+
+<h2>6. クラッシュレポートと診断情報</h2>
+
+<p>本アプリ独自のクラッシュレポート機能は実装していません。</p>
+
+<p>ただし、iOSの標準機能として Apple がクラッシュログ・診断情報を収集する場合があります。これは Apple のプライバシーポリシーおよびユーザーの設定（「設定」→「プライバシーとセキュリティ」→「解析と改善」）に従って動作します。ユーザーはこの収集をオフにすることができます。</p>
+
+<h2>7. 写真ライブラリへのアクセス</h2>
+
+<p>本アプリは、思考バケツ機能で画像を添付する目的で、写真ライブラリへのアクセスを求める場合があります。</p>
+
+<ul>
+  <li>ユーザーが選択した写真のみを取得します（PHPickerViewController を使用、ライブラリ全体へのアクセス権限は要求しません）</li>
+  <li>取得した画像は端末内で 1024px・JPEG品質 0.8 に圧縮して保存します</li>
+  <li>圧縮後の画像はアプリ内のローカルデータベースにのみ保存され、外部に送信されません</li>
+  <li>思考バケツの内容を削除すると、関連する画像データも端末内から削除されます</li>
+</ul>
+
+<h2>8. 通知について</h2>
+
+<p>本アプリはローカル通知のみを使用します。</p>
+
+<ul>
+  <li>リマインダー（gentleNudge）はすべて端末内で生成・配信されます</li>
+  <li>プッシュ通知サーバーを使用しません</li>
+  <li>通知許可はユーザーが任意でON/OFFできます</li>
+</ul>
+
+<h2>9. 子どもの保護</h2>
+
+<p>本アプリは年齢制限「4+」での提供を予定しています。本アプリは個人情報を一切収集しないため、子どもからの情報収集も発生しません。</p>
+
+<h2>10. ユーザーの権利</h2>
+
+<p>本アプリはユーザーのデータを端末内にのみ保持するため、データの開示・訂正・削除はすべて端末内で完結します。</p>
+
+<ul>
+  <li>データの削除: アプリ内のタスク削除機能、または本アプリのアンインストール</li>
+  <li>データのエクスポート: 本バージョンでは未対応（将来検討予定）</li>
+</ul>
+
+<h2>11. お問い合わせ</h2>
+
+<p>本ポリシー・本アプリのプライバシーに関するご質問は、以下までご連絡ください。</p>
+
+<p>連絡先: <a href="mailto:kukubb13251@gmail.com">kukubb13251@gmail.com</a></p>
+
+<h2>12. 本ポリシーの変更</h2>
+
+<p>本ポリシーは予告なく変更される場合があります。変更があった場合は、本ページに最終更新日を記載のうえ、重要な変更については App Store の「最新情報」欄でも告知します。</p>
+
+<hr>
+
+<h2>変更履歴</h2>
+
+<ul>
+  <li>2026年6月5日: 初版公開</li>
+</ul>
+
+<div class="lang-switch">
+  <a href="./en.html">English</a>
+</div>
+
+</body>
+</html>

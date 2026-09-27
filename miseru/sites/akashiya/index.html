@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>明石屋 | 三田駅前の海鮮料理 – 明石の海の幸を毎朝直送</title>
+  <meta name="description" content="兵庫県三田市・三田駅から徒歩約3分。明石の海から毎朝届く鮮魚を使った海鮮丼・刺身盛り・寿司が自慢の海鮮料理店「明石屋」。">
+  <meta property="og:title" content="明石屋 | 三田駅前の海鮮料理">
+  <meta property="og:description" content="明石の海の幸を毎朝直送。三田駅から徒歩約3分の海鮮料理店。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ai:   #0e3a5c;
+      --ai2:  #1a5580;
+      --ai3:  #2d7bb0;
+      --sil:  #c8d6df;
+      --sil2: #e8f0f4;
+      --ake:  #c0392b;
+      --gold: #b8903a;
+      --wh:   #ffffff;
+      --off:  #f7f4f0;
+      --txt:  #1c1c1e;
+      --txt2: #5a5a60;
+      --sans: 'Noto Sans JP', sans-serif;
+      --ser:  'Noto Serif JP', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--txt);
+      background: var(--wh);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 4vw, 2.5rem);
+      height: 60px;
+      background: rgba(14,58,92,0.92);
+      backdrop-filter: blur(8px);
+    }
+    .site-header .logo {
+      font-family: var(--ser);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--wh);
+      letter-spacing: 0.15em;
+      text-decoration: none;
+    }
+    .site-header .logo span { color: #a8d4f5; }
+    nav { display: flex; gap: 1.5rem; }
+    nav a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--wh); }
+    @media (max-width: 540px) { nav { display: none; } }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('img/hero.jpg') center center / cover no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(5,20,38,0.52) 0%,
+        rgba(5,20,38,0.68) 55%,
+        rgba(5,20,38,0.85) 100%
+      );
+    }
+    .hero-wave {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60px;
+      overflow: hidden;
+    }
+    .hero-wave svg { display: block; width: 100%; height: 60px; }
+
+    .hero-body {
+      position: relative;
+      z-index: 1;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      max-width: 720px;
+    }
+    .hero-label {
+      display: inline-block;
+      border: 1px solid rgba(168,212,245,0.6);
+      color: #a8d4f5;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      padding: 0.28em 1.1em;
+      border-radius: 100px;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: var(--ser);
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      font-weight: 700;
+      color: var(--wh);
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 .en {
+      display: block;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      color: #a8d4f5;
+      margin-bottom: 0.6rem;
+    }
+    .hero-catch {
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      color: rgba(255,255,255,0.88);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .btn-cta {
+      display: inline-block;
+      background: var(--ake);
+      color: var(--wh);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      padding: 0.85em 2.4em;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-cta:hover { background: #a93226; transform: translateY(-1px); }
+
+    /* SECTION COMMON */
+    section { padding: clamp(3.5rem, 8vw, 6rem) clamp(1rem, 5vw, 3rem); }
+    .sec-inner { max-width: 960px; margin: 0 auto; }
+
+    .sec-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      color: var(--ai3);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .sec-label::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 1px;
+      background: var(--ai3);
+    }
+    .sec-title {
+      font-family: var(--ser);
+      font-size: clamp(1.65rem, 4vw, 2.3rem);
+      font-weight: 700;
+      color: var(--ai);
+      line-height: 1.25;
+      margin-bottom: 0.6rem;
+    }
+    .sec-sub {
+      font-size: 0.92rem;
+      color: var(--txt2);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    /* WAVE DIVIDER */
+    .wave-divider { width: 100%; overflow: hidden; line-height: 0; display: block; }
+    .wave-divider svg { display: block; width: 100%; }
+
+    /* KODAWARI */
+    #kodawari { background: var(--ai); }
+    #kodawari .sec-label { color: #a8d4f5; }
+    #kodawari .sec-label::before { background: #a8d4f5; }
+    #kodawari .sec-title { color: var(--wh); }
+    #kodawari .sec-sub { color: rgba(255,255,255,0.75); max-width: 600px; }
+
+    .kodawari-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.8rem;
+    }
+    .kodawari-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 1.8rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .kodawari-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--ai3), #a8d4f5);
+    }
+    .kodawari-icon { font-size: 2rem; margin-bottom: 0.9rem; line-height: 1; }
+    .kodawari-card h3 {
+      font-family: var(--ser);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--wh);
+      margin-bottom: 0.5rem;
+    }
+    .kodawari-card p { font-size: 0.85rem; color: rgba(255,255,255,0.72); line-height: 1.75; }
+
+    /* MENU */
+    #menu { background: var(--off); }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.6rem;
+    }
+    .menu-card {
+      background: var(--wh);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(14,58,92,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .menu-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(14,58,92,0.14);
+    }
+    .menu-card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+    .menu-card-img-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      background: var(--sil2);
+    }
+    .menu-card-body { padding: 1.3rem 1.4rem 1.5rem; }
+    .menu-card-body h3 {
+      font-family: var(--ser);
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--ai);
+      margin-bottom: 0.35rem;
+    }
+    .menu-card-body p {
+      font-size: 0.83rem;
+      color: var(--txt2);
+      line-height: 1.7;
+      margin-bottom: 0.9rem;
+    }
+    .menu-price {
+      display: inline-block;
+      background: var(--sil2);
+      color: var(--ai);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25em 0.85em;
+      border-radius: 4px;
+      border: 1px solid var(--sil);
+    }
+
+    /* VOICE */
+    #voice { background: var(--wh); }
+
+    .voice-note {
+      font-size: 0.72rem;
+      color: var(--txt2);
+      margin-bottom: 1.8rem;
+      background: #fff8e7;
+      border-left: 3px solid var(--gold);
+      padding: 0.5em 1em;
+      border-radius: 0 6px 6px 0;
+      display: inline-block;
+    }
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+    .voice-card {
+      background: var(--sil2);
+      border-radius: 14px;
+      padding: 1.5rem 1.6rem;
+      position: relative;
+    }
+    .voice-card::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.2rem; left: 1.1rem;
+      font-size: 4rem;
+      font-family: var(--ser);
+      color: var(--ai3);
+      opacity: 0.18;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .stars { color: var(--gold); font-size: 0.95rem; letter-spacing: 0.1em; margin-bottom: 0.6rem; }
+    .voice-text { font-size: 0.88rem; color: var(--txt); line-height: 1.85; margin-bottom: 1rem; }
+    .voice-name { font-size: 0.78rem; color: var(--txt2); font-weight: 500; }
+    .voice-name span {
+      display: inline-block;
+      background: var(--ai);
+      color: var(--wh);
+      font-size: 0.66rem;
+      padding: 0.18em 0.6em;
+      border-radius: 3px;
+      margin-right: 0.4em;
+    }
+
+    /* ACCESS */
+    #access { background: var(--ai); }
+    #access .sec-label { color: #a8d4f5; }
+    #access .sec-label::before { background: #a8d4f5; }
+    #access .sec-title { color: var(--wh); }
+
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 640px) { .access-grid { grid-template-columns: 1fr; } }
+
+    .map-wrap { border-radius: 12px; overflow: hidden; }
+
+    .access-info { color: rgba(255,255,255,0.88); }
+    .access-info h3 {
+      font-family: var(--ser);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--wh);
+      margin-bottom: 1.4rem;
+    }
+    .access-row { display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start; }
+    .access-row-icon {
+      width: 36px; height: 36px;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .access-row-label { font-size: 0.7rem; letter-spacing: 0.1em; color: #a8d4f5; margin-bottom: 0.15rem; }
+    .access-row-val { font-size: 0.9rem; color: rgba(255,255,255,0.9); line-height: 1.55; }
+    .placeholder { color: rgba(200,214,223,0.7); font-style: italic; }
+    .walk-badge {
+      display: inline-block;
+      background: var(--ake);
+      color: var(--wh);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.28em 0.9em;
+      border-radius: 100px;
+      margin-top: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* HOURS */
+    #hours { background: var(--off); }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.4rem;
+    }
+    .hours-card {
+      background: var(--wh);
+      border-radius: 12px;
+      padding: 1.4rem 1.5rem;
+      border-top: 4px solid var(--ai);
+    }
+    .hours-card h3 { font-size: 0.72rem; letter-spacing: 0.16em; color: var(--txt2); margin-bottom: 0.6rem; }
+    .hours-card .val { font-family: var(--ser); font-size: 1.05rem; font-weight: 600; color: var(--ai); }
+    .tel-block { margin-top: 2.2rem; text-align: center; }
+    .tel-block p { font-size: 0.82rem; color: var(--txt2); margin-bottom: 0.5rem; }
+    .tel-block a {
+      display: inline-block;
+      font-family: var(--ser);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--ai);
+      letter-spacing: 0.06em;
+      text-decoration: none;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ai);
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      padding: 2.4rem 1rem;
+      font-size: 0.8rem;
+      line-height: 1.9;
+    }
+    footer .footer-logo {
+      font-family: var(--ser);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--wh);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+    footer .sample-note {
+      display: block;
+      margin-top: 1.2rem;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1rem;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a class="logo" href="#">明石屋<span>.</span></a>
+  <nav aria-label="メインナビゲーション">
+    <a href="#kodawari">こだわり</a>
+    <a href="#menu">おすすめ</a>
+    <a href="#voice">お客様の声</a>
+    <a href="#access">アクセス</a>
+    <a href="#hours">営業案内</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" aria-label="ヒーロー">
+  <div class="hero-bg" role="img" aria-label="黒い器に盛られた豪華な海鮮丼"></div>
+  <div class="hero-body">
+    <p class="hero-label">三田駅から徒歩約3分 ／ 兵庫県三田市</p>
+    <h1>
+      <span class="en">AKASHIYA</span>
+      明石屋
+    </h1>
+    <p class="hero-catch">
+      明石の海から、毎朝届く。<br>
+      旬の鮮魚が語りかける、本物の味わい。
+    </p>
+    <a href="#menu" class="btn-cta">おすすめメニューを見る</a>
+  </div>
+  <div class="hero-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 60 L0 30 Q180 0 360 30 Q540 60 720 30 Q900 0 1080 30 Q1260 60 1440 30 L1440 60 Z" fill="#0e3a5c"/>
+    </svg>
+  </div>
+</section>
+
+<!-- KODAWARI -->
+<section id="kodawari">
+  <div class="sec-inner">
+    <p class="sec-label reveal">Our Philosophy</p>
+    <h2 class="sec-title reveal">明石の海が、食卓に届くまで</h2>
+    <p class="sec-sub reveal">
+      「明石屋」の名のとおり、明石海峡で育まれた魚介を中心に、
+      地元の市場から毎朝仕入れた鮮魚だけを使います。
+      余計な手を加えず、素材の旨さを最大限に引き出すことが私たちのこだわりです。
+    </p>
+    <div class="kodawari-grid">
+      <div class="kodawari-card reveal">
+        <div class="kodawari-icon">🐟</div>
+        <h3>毎朝の鮮魚直送</h3>
+        <p>明石・淡路の漁港から直送。鮮度の落ちた魚は仕入れない、その日の素材だけを提供します。</p>
+      </div>
+      <div class="kodawari-card reveal">
+        <div class="kodawari-icon">🌊</div>
+        <h3>明石海峡の恵み</h3>
+        <p>速い潮流にもまれた明石の魚は身が締まり旨みが濃い。この海でしか味わえない鮮魚を。</p>
+      </div>
+      <div class="kodawari-card reveal">
+        <div class="kodawari-icon">🍶</div>
+        <h3>旬を大切に</h3>
+        <p>季節ごとに旬の魚を中心に構成を変えるため、何度来ても飽きない品揃えを心がけています。</p>
+      </div>
+      <div class="kodawari-card reveal">
+        <div class="kodawari-icon">🍱</div>
+        <h3>地元三田への愛</h3>
+        <p>三田市の方々に愛される店であり続けるために、素材・価格・おもてなしを妥協しません。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE DIVIDER -->
+<span class="wave-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" height="40">
+    <rect x="0" y="0" width="1440" height="40" fill="#0e3a5c"/>
+    <path d="M0 40 L0 20 Q360 0 720 20 Q1080 40 1440 20 L1440 40 Z" fill="#f7f4f0"/>
+  </svg>
+</span>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="sec-inner">
+    <p class="sec-label reveal">Menu</p>
+    <h2 class="sec-title reveal">おすすめメニュー</h2>
+    <p class="sec-sub reveal">鮮度命の海鮮料理を、丁寧な仕事でご提供します。</p>
+    <div class="menu-grid">
+
+      <article class="menu-card reveal">
+        <img src="img/hero.jpg" alt="新鮮な刺身がたっぷり乗った明石屋海鮮丼" class="menu-card-img" loading="lazy">
+        <div class="menu-card-body">
+          <h3>明石屋 海鮮丼</h3>
+          <p>本日水揚げの魚介を豪快に盛り合わせ。明石特産のタコ・タイはもちろん、旬の魚介も加えた看板メニュー。</p>
+          <span class="menu-price">[価格を入力]</span>
+        </div>
+      </article>
+
+      <article class="menu-card reveal">
+        <img src="img/dish1.jpg" alt="スレート皿に盛り付けられた寿司の盛り合わせ" class="menu-card-img" loading="lazy">
+        <div class="menu-card-body">
+          <h3>おまかせ握り寿司</h3>
+          <p>その日の仕入れからシェフが厳選した旬の魚を握りに。シャリは地元産米を使った酢飯で仕上げます。</p>
+          <span class="menu-price">[価格を入力]</span>
+        </div>
+      </article>
+
+      <article class="menu-card reveal">
+        <img src="img/dish2.jpg" alt="白皿に盛られたレモン添えの大ぶり海老料理" class="menu-card-img" loading="lazy">
+        <div class="menu-card-body">
+          <h3>大海老 塩焼き</h3>
+          <p>プリプリの食感が自慢の大ぶり海老をシンプルな塩焼きで。レモンを絞ってどうぞ。</p>
+          <span class="menu-price">[価格を入力]</span>
+        </div>
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="menu-card-img-placeholder" role="img" aria-label="刺身盛り合わせのイメージ">🐙</div>
+        <div class="menu-card-body">
+          <h3>刺身盛り合わせ</h3>
+          <p>二人前・三人前とご要望に合わせてご用意。明石のタコ・タイを中心に旬の魚介を豊かに盛り付けます。</p>
+          <span class="menu-price">[価格を入力]</span>
+        </div>
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="menu-card-img-placeholder" role="img" aria-label="旬魚の塩焼きのイメージ">🐟</div>
+        <div class="menu-card-body">
+          <h3>旬魚の塩焼き・煮付け</h3>
+          <p>毎朝の仕入れにより魚種は変わります。シンプルな調理で、魚本来の旨みをご堪能ください。</p>
+          <span class="menu-price">[価格を入力]</span>
+        </div>
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="menu-card-img-placeholder" role="img" aria-label="焼きガキのイメージ">🦪</div>
+        <div class="menu-card-body">
+          <h3>焼きガキ（季節限定）</h3>
+          <p>旬のカキを炭火でじっくり焼き上げ。濃厚な旨みと磯の香りをお楽しみください。</p>
+          <span class="menu-price">[価格を入力]</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section id="voice">
+  <div class="sec-inner">
+    <p class="sec-label reveal">Reviews</p>
+    <h2 class="sec-title reveal">お客様の声</h2>
+    <p class="voice-note">※ 掲載イメージ（サンプル）—— 実際のレビューに差し替えてご利用ください</p>
+    <div class="voice-grid">
+
+      <div class="voice-card reveal">
+        <div class="stars" aria-label="5つ星">★★★★★</div>
+        <p class="voice-text">
+          三田に来るたびに必ず寄ります！海鮮丼のネタが厚くて新鮮で、食べるたびに感動します。
+          明石のタコがとくにお気に入り。地元でこんな本格的な海鮮が食べられるとは思いませんでした。
+        </p>
+        <p class="voice-name"><span>常連</span> 三田市在住・40代</p>
+      </div>
+
+      <div class="voice-card reveal">
+        <div class="stars" aria-label="5つ星">★★★★★</div>
+        <p class="voice-text">
+          出張帰りに立ち寄りました。刺身盛りのクオリティが都内の高級店に引けを取らない！
+          駅から近いのも最高で、次回も三田に来たときは必ず来ます。
+        </p>
+        <p class="voice-name"><span>来訪</span> 神戸市在住・30代</p>
+      </div>
+
+      <div class="voice-card reveal">
+        <div class="stars" aria-label="4つ星">★★★★☆</div>
+        <p class="voice-text">
+          家族のお祝いで利用しました。大海老の塩焼きが絶品で子どもたちも大喜び。
+          スタッフの方もとても丁寧で、居心地よく過ごせました。また特別な日に利用したいです。
+        </p>
+        <p class="voice-name"><span>家族</span> 篠山市在住・50代</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section id="access">
+  <div class="sec-inner">
+    <p class="sec-label reveal">Access</p>
+    <h2 class="sec-title reveal">アクセス</h2>
+    <div class="access-grid">
+
+      <div class="map-wrap reveal">
+        <iframe
+          title="地図"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=135.2250%2C34.8862%2C135.2310%2C34.8882&layer=mapnik&marker=34.8872423%2C135.228012"
+          style="width:100%;height:300px;border:0;border-radius:12px"
+          loading="lazy"
+        ></iframe>
+        <p style="margin-top:0.7rem;font-size:0.78rem;color:rgba(255,255,255,0.5);">
+          © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" style="color:#a8d4f5;text-decoration:none;">OpenStreetMap</a> contributors
+        </p>
+      </div>
+
+      <div class="access-info reveal">
+        <h3>明石屋</h3>
+
+        <div class="access-row">
+          <div class="access-row-icon">📍</div>
+          <div>
+            <p class="access-row-label">住所</p>
+            <p class="access-row-val placeholder">[正式住所を入力]<br><span style="color:rgba(255,255,255,0.6);font-style:normal;">兵庫県三田市 三田駅前周辺</span></p>
+          </div>
+        </div>
+
+        <div class="access-row">
+          <div class="access-row-icon">🚉</div>
+          <div>
+            <p class="access-row-label">最寄り駅</p>
+            <p class="access-row-val">JR宝塚線 / 神戸電鉄 三田駅</p>
+            <span class="walk-badge">徒歩約3分</span>
+          </div>
+        </div>
+
+        <div class="access-row">
+          <div class="access-row-icon">📞</div>
+          <div>
+            <p class="access-row-label">お電話</p>
+            <p class="access-row-val placeholder">[電話番号を入力]</p>
+          </div>
+        </div>
+
+        <div class="access-row">
+          <div class="access-row-icon">🅿️</div>
+          <div>
+            <p class="access-row-label">駐車場</p>
+            <p class="access-row-val placeholder">[駐車場情報を入力]</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section id="hours">
+  <div class="sec-inner">
+    <p class="sec-label reveal">Hours</p>
+    <h2 class="sec-title reveal">営業案内</h2>
+    <div class="hours-grid">
+      <div class="hours-card reveal">
+        <h3>ランチ営業</h3>
+        <p class="val placeholder">[営業時間を入力]</p>
+      </div>
+      <div class="hours-card reveal">
+        <h3>ディナー営業</h3>
+        <p class="val placeholder">[営業時間を入力]</p>
+      </div>
+      <div class="hours-card reveal">
+        <h3>定休日</h3>
+        <p class="val placeholder">[定休日を入力]</p>
+      </div>
+      <div class="hours-card reveal">
+        <h3>ご予約</h3>
+        <p class="val placeholder">[ご予約受付方法を入力]</p>
+      </div>
+    </div>
+
+    <div class="tel-block reveal">
+      <p>お電話でのお問い合わせ・ご予約</p>
+      <a href="#" class="placeholder">[電話番号を入力]</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">明石屋</p>
+  <p>海鮮料理 ／ 兵庫県三田市 三田駅から徒歩約3分</p>
+  <small class="sample-note">
+    ※これは提案用サンプルです。情報・写真は仮のもので、実際の内容に差し替えてご利用ください。
+  </small>
+</footer>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+    // 保険: 何らかの理由で監視が発火しなくても、読込後に必ず表示する
+    window.addEventListener('load', function () {
+      setTimeout(function () { els.forEach(function (el) { el.classList.add('in'); }); }, 1500);
+    });
+  })();
+</script>
+</body>
+</html>

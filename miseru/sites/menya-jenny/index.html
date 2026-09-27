@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>麺屋じぇにー | 三田駅から徒歩3分のラーメン店</title>
+  <meta name="description" content="兵庫県三田市・三田駅から徒歩約3分。こだわりのスープと自家製麺が織りなす一杯。麺屋じぇにーへようこそ。">
+  <meta property="og:title" content="麺屋じぇにー | 三田駅から徒歩3分のラーメン店">
+  <meta property="og:description" content="兵庫県三田市・三田駅から徒歩約3分。こだわりのスープと自家製麺が織りなす一杯。麺屋じぇにーへようこそ。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #8B0000;
+      --red-mid:#B22222;
+      --red-lt: #C0392B;
+      --gold:   #C9A84C;
+      --gold-lt:#E8C97A;
+      --black:  #0E0E0E;
+      --dark:   #1A1A1A;
+      --charcoal:#2D2D2D;
+      --off-white:#F5F0E8;
+      --cream:  #FAF7F0;
+      --serif: 'Noto Serif JP', serif;
+      --sans:  'Noto Sans JP', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── STICKY HEADER ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14,14,14,0.95);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem,4vw,2.5rem);
+      height: 58px;
+    }
+
+    .header-logo {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: clamp(1rem,3vw,1.25rem);
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: clamp(0.8rem,2.5vw,1.8rem);
+    }
+
+    nav a {
+      font-size: clamp(0.7rem,1.8vw,0.85rem);
+      color: #ccc;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    nav a:hover { color: var(--gold-lt); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      min-height: 480px;
+      max-height: 720px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,5,2,0.55) 0%,
+        rgba(10,5,2,0.3) 40%,
+        rgba(10,5,2,0.75) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: clamp(0.65rem,1.5vw,0.78rem);
+      letter-spacing: 0.18em;
+      color: var(--gold-lt);
+      border: 1px solid var(--gold);
+      padding: 0.3em 1.1em;
+      margin-bottom: 1rem;
+      font-family: var(--serif);
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: clamp(2.4rem,8vw,5rem);
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: 0.05em;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-sub {
+      font-family: var(--serif);
+      font-size: clamp(0.9rem,2.5vw,1.2rem);
+      color: var(--gold-lt);
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85em 2.4em;
+      background: var(--red);
+      color: #fff;
+      font-weight: 700;
+      font-size: clamp(0.85rem,2vw,1rem);
+      letter-spacing: 0.06em;
+      border: 2px solid var(--red-mid);
+      text-decoration: none;
+      transition: background 0.22s, transform 0.15s;
+    }
+
+    .btn:hover {
+      background: var(--red-lt);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold-lt);
+      margin-left: 0.8rem;
+    }
+
+    .btn-outline:hover {
+      background: rgba(201,168,76,0.15);
+      transform: translateY(-2px);
+    }
+
+    /* ─── SECTION COMMON ─── */
+    section {
+      padding: clamp(3rem,7vw,5rem) clamp(1.2rem,5vw,2rem);
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--red);
+      border-left: 3px solid var(--red);
+      padding-left: 0.7em;
+      margin-bottom: 0.6rem;
+      font-family: var(--serif);
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: clamp(1.6rem,4.5vw,2.5rem);
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    .gold-accent { color: var(--gold); }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--red);
+      margin: 0.4rem 0 1.8rem;
+    }
+
+    /* ─── CONCEPT ─── */
+    .concept-inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 2rem;
+    }
+
+    .concept-card {
+      background: var(--dark);
+      color: #eee;
+      padding: 2rem 1.6rem;
+      border-top: 4px solid var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .concept-card::before {
+      content: attr(data-num);
+      position: absolute;
+      right: 1rem;
+      top: 0.5rem;
+      font-family: var(--serif);
+      font-size: 4rem;
+      font-weight: 900;
+      color: rgba(201,168,76,0.12);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .concept-card h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gold-lt);
+      margin-bottom: 0.7rem;
+    }
+
+    .concept-card p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #ccc;
+    }
+
+    /* ─── MENU ─── */
+    .menu-wrap { background: var(--dark); margin: 0; max-width: 100%; }
+
+    .menu-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: clamp(3rem,7vw,5rem) clamp(1.2rem,5vw,2rem);
+    }
+
+    .menu-inner .section-tag { color: var(--gold); border-left-color: var(--gold); }
+    .menu-inner h2 { color: #fff; }
+    .menu-inner .divider { background: var(--gold); }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 0;
+      border: 1px solid rgba(201,168,76,0.25);
+      margin-bottom: 2.5rem;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 1.1rem 1.4rem;
+      border-bottom: 1px solid rgba(201,168,76,0.18);
+      border-right: 1px solid rgba(201,168,76,0.18);
+      gap: 1rem;
+    }
+
+    .menu-item:last-child,
+    .menu-item:nth-child(even):last-child { border-right: none; }
+
+    .menu-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f0f0f0;
+    }
+
+    .menu-name small {
+      display: block;
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: #999;
+      margin-top: 0.2rem;
+    }
+
+    .menu-price {
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      color: var(--gold-lt);
+      white-space: nowrap;
+    }
+
+    .menu-dishes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 1.2rem;
+    }
+
+    .menu-dish-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      border: 2px solid rgba(201,168,76,0.3);
+    }
+
+    /* ─── REVIEWS ─── */
+    .reviews-wrap { background: var(--off-white); max-width: 100%; margin: 0; }
+
+    .reviews-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: clamp(3rem,7vw,5rem) clamp(1.2rem,5vw,2rem);
+    }
+
+    .reviews-notice {
+      display: inline-block;
+      font-size: 0.72rem;
+      color: var(--red);
+      background: rgba(139,0,0,0.08);
+      border: 1px solid rgba(139,0,0,0.25);
+      padding: 0.25em 0.9em;
+      margin-bottom: 2rem;
+      border-radius: 2px;
+    }
+
+    .review-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 1.5rem;
+    }
+
+    .review-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-top: 3px solid var(--red);
+      padding: 1.5rem 1.4rem;
+    }
+
+    .review-stars {
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.7rem;
+    }
+
+    .review-text {
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .review-author {
+      font-size: 0.78rem;
+      color: #888;
+      font-family: var(--serif);
+    }
+
+    /* ─── ACCESS ─── */
+    .access-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .access-map-wrap {
+      border: 2px solid var(--gold);
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .access-walk {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--red);
+      font-weight: 700;
+      margin-top: 0.6rem;
+      font-family: var(--serif);
+    }
+
+    /* ─── INFO ─── */
+    .info-wrap { background: var(--dark); max-width: 100%; margin: 0; }
+
+    .info-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: clamp(3rem,7vw,5rem) clamp(1.2rem,5vw,2rem);
+    }
+
+    .info-inner .section-tag { color: var(--gold); border-left-color: var(--gold); }
+    .info-inner h2 { color: #fff; }
+    .info-inner .divider { background: var(--gold); }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      max-width: 560px;
+    }
+
+    .info-table th,
+    .info-table td {
+      padding: 0.9rem 0;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .info-table th {
+      color: var(--gold-lt);
+      font-weight: 700;
+      font-family: var(--serif);
+      width: 130px;
+      white-space: nowrap;
+    }
+
+    .info-table td {
+      color: #ccc;
+    }
+
+    .placeholder {
+      display: inline-block;
+      background: rgba(201,168,76,0.15);
+      color: var(--gold-lt);
+      border: 1px dashed rgba(201,168,76,0.4);
+      padding: 0.1em 0.5em;
+      font-size: 0.85em;
+      border-radius: 2px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(201,168,76,0.3);
+      text-align: center;
+      padding: 2.5rem 1.5rem 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.78rem;
+      color: #666;
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.8rem;
+    }
+
+    .footer-links a {
+      font-size: 0.78rem;
+      color: #888;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { color: var(--gold-lt); }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    .sample-notice {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.68rem;
+      color: #555;
+      border-top: 1px solid #222;
+      padding-top: 0.8rem;
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ─── STEAM ANIMATION ─── */
+    .steam-container {
+      position: absolute;
+      bottom: calc(100% - 2px);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      pointer-events: none;
+    }
+
+    .steam {
+      width: 6px;
+      height: 40px;
+      border-radius: 50%;
+      opacity: 0;
+      animation: steam 2.4s ease-in infinite;
+    }
+
+    .steam:nth-child(1) { background: rgba(255,255,255,0.45); animation-delay: 0s; }
+    .steam:nth-child(2) { background: rgba(255,255,255,0.35); animation-delay: 0.7s; }
+    .steam:nth-child(3) { background: rgba(255,255,255,0.45); animation-delay: 1.4s; }
+
+    @keyframes steam {
+      0%   { opacity: 0; transform: translateY(0) scaleX(1); }
+      30%  { opacity: 0.6; }
+      100% { opacity: 0; transform: translateY(-50px) scaleX(2.5); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      .btn-outline { margin-left: 0; margin-top: 0.7rem; display: block; }
+      nav { display: none; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .menu-item { border-right: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── STICKY HEADER ─── -->
+<header>
+  <a class="header-logo" href="#top">麺屋じぇにー</a>
+  <nav>
+    <a href="#concept">こだわり</a>
+    <a href="#menu">メニュー</a>
+    <a href="#reviews">お客様の声</a>
+    <a href="#access">アクセス</a>
+    <a href="#info">営業案内</a>
+  </nav>
+</header>
+
+<!-- ─── HERO ─── -->
+<section id="top" aria-label="メインビジュアル" style="padding:0;max-width:100%;position:relative;">
+  <div class="hero">
+    <img
+      class="hero-bg"
+      src="img/hero.jpg"
+      alt="麺屋じぇにーの看板ラーメン。チャーシュー・味玉・メンマが盛られた醤油スープの一杯"
+      width="1200"
+      height="675"
+      fetchpriority="high"
+    >
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-label">兵庫県三田市 ・ 三田駅から徒歩約3分</p>
+      <h1>麺屋じぇにー</h1>
+      <p class="hero-sub">一杯に、三田の魂を込めて。</p>
+      <a href="#menu" class="btn">メニューを見る</a>
+      <a href="#access" class="btn btn-outline">アクセス</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONCEPT ─── -->
+<section id="concept">
+  <p class="section-tag">Our Philosophy</p>
+  <h2>素材と技が出会う、<br><span class="gold-accent">じぇにーのこだわり</span></h2>
+  <div class="divider"></div>
+  <div class="concept-inner">
+    <div class="concept-card" data-num="01">
+      <h3>スープ ── 魂のひと煮</h3>
+      <p>鶏ガラと豚骨を長時間かけてじっくり炊き出した黄金色のスープ。余計なものは加えず、素材そのものの旨みを最大限に引き出します。毎日仕込むから、いつも出来立てを。</p>
+    </div>
+    <div class="concept-card" data-num="02">
+      <h3>麺 ── 自家製ストレート麺</h3>
+      <p>その日の天候・気温を見極め、職人がブレンドした小麦粉で打つ自家製麺。スープとの絡みを計算したコシと喉越しが、一口目から違いを伝えます。</p>
+    </div>
+    <div class="concept-card" data-num="03">
+      <h3>チャーシュー ── 低温で丁寧に</h3>
+      <p>豚バラを低温でじっくり火入れし、秘伝のタレに漬け込んだとろけるチャーシュー。肉の繊維を壊さず、やわらかさと香りを閉じ込めた当店自慢の一品です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MENU ─── -->
+<div class="menu-wrap" id="menu">
+  <div class="menu-inner">
+    <p class="section-tag">Menu</p>
+    <h2>メニュー</h2>
+    <div class="divider"></div>
+
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-name">
+          醤油ラーメン
+          <small>定番の黄金醤油スープ</small>
+        </div>
+        <div class="menu-price"><span class="placeholder">[価格を入力]</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-name">
+          味噌ラーメン
+          <small>北海道産味噌ブレンド</small>
+        </div>
+        <div class="menu-price"><span class="placeholder">[価格を入力]</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-name">
+          塩ラーメン
+          <small>澄み切った白湯塩スープ</small>
+        </div>
+        <div class="menu-price"><span class="placeholder">[価格を入力]</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-name">
+          つけ麺
+          <small>濃厚魚介豚骨</small>
+        </div>
+        <div class="menu-price"><span class="placeholder">[価格を入力]</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-name">
+          チャーシュー麺
+          <small>とろとろ低温チャーシュー増量</small>
+        </div>
+        <div class="menu-price"><span class="placeholder">[価格を入力]</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-name">
+          辛味噌ラーメン
+          <small>自家製辛みそダレ</small>
+        </div>
+        <div class="menu-price"><span class="placeholder">[価格を入力]</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-name">
+          味玉トッピング
+          <small>半熟黄金味玉</small>
+        </div>
+        <div class="menu-price"><span class="placeholder">[価格を入力]</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-name">
+          替え玉
+          <small>自家製麺1玉</small>
+        </div>
+        <div class="menu-price"><span class="placeholder">[価格を入力]</span></div>
+      </div>
+    </div>
+
+    <div class="menu-dishes">
+      <img
+        class="menu-dish-img"
+        src="img/dish1.jpg"
+        alt="麺屋じぇにーのラーメン アップ。光るスープと麺の質感"
+        width="480"
+        height="360"
+        loading="lazy"
+      >
+      <img
+        class="menu-dish-img"
+        src="img/dish2.jpg"
+        alt="麺屋じぇにーのラーメン一杯全体"
+        width="480"
+        height="360"
+        loading="lazy"
+      >
+    </div>
+  </div>
+</div>
+
+<!-- ─── REVIEWS ─── -->
+<div class="reviews-wrap" id="reviews">
+  <div class="reviews-inner">
+    <p class="section-tag">Customer Reviews</p>
+    <h2>お客様の声</h2>
+    <div class="divider"></div>
+    <p class="reviews-notice">※ 掲載イメージ（サンプル）― 実際の投稿に差し替えてご利用ください</p>
+
+    <div class="review-cards">
+      <div class="review-card">
+        <div class="review-stars" aria-label="評価5つ星">★★★★★</div>
+        <p class="review-text">「三田に来たらここ以外考えられない！スープを一口飲んだ瞬間、鶏と豚の旨みが口いっぱいに広がって感動しました。チャーシューも箸で切れるほどやわらかくて最高です。」</p>
+        <p class="review-author">― 三田市在住・30代男性</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars" aria-label="評価5つ星">★★★★★</div>
+        <p class="review-text">「お昼に夫と二人で訪問。塩ラーメンの透き通ったスープが上品で、麺との相性も抜群でした。行列ができるのも納得。店員さんの対応もとても丁寧で居心地が良かったです。」</p>
+        <p class="review-author">― 三田市在住・40代女性</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars" aria-label="評価4つ星">★★★★☆</div>
+        <p class="review-text">「仕事帰りに初めて寄りました。つけ麺の濃厚な魚介スープが最高で、〆のスープ割りも絶品。自家製麺のコシがしっかりしていて、また来たいと思えるお店でした。」</p>
+        <p class="review-author">― 三田駅利用・20代男性</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ACCESS ─── -->
+<section id="access">
+  <p class="section-tag">Access</p>
+  <h2>アクセス</h2>
+  <div class="divider"></div>
+  <div class="access-grid">
+    <div>
+      <div class="access-map-wrap">
+        <iframe
+          title="麺屋じぇにー 地図（OpenStreetMap）"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=135.2254%2C34.8861%2C135.2314%2C34.8881&layer=mapnik&marker=34.887123%2C135.228422"
+          style="width:100%;height:300px;border:0;"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p class="access-walk">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2"/><path d="M12 7v6l-3 3"/><path d="M12 13l3 4"/><path d="M9 16l-1 3"/><path d="M15 16l1 3"/></svg>
+        三田駅から徒歩約3分
+      </p>
+    </div>
+    <div>
+      <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;margin-bottom:1rem;color:var(--dark);">店舗へのアクセス</h3>
+      <p style="font-size:0.9rem;line-height:1.9;color:var(--charcoal);">
+        <strong>電車でお越しの方</strong><br>
+        JR宝塚線「三田駅」より<br>
+        徒歩約3分（三田市駅前町付近）<br><br>
+        <strong>お車でお越しの方</strong><br>
+        近隣のコインパーキングをご利用ください。<br>
+        （店舗専用駐車場は<span class="placeholder">[有無を入力]</span>）<br><br>
+        <strong>住所</strong><br>
+        <span class="placeholder">[正式住所を入力]</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INFO ─── -->
+<div class="info-wrap" id="info">
+  <div class="info-inner">
+    <p class="section-tag">Shop Info</p>
+    <h2>営業案内</h2>
+    <div class="divider"></div>
+    <table class="info-table">
+      <tbody>
+        <tr>
+          <th scope="row">店名</th>
+          <td>麺屋じぇにー</td>
+        </tr>
+        <tr>
+          <th scope="row">住所</th>
+          <td><span class="placeholder">[正式住所を入力]</span></td>
+        </tr>
+        <tr>
+          <th scope="row">電話番号</th>
+          <td><span class="placeholder">[電話番号を入力]</span></td>
+        </tr>
+        <tr>
+          <th scope="row">営業時間</th>
+          <td><span class="placeholder">[営業時間を入力]</span></td>
+        </tr>
+        <tr>
+          <th scope="row">定休日</th>
+          <td><span class="placeholder">[定休日を入力]</span></td>
+        </tr>
+        <tr>
+          <th scope="row">最寄り駅</th>
+          <td>JR宝塚線「三田駅」徒歩約3分</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p class="footer-logo">麺屋じぇにー</p>
+  <p class="footer-tagline">一杯に、三田の魂を込めて。</p>
+  <div class="footer-links">
+    <a href="#concept">こだわり</a>
+    <a href="#menu">メニュー</a>
+    <a href="#reviews">お客様の声</a>
+    <a href="#access">アクセス</a>
+    <a href="#info">営業案内</a>
+  </div>
+  <p class="footer-copy">&copy; 2024 麺屋じぇにー All rights reserved.</p>
+  <p class="sample-notice">
+    ※ これは提案用サンプルです。掲載している情報・写真・お客様の声はすべて仮のもので、
+    実際の内容・価格・営業時間・住所等に差し替えてご利用ください。
+  </p>
+</footer>
+
+</body>
+</html>

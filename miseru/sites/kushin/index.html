@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="くしん｜三田駅から徒歩約3分。串もの・揚げもの・一品料理が自慢の居酒屋（業態は店名からの想定）。職人の手仕事と厳選素材で、三田の夜を賑やかに。">
+  <meta property="og:title" content="くしん｜三田の串・揚げ居酒屋（提案サンプル）">
+  <meta property="og:description" content="三田駅から徒歩約3分。串もの・揚げもの・一品料理の居酒屋（店名からの業態想定）。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <title>くしん｜三田の串・揚げ居酒屋</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── リセット & 変数 ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brown-dark:  #2c1a0e;
+      --brown-mid:   #5a3320;
+      --brown-light: #8b5e3c;
+      --fox:         #c9883f;
+      --gold:        #e8a93e;
+      --cream:       #fdf6ec;
+      --cream-dark:  #f3e4c8;
+      --red:         #c0392b;
+      --red-warm:    #e05c2a;
+      --text-main:   #2c1a0e;
+      --text-sub:    #6b4226;
+      --white:       #ffffff;
+      --radius:      12px;
+      --shadow:      0 4px 24px rgba(44,26,14,.18);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--cream);
+      color: var(--text-main);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── ナビ ── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: rgba(44,26,14,.92);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .7rem 1.4rem;
+    }
+    .nav-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.35rem; font-weight: 900;
+      color: var(--gold); letter-spacing: .12em;
+    }
+    .nav-links { display: flex; gap: 1.4rem; list-style: none; }
+    .nav-links a {
+      color: var(--cream-dark); text-decoration: none;
+      font-size: .78rem; letter-spacing: .08em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    @media (max-width: 600px) { .nav-links { display: none; } }
+
+    /* ── ヒーロー ── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 5rem 1.2rem 3rem;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('img/hero.jpg');
+      background-size: cover; background-position: center;
+      transform: scale(1.04);
+      filter: brightness(.45) saturate(1.2);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(44,26,14,.35) 0%,
+        rgba(44,26,14,.7)  60%,
+        rgba(44,26,14,.85) 100%
+      );
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--red-warm);
+      color: #fff;
+      font-size: .7rem; letter-spacing: .18em;
+      padding: .28rem .9rem; border-radius: 2px;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(3rem, 12vw, 5.5rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: .18em;
+      line-height: 1.1;
+      text-shadow: 0 2px 18px rgba(0,0,0,.5);
+      margin-bottom: .5rem;
+    }
+    .hero-sub {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(.95rem, 3.5vw, 1.3rem);
+      color: var(--gold);
+      letter-spacing: .14em;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+    .hero-catch {
+      color: rgba(255,255,255,.88);
+      font-size: clamp(.82rem, 2.5vw, 1rem);
+      letter-spacing: .06em;
+      margin-bottom: 2.2rem;
+      line-height: 1.9;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--brown-dark);
+      font-weight: 700; letter-spacing: .12em;
+      padding: .85rem 2.2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: .95rem;
+      box-shadow: 0 4px 16px rgba(232,169,62,.45);
+      transition: background .2s, transform .15s;
+    }
+    .btn:hover { background: #f0bc50; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      margin-left: .9rem;
+      box-shadow: none;
+    }
+    .btn-outline:hover { background: rgba(232,169,62,.12); transform: translateY(-2px); }
+    .hero-scroll {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 1; color: rgba(255,255,255,.5);
+      font-size: .65rem; letter-spacing: .2em;
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
+    }
+    .hero-scroll span { animation: bounce 1.8s infinite; display: block; font-size: 1.1rem; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+    /* ── セクション共通 ── */
+    section { padding: 4.5rem 1.2rem; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-size: .68rem; letter-spacing: .28em;
+      color: var(--fox); text-transform: uppercase;
+      margin-bottom: .4rem; font-weight: 700;
+    }
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      font-weight: 900; color: var(--brown-dark);
+      letter-spacing: .08em;
+      margin-bottom: 2rem;
+      position: relative; padding-bottom: .8rem;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      width: 3rem; height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    /* ── こだわり ── */
+    .craft { background: var(--white); }
+    .craft .section-title::after { background: var(--red-warm); }
+    .craft-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 700px) {
+      .craft-grid { grid-template-columns: 1fr 1fr; align-items: center; }
+    }
+    .craft-img-wrap {
+      position: relative; border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
+      aspect-ratio: 4/3;
+    }
+    .craft-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .craft-img-wrap:hover img { transform: scale(1.04); }
+    .craft-tag {
+      position: absolute; top: .8rem; left: .8rem;
+      background: var(--red); color: #fff;
+      font-size: .65rem; letter-spacing: .14em;
+      padding: .2rem .7rem; border-radius: 2px;
+      font-weight: 700;
+    }
+    .craft-text h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--brown-dark); margin-bottom: .8rem;
+      line-height: 1.4;
+    }
+    .craft-text p { color: var(--text-sub); font-size: .92rem; line-height: 1.9; margin-bottom: 1rem; }
+    .craft-points {
+      list-style: none; display: flex; flex-direction: column; gap: .5rem;
+    }
+    .craft-points li {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .88rem; color: var(--brown-mid);
+    }
+    .craft-points li::before {
+      content: '◆'; color: var(--gold); font-size: .55rem; flex-shrink: 0;
+    }
+
+    /* ── お品書き ── */
+    .menu { background: var(--brown-dark); color: var(--cream); }
+    .menu .section-label { color: var(--fox); }
+    .menu .section-title { color: var(--cream); }
+    .menu-note {
+      font-size: .78rem; color: rgba(255,255,255,.55);
+      margin-bottom: 2rem; margin-top: -.8rem;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .menu-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(232,169,62,.2);
+      border-radius: var(--radius);
+      padding: 1.2rem 1rem;
+      transition: background .2s, border-color .2s;
+    }
+    .menu-card:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(232,169,62,.5);
+    }
+    .menu-card-cat {
+      font-size: .62rem; letter-spacing: .2em;
+      color: var(--fox); font-weight: 700;
+      margin-bottom: .4rem;
+    }
+    .menu-card h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--cream); margin-bottom: .35rem;
+    }
+    .menu-card .price {
+      font-size: .82rem; color: var(--gold); font-weight: 700;
+    }
+    .menu-card .desc { font-size: .78rem; color: rgba(255,255,255,.55); margin-top: .3rem; }
+
+    .menu-dish-wrap {
+      border-radius: var(--radius); overflow: hidden;
+      margin-top: 2rem; box-shadow: var(--shadow);
+      aspect-ratio: 16/7;
+    }
+    .menu-dish-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+
+    /* ── お客様の声 ── */
+    .voices { background: var(--cream-dark); }
+    .voices-head-note {
+      font-size: .72rem; color: var(--fox);
+      margin-bottom: 1.6rem; margin-top: -.8rem;
+      font-style: italic;
+    }
+    .voices-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+    @media (min-width: 640px) { .voices-grid { grid-template-columns: repeat(3, 1fr); } }
+    .voice-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.2rem;
+      box-shadow: 0 2px 12px rgba(44,26,14,.08);
+      display: flex; flex-direction: column; gap: .6rem;
+      border-top: 3px solid var(--gold);
+    }
+    .voice-stars { color: var(--gold); font-size: 1rem; letter-spacing: .1em; }
+    .voice-text {
+      font-size: .88rem; color: var(--text-sub);
+      line-height: 1.8; flex: 1;
+    }
+    .voice-text::before { content: '\300c'; }
+    .voice-text::after  { content: '\300d'; }
+    .voice-author {
+      font-size: .75rem; color: var(--brown-light);
+      font-weight: 700; letter-spacing: .06em;
+    }
+
+    /* ── アクセス ── */
+    .access { background: var(--white); }
+    .access-wrap { display: grid; gap: 2rem; }
+    @media (min-width: 700px) {
+      .access-wrap { grid-template-columns: 1fr 1fr; align-items: start; }
+    }
+    .access-map {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .access-label {
+      font-size: .82rem; font-weight: 700;
+      color: var(--brown-mid); margin-top: .6rem;
+      text-align: center; letter-spacing: .06em;
+    }
+    .info-table { width: 100%; border-collapse: collapse; }
+    .info-table th, .info-table td {
+      text-align: left;
+      padding: .65rem .5rem;
+      border-bottom: 1px solid rgba(139,94,60,.15);
+      font-size: .88rem;
+    }
+    .info-table th {
+      width: 7rem;
+      color: var(--fox); font-weight: 700;
+      letter-spacing: .06em; font-size: .8rem;
+      white-space: nowrap;
+    }
+    .info-table td { color: var(--text-sub); }
+    .placeholder {
+      display: inline-block;
+      background: rgba(201,136,63,.15);
+      color: var(--fox);
+      font-size: .72rem; padding: .1rem .5rem;
+      border-radius: 3px; letter-spacing: .06em;
+    }
+
+    /* ── 暖簾デコ ── */
+    .noren-divider {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1rem; padding: 1.2rem 0;
+      background: var(--brown-dark);
+    }
+    .noren-divider span {
+      color: var(--gold); font-size: .65rem;
+      letter-spacing: .3em; text-transform: uppercase; font-weight: 700;
+    }
+    .noren-line { flex: 1; max-width: 120px; height: 1px; background: rgba(232,169,62,.3); }
+
+    /* ── フッター ── */
+    footer {
+      background: var(--brown-dark);
+      color: rgba(255,255,255,.55);
+      padding: 2.5rem 1.2rem 3rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--gold); letter-spacing: .2em;
+      margin-bottom: .4rem;
+    }
+    .footer-sub {
+      font-size: .8rem; letter-spacing: .1em;
+      color: rgba(255,255,255,.4); margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      display: flex; justify-content: center; gap: 1.5rem;
+      flex-wrap: wrap; margin-bottom: 1.5rem; list-style: none;
+    }
+    .footer-links a { color: rgba(255,255,255,.45); text-decoration: none; font-size: .78rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: .72rem; color: rgba(255,255,255,.3); }
+    .sample-notice {
+      display: block;
+      margin-top: 1.5rem;
+      font-size: .68rem;
+      color: rgba(255,255,255,.3);
+      line-height: 1.8;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 1.2rem;
+      max-width: 640px;
+      margin-left: auto; margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ナビゲーション -->
+<nav role="navigation" aria-label="メインナビ">
+  <div class="nav-logo">くしん</div>
+  <ul class="nav-links">
+    <li><a href="#craft">こだわり</a></li>
+    <li><a href="#menu">お品書き</a></li>
+    <li><a href="#voices">お客様の声</a></li>
+    <li><a href="#access">アクセス</a></li>
+  </ul>
+</nav>
+
+<!-- ヒーロー -->
+<section class="hero" aria-label="ヒーローエリア">
+  <div class="hero-bg" role="img" aria-label="串カツ・揚げもの盛り合わせ"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-badge">三田駅から徒歩約3分</span>
+    <h1 class="hero-title">くしん</h1>
+    <p class="hero-sub">串・揚げ・一品、三田の夜をあたためる</p>
+    <p class="hero-catch">
+      一本一本、丁寧に揚げる。<br>
+      厳選した素材が、冷たいビールをよぶ夜。<br>
+      <small style="font-size:.8em;opacity:.7">※串もの・揚げもの居酒屋は店名からの業態想定です</small>
+    </p>
+    <div>
+      <a href="#menu" class="btn">お品書きを見る</a>
+      <a href="#access" class="btn btn-outline">アクセス</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span>&#x25BC;</span>
+    SCROLL
+  </div>
+</section>
+
+<!-- こだわり -->
+<section class="craft" id="craft">
+  <div class="section-inner">
+    <p class="section-label">Our Craft</p>
+    <h2 class="section-title">職人の手仕事</h2>
+    <div class="craft-grid">
+      <div class="craft-img-wrap">
+        <img
+          src="img/dish1.jpg"
+          alt="職人が包丁で丁寧に仕込みをする手元"
+          width="800" height="600"
+          loading="lazy"
+        >
+        <span class="craft-tag">手仕事</span>
+      </div>
+      <div class="craft-text">
+        <h3>「揚げる」ことに、<br>とことん向き合う</h3>
+        <p>
+          串ものは衣の厚さ、油の温度、揚げ時間——すべてが仕上がりを決めます。
+          「くしん」では一本ずつ目で確かめながら、お客様のテーブルに届くまでの時間を
+          大切にする職人仕事を目指しています。
+          ※串もの・揚げもの居酒屋という業態は店名からの想定です。
+        </p>
+        <p>
+          素材は地元・兵庫県産を中心に、季節ごとに仕入れ先を見直す予定。
+          素材が良ければ、余計な手間をかけずにうまい。それがくしんの流儀（想定）です。
+        </p>
+        <ul class="craft-points">
+          <li>厳選素材の丁寧な仕込み</li>
+          <li>一本一本、注文を受けてから揚げる</li>
+          <li>地元・兵庫の食材を積極活用（予定）</li>
+          <li>揚げもの以外の一品料理も充実（予定）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="noren-divider" aria-hidden="true">
+  <div class="noren-line"></div>
+  <span>くしん</span>
+  <div class="noren-line"></div>
+</div>
+
+<!-- お品書き -->
+<section class="menu" id="menu">
+  <div class="section-inner">
+    <p class="section-label">Menu</p>
+    <h2 class="section-title">お品書き</h2>
+    <p class="menu-note">※価格・品目はサンプルです。実際の内容・価格は店舗にご確認ください。</p>
+
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-cat">串カツ</div>
+        <h3>牛ヒレ串</h3>
+        <div class="price"><span class="placeholder">&#165; &#9675;&#9675;&#9675;</span></div>
+        <div class="desc">やわらか国産牛ヒレ。塩かソースで</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-cat">串カツ</div>
+        <h3>エビ串</h3>
+        <div class="price"><span class="placeholder">&#165; &#9675;&#9675;&#9675;</span></div>
+        <div class="desc">プリッとした食感、衣はサクサク</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-cat">串カツ</div>
+        <h3>季節の野菜串</h3>
+        <div class="price"><span class="placeholder">&#165; &#9675;&#9675;&#9675;</span></div>
+        <div class="desc">仕入れによる／旬の地場野菜を串に</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-cat">揚げもの</div>
+        <h3>とり唐揚げ</h3>
+        <div class="price"><span class="placeholder">&#165; &#9675;&#9675;&#9675;</span></div>
+        <div class="desc">下味しっかり、外カリ中ジュワ</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-cat">揚げもの</div>
+        <h3>イカリング</h3>
+        <div class="price"><span class="placeholder">&#165; &#9675;&#9675;&#9675;</span></div>
+        <div class="desc">肉厚イカに薄衣をまとわせて</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-cat">一品料理</div>
+        <h3>だし巻き玉子</h3>
+        <div class="price"><span class="placeholder">&#165; &#9675;&#9675;&#9675;</span></div>
+        <div class="desc">ふんわり焼いた定番の一品</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-cat">一品料理</div>
+        <h3>本日のお刺身</h3>
+        <div class="price"><span class="placeholder">&#165; &#9675;&#9675;&#9675;&#xFF5E;</span></div>
+        <div class="desc">仕入れによる・鮮度優先</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-cat">ドリンク</div>
+        <h3>生ビール</h3>
+        <div class="price"><span class="placeholder">&#165; &#9675;&#9675;&#9675;</span></div>
+        <div class="desc">キンキンに冷えた一杯</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-cat">ドリンク</div>
+        <h3>ハイボール</h3>
+        <div class="price"><span class="placeholder">&#165; &#9675;&#9675;&#9675;</span></div>
+        <div class="desc">揚げものとの相性バツグン</div>
+      </div>
+    </div>
+
+    <div class="menu-dish-wrap">
+      <img
+        src="img/dish2.jpg"
+        alt="揚げ鶏とポテトの一品料理"
+        width="900" height="400"
+        loading="lazy"
+      >
+    </div>
+  </div>
+</section>
+
+<div class="noren-divider" aria-hidden="true">
+  <div class="noren-line"></div>
+  <span>Voices</span>
+  <div class="noren-line"></div>
+</div>
+
+<!-- お客様の声 -->
+<section class="voices" id="voices">
+  <div class="section-inner">
+    <p class="section-label">Customer Voices</p>
+    <h2 class="section-title">お客様の声</h2>
+    <p class="voices-head-note">※掲載イメージ（サンプル）。実際のお客様のレビューに差し替えてご利用ください。</p>
+    <div class="voices-grid">
+      <article class="voice-card">
+        <div class="voice-stars" aria-label="5つ星評価">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="voice-text">
+          三田駅からすぐ着いた！串カツが一本一本丁寧で、衣がサクサクで最高でした。
+          ビールが止まらなくて、気づいたら閉店時間（笑）また絶対来ます。
+        </p>
+        <div class="voice-author">三田市在住・30代男性</div>
+      </article>
+      <article class="voice-card">
+        <div class="voice-stars" aria-label="5つ星評価">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="voice-text">
+          会社帰りに同僚と立ち寄りました。一品料理も充実していて、
+          お腹いっぱい食べて飲んだのにリーズナブルでびっくり。
+          大将の気さくな雰囲気がまた来たくなる理由です。
+        </p>
+        <div class="voice-author">神戸から来店・40代女性</div>
+      </article>
+      <article class="voice-card">
+        <div class="voice-stars" aria-label="4つ星評価">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <p class="voice-text">
+          揚げたての串を次々と出してくれて、熱々で食べられる幸せ。
+          だし巻き玉子がとくに絶品でした。三田でこんなにうまい居酒屋があるとは。
+          週1で通いたいです。
+        </p>
+        <div class="voice-author">三田市在住・50代男性</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- アクセス -->
+<section class="access" id="access">
+  <div class="section-inner">
+    <p class="section-label">Access</p>
+    <h2 class="section-title">アクセス・営業案内</h2>
+    <div class="access-wrap">
+      <div>
+        <div class="access-map">
+          <iframe
+            title="地図"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=135.2253%2C34.8860%2C135.2313%2C34.8880&layer=mapnik&marker=34.8869812%2C135.2283444"
+            style="width:100%;height:300px;border:0;border-radius:12px"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <p class="access-label">&#128694; 三田駅から徒歩約3分</p>
+      </div>
+      <div>
+        <table class="info-table" aria-label="店舗情報">
+          <tbody>
+            <tr>
+              <th scope="row">店名</th>
+              <td>くしん</td>
+            </tr>
+            <tr>
+              <th scope="row">業態</th>
+              <td>
+                串・揚げ・一品料理の居酒屋<br>
+                <small style="font-size:.75rem;color:var(--fox)">※店名からの業態想定</small>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">住所</th>
+              <td>
+                兵庫県三田市駅前町付近<br>
+                <span class="placeholder">正式住所は確認中</span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">電話</th>
+              <td><span class="placeholder">確認中</span></td>
+            </tr>
+            <tr>
+              <th scope="row">営業時間</th>
+              <td><span class="placeholder">確認中</span></td>
+            </tr>
+            <tr>
+              <th scope="row">定休日</th>
+              <td><span class="placeholder">確認中</span></td>
+            </tr>
+            <tr>
+              <th scope="row">席数</th>
+              <td><span class="placeholder">確認中</span></td>
+            </tr>
+            <tr>
+              <th scope="row">支払い</th>
+              <td><span class="placeholder">確認中</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:.72rem;color:var(--fox);margin-top:.8rem">
+          ※電話番号・営業時間等はすべて確認中のプレースホルダです
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer>
+  <div class="footer-logo">くしん</div>
+  <div class="footer-sub">兵庫県三田市 / 串・揚げ・一品料理（業態想定）</div>
+  <ul class="footer-links" aria-label="フッターナビ">
+    <li><a href="#craft">こだわり</a></li>
+    <li><a href="#menu">お品書き</a></li>
+    <li><a href="#voices">お客様の声</a></li>
+    <li><a href="#access">アクセス</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 くしん All Rights Reserved.</div>
+  <small class="sample-notice">
+    ※これは提案用サンプルです。情報・写真は仮のもので、実際の内容に差し替えてご利用ください。<br>
+    串もの・揚げもの居酒屋という業態は店名「くしん」からの想定であり、実際の業態・メニュー・価格・営業情報等は店舗にご確認ください。
+  </small>
+</footer>
+
+<script>
+  (function(){
+    var nav = document.querySelector('nav');
+    window.addEventListener('scroll', function(){
+      nav.style.boxShadow = window.scrollY > 40
+        ? '0 2px 16px rgba(0,0,0,.4)'
+        : 'none';
+    }, { passive: true });
+  })();
+</script>
+
+</body>
+</html>

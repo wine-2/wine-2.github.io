@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>にこいち｜三田駅前の居酒屋・バル</title>
+  <meta name="description" content="兵庫県三田市・三田駅から徒歩約2分。2人でもワイワイでも気軽に立ち寄れる居酒屋バル「にこいち」。串焼き・一品料理・宴会コースを揃えてお待ちしています。">
+  <meta property="og:title" content="にこいち｜三田駅前の居酒屋・バル">
+  <meta property="og:description" content="兵庫県三田市・三田駅から徒歩約2分。2人でもワイワイでも気軽に立ち寄れる居酒屋バル「にこいち」。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/hero.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1a2e;
+      --navy-mid: #162036;
+      --navy-light: #1e2d47;
+      --red: #c0392b;
+      --red-warm: #d44000;
+      --amber: #e8a020;
+      --amber-light: #f5c842;
+      --cream: #f5ede0;
+      --cream-dark: #e8d8c0;
+      --text-main: #f0e6d3;
+      --text-muted: #b0a090;
+      --border: rgba(232, 160, 32, 0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--navy);
+      color: var(--text-main);
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    h1, h2, h3 { font-family: 'Noto Serif JP', serif; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(13, 26, 46, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--amber-light);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-logo span {
+      color: var(--cream);
+      font-size: 0.75rem;
+      display: block;
+      letter-spacing: 0.1em;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--amber-light); }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/hero.jpg');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.03);
+      transition: transform 8s ease-out;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(13, 26, 46, 0.55) 0%,
+        rgba(13, 26, 46, 0.45) 40%,
+        rgba(13, 26, 46, 0.78) 100%
+      );
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(192, 57, 43, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 1.5rem;
+      max-width: 700px;
+    }
+
+    .hero-lantern {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 1rem;
+      animation: sway 4s ease-in-out infinite;
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: var(--amber);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2.8rem, 10vw, 5rem);
+      font-weight: 700;
+      color: var(--amber-light);
+      line-height: 1.1;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-catch {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      color: var(--cream);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+
+    .hero-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 0.85rem 2.4rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .hero-cta:hover {
+      background: var(--red-warm);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      animation: bounce 2.5s ease-in-out infinite;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 30px;
+      background: var(--amber);
+      opacity: 0.6;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* SECTION BASE */
+    section { padding: 5rem 1.5rem; }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .container-wide {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .amber-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--amber);
+      margin-bottom: 2rem;
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 700px) {
+      .about-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .about-img-wrap {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-img-badge {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      background: rgba(13, 26, 46, 0.88);
+      border: 1px solid var(--amber);
+      color: var(--amber-light);
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.8rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 4px;
+      letter-spacing: 0.1em;
+    }
+
+    .about-body h2 { margin-bottom: 0.5rem; }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--amber);
+      border-radius: 20px;
+      color: var(--amber);
+      letter-spacing: 0.05em;
+    }
+
+    /* MENU */
+    #menu { background: var(--navy); }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .menu-header .amber-divider { margin: 0 auto 2rem; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 600px) {
+      .menu-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 900px) {
+      .menu-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .menu-card {
+      background: var(--navy-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+
+    .menu-card-head {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .menu-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .menu-card-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--amber-light);
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.4rem 0;
+      border-bottom: 1px dashed rgba(232, 160, 32, 0.15);
+      font-size: 0.875rem;
+    }
+
+    .menu-item:last-child { border-bottom: none; }
+
+    .menu-price {
+      color: var(--amber);
+      font-size: 0.8rem;
+      white-space: nowrap;
+      margin-left: 0.5rem;
+    }
+
+    .menu-dish-wrap {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 16/7;
+      margin-top: 2rem;
+    }
+
+    .menu-dish-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .menu-dish-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(13,26,46,0.8) 0%, transparent 55%);
+      display: flex;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .menu-dish-text h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+
+    .menu-dish-text p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* BANQUET */
+    #banquet {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .banquet-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 600px) {
+      .banquet-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .banquet-card {
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .banquet-card-tag {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .banquet-card h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.15rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .banquet-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .banquet-card .price-placeholder {
+      display: block;
+      margin-top: 0.75rem;
+      color: var(--amber);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .banquet-note {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-left: 2px solid var(--amber);
+      padding-left: 0.75rem;
+    }
+
+    /* REVIEWS */
+    #reviews { background: var(--navy); }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .reviews-header .amber-divider { margin: 0 auto 2rem; }
+
+    .review-sample-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 2.5rem;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 700px) {
+      .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .review-card {
+      background: var(--navy-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .review-stars {
+      color: var(--amber-light);
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .review-text {
+      font-size: 0.9rem;
+      color: var(--cream);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .review-author {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .review-avatar {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ACCESS */
+    #access {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+    }
+
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 700px) {
+      .access-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .access-map {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .access-walk {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      background: rgba(232, 160, 32, 0.12);
+      border: 1px solid var(--amber);
+      color: var(--amber-light);
+      font-size: 0.85rem;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+    }
+
+    .access-info h2 { margin-bottom: 1rem; }
+
+    .access-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .access-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .access-table th {
+      text-align: left;
+      padding: 0.75rem 0;
+      color: var(--amber);
+      font-weight: 500;
+      width: 6em;
+      font-family: 'Noto Serif JP', serif;
+      vertical-align: top;
+    }
+
+    .access-table td {
+      padding: 0.75rem 0 0.75rem 1rem;
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+
+    .tel-placeholder {
+      color: var(--cream);
+      font-size: 1.3rem;
+      font-family: 'Noto Serif JP', serif;
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    .cta-reserve {
+      display: inline-block;
+      margin-top: 1.75rem;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 0.8rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .cta-reserve:hover {
+      background: var(--red-warm);
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #080f1c;
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--amber-light);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.25rem;
+    }
+
+    .footer-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .footer-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover { color: var(--amber-light); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .footer-disclaimer {
+      margin-top: 1.25rem;
+      font-size: 0.72rem;
+      color: #5a5040;
+      border-top: 1px solid rgba(232, 160, 32, 0.1);
+      padding-top: 1.25rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav aria-label="メインナビゲーション">
+    <a href="#" class="nav-logo">
+      にこいち
+      <span>居酒屋・バル｜三田駅前</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">お店について</a></li>
+      <li><a href="#menu">メニュー</a></li>
+      <li><a href="#banquet">宴会・コース</a></li>
+      <li><a href="#reviews">お客様の声</a></li>
+      <li><a href="#access">アクセス</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="ヒーロービジュアル">
+    <div class="hero-bg" role="img" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-content">
+      <span class="hero-lantern" aria-hidden="true">🏮</span>
+      <span class="hero-eyebrow">SANDA STATION 2min WALK</span>
+      <h1 class="hero-title">にこいち</h1>
+      <p class="hero-catch">2人でも、仲間とわいわいでも。</p>
+      <p class="hero-desc">三田駅から徒歩2分 ／ 居酒屋・バル</p>
+      <a href="#access" class="hero-cta">お店の場所を見る</a>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">SCROLL</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap">
+          <img
+            src="img/dish1.jpg"
+            alt="にこいちの暖かいペンダント照明が灯る窓際の店内席"
+            loading="lazy"
+            width="600"
+            height="450"
+          >
+          <span class="about-img-badge">三田駅徒歩2分</span>
+        </div>
+        <div class="about-body">
+          <span class="section-label" aria-hidden="true">About</span>
+          <h2 class="section-heading" id="about-heading">
+            ここは、だれでも<br>気軽に入れる場所。
+          </h2>
+          <div class="amber-divider"></div>
+          <p class="section-sub">
+            「にこいち」という名前には、<strong style="color:var(--amber-light); font-weight:700;">2人で1つ</strong>という意味を込めています。恋人同士、友人ふたり、仕事の後の同僚――少人数でも肩ひじ張らず、手頃においしいお酒と料理を楽しめる居酒屋バルです。<br><br>
+            もちろん大勢での宴会もウェルカム。三田駅のすぐそばで、帰り道にちょっと一杯というシーンにもぴったりの場所です。
+          </p>
+          <div class="about-tags">
+            <span class="tag">居酒屋</span>
+            <span class="tag">バル</span>
+            <span class="tag">串焼き</span>
+            <span class="tag">ハイボール</span>
+            <span class="tag">宴会対応</span>
+            <span class="tag">三田駅2分</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" aria-labelledby="menu-heading">
+    <div class="container-wide">
+      <div class="menu-header">
+        <span class="section-label" aria-hidden="true">Menu</span>
+        <h2 class="section-heading" id="menu-heading">こだわりの一品たち</h2>
+        <div class="amber-divider"></div>
+        <p class="section-sub">串・一品・揚物・充実ドリンク。気軽に何でも頼める品揃えです。</p>
+      </div>
+
+      <div class="menu-grid">
+        <div class="menu-card">
+          <div class="menu-card-head">
+            <span class="menu-icon" aria-hidden="true">🍢</span>
+            <span class="menu-card-title">おすすめ一品</span>
+          </div>
+          <div class="menu-item"><span>本日のお通し</span><span class="menu-price">¥●●●〜</span></div>
+          <div class="menu-item"><span>刺盛り（時価）</span><span class="menu-price">¥●●●〜</span></div>
+          <div class="menu-item"><span>だし巻き卵</span><span class="menu-price">¥●●●</span></div>
+          <div class="menu-item"><span>ポテトサラダ</span><span class="menu-price">¥●●●</span></div>
+          <div class="menu-item"><span>まかないチーズ</span><span class="menu-price">¥●●●</span></div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-head">
+            <span class="menu-icon" aria-hidden="true">🔥</span>
+            <span class="menu-card-title">串焼き</span>
+          </div>
+          <div class="menu-item"><span>もも串</span><span class="menu-price">¥●●〜</span></div>
+          <div class="menu-item"><span>つくね（たれ）</span><span class="menu-price">¥●●〜</span></div>
+          <div class="menu-item"><span>ねぎま</span><span class="menu-price">¥●●〜</span></div>
+          <div class="menu-item"><span>砂肝</span><span class="menu-price">¥●●〜</span></div>
+          <div class="menu-item"><span>野菜串盛り合わせ</span><span class="menu-price">¥●●●〜</span></div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-head">
+            <span class="menu-icon" aria-hidden="true">🍳</span>
+            <span class="menu-card-title">揚物・おつまみ</span>
+          </div>
+          <div class="menu-item"><span>唐揚げ（定番）</span><span class="menu-price">¥●●●〜</span></div>
+          <div class="menu-item"><span>にこいちコロッケ</span><span class="menu-price">¥●●●</span></div>
+          <div class="menu-item"><span>フライドポテト</span><span class="menu-price">¥●●●</span></div>
+          <div class="menu-item"><span>たこわさ</span><span class="menu-price">¥●●●</span></div>
+          <div class="menu-item"><span>枝豆</span><span class="menu-price">¥●●●</span></div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-head">
+            <span class="menu-icon" aria-hidden="true">🍺</span>
+            <span class="menu-card-title">ドリンク</span>
+          </div>
+          <div class="menu-item"><span>生ビール</span><span class="menu-price">¥●●●〜</span></div>
+          <div class="menu-item"><span>ハイボール</span><span class="menu-price">¥●●●〜</span></div>
+          <div class="menu-item"><span>レモンサワー</span><span class="menu-price">¥●●●〜</span></div>
+          <div class="menu-item"><span>梅サワー</span><span class="menu-price">¥●●●〜</span></div>
+          <div class="menu-item"><span>ノンアルカクテル</span><span class="menu-price">¥●●●〜</span></div>
+        </div>
+      </div>
+
+      <div class="menu-dish-wrap">
+        <img
+          src="img/dish2.jpg"
+          alt="暗背景に映えるにこいちのこだわり料理"
+          loading="lazy"
+          width="1200"
+          height="525"
+        >
+        <div class="menu-dish-overlay" aria-hidden="true">
+          <div class="menu-dish-text">
+            <h3>毎日食べても<br>飽きない味を。</h3>
+            <p>素材にこだわり、価格は気軽に。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANQUET -->
+  <section id="banquet" aria-labelledby="banquet-heading">
+    <div class="container">
+      <span class="section-label" aria-hidden="true">Banquet &amp; Course</span>
+      <h2 class="section-heading" id="banquet-heading">宴会・コースのご案内</h2>
+      <div class="amber-divider"></div>
+      <p class="section-sub">歓迎会・送別会・誕生日会・同窓会など、各種ご宴会を承っております。人数・ご予算に合わせてご相談ください。</p>
+
+      <div class="banquet-grid">
+        <div class="banquet-card">
+          <span class="banquet-card-tag">STANDARD</span>
+          <h3>スタンダードコース</h3>
+          <p>串焼き・一品・揚物など厳選●品＋飲み放題付き。少人数から気軽にどうぞ。</p>
+          <span class="price-placeholder">●●●●円（税込）〜 ／ 飲み放題●●分込み</span>
+        </div>
+        <div class="banquet-card">
+          <span class="banquet-card-tag">PREMIUM</span>
+          <h3>プレミアムコース</h3>
+          <p>刺盛り・季節の一品を加えたフルコース。特別な席に、上質なひとときを。</p>
+          <span class="price-placeholder">●●●●円（税込）〜 ／ 飲み放題●●分込み</span>
+        </div>
+        <div class="banquet-card">
+          <span class="banquet-card-tag">PRIVATE</span>
+          <h3>貸切プラン</h3>
+          <p>●〜●名様での貸切も承ります。誕生日・歓送迎会など特別感のある場に。</p>
+          <span class="price-placeholder">詳細はお電話でお問い合わせください</span>
+        </div>
+        <div class="banquet-card">
+          <span class="banquet-card-tag">LUNCH</span>
+          <h3>ランチ・昼飲みプラン</h3>
+          <p>お昼から気軽に一杯。昼飲みセットやランチメニューをご用意しています。</p>
+          <span class="price-placeholder">●●●●円〜（詳細は店頭にて）</span>
+        </div>
+      </div>
+      <p class="banquet-note">※2名様〜承ります。前日までにご予約いただけるとスムーズです。詳細・ご予約はお電話にてご確認ください。</p>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" aria-labelledby="reviews-heading">
+    <div class="container">
+      <div class="reviews-header">
+        <span class="section-label" aria-hidden="true">Voice</span>
+        <h2 class="section-heading" id="reviews-heading">お客様の声</h2>
+        <div class="amber-divider"></div>
+      </div>
+      <div style="text-align:center; margin-bottom:2.5rem;">
+        <span class="review-sample-note">※掲載イメージ（サンプル）　実際の声に差し替えてご利用ください</span>
+      </div>
+
+      <div class="reviews-grid">
+        <article class="review-card">
+          <p class="review-stars" aria-label="星5つ">★★★★★</p>
+          <p class="review-text">
+            仕事帰りに同僚と立ち寄りました。串焼きが香ばしくておいしくて、ハイボールとの相性が抜群！店内の雰囲気もちょうどよくて、気付いたら3時間経ってました。また絶対来ます。
+          </p>
+          <div class="review-author">
+            <span class="review-avatar" aria-hidden="true"></span>
+            <span>30代・男性 / 三田市在住</span>
+          </div>
+        </article>
+        <article class="review-card">
+          <p class="review-stars" aria-label="星5つ">★★★★★</p>
+          <p class="review-text">
+            2人でふらっと入ったのですが、一品一品がちゃんと丁寧で感動。だし巻き卵と梅サワーを頼んだら最高のペアリングでした。お店の方も気さくで話しやすく、すぐ常連になりました。
+          </p>
+          <div class="review-author">
+            <span class="review-avatar" aria-hidden="true"></span>
+            <span>20代・女性 / 神戸市からの来訪</span>
+          </div>
+        </article>
+        <article class="review-card">
+          <p class="review-stars" aria-label="星4つ">★★★★☆</p>
+          <p class="review-text">
+            部署の歓送迎会で利用しました。コース料理もボリューム満点で、幹事としてとても助かりました。駅から近いので二次会前の集合場所としても最高。次回は貸切でお願いしたい！
+          </p>
+          <div class="review-author">
+            <span class="review-avatar" aria-hidden="true"></span>
+            <span>40代・男性 / 三田市勤務</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESS -->
+  <section id="access" aria-labelledby="access-heading">
+    <div class="container">
+      <div class="access-grid">
+        <div>
+          <div class="access-map">
+            <iframe
+              title="地図：にこいち（三田駅近く）"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=135.2244%2C34.8883%2C135.2304%2C34.8903&layer=mapnik&marker=34.8893065%2C135.2273614"
+              style="width:100%;height:300px;border:0;display:block;border-radius:12px;"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <span class="access-walk" aria-label="三田駅から徒歩約2分">
+            🚶 三田駅から徒歩約2分
+          </span>
+        </div>
+
+        <div class="access-info">
+          <span class="section-label" aria-hidden="true">Access &amp; Hours</span>
+          <h2 class="section-heading" id="access-heading">アクセス・営業情報</h2>
+          <div class="amber-divider"></div>
+
+          <table class="access-table">
+            <tbody>
+              <tr>
+                <th scope="row">店名</th>
+                <td>にこいち（居酒屋・バル）</td>
+              </tr>
+              <tr>
+                <th scope="row">住所</th>
+                <td>
+                  兵庫県三田市駅前町付近<br>
+                  <small style="color:var(--text-muted);font-size:0.78rem;">※正式住所は確認中です</small>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">アクセス</th>
+                <td>JR・神戸電鉄 三田駅 徒歩約2分</td>
+              </tr>
+              <tr>
+                <th scope="row">電話</th>
+                <td>
+                  <small style="color:var(--text-muted);font-size:0.78rem;">※電話番号は確認中です</small>
+                  <span class="tel-placeholder">TEL：●●●-●●●●-●●●●</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">営業時間</th>
+                <td>
+                  ●●:●● 〜 ●●:●●<br>
+                  <small style="color:var(--text-muted);font-size:0.78rem;">※営業時間は確認中です</small>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">定休日</th>
+                <td>
+                  ●曜日<br>
+                  <small style="color:var(--text-muted);font-size:0.78rem;">※定休日は確認中です</small>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">席数</th>
+                <td>●●席（カウンター●席含む）</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <a href="tel:" class="cta-reserve" aria-label="お電話でご予約">
+            📞 お電話でご予約・お問い合わせ
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-logo" aria-hidden="true">にこいち</p>
+    <p class="footer-sub">居酒屋・バル｜三田駅前</p>
+    <ul class="footer-nav" aria-label="フッターナビゲーション">
+      <li><a href="#about">お店について</a></li>
+      <li><a href="#menu">メニュー</a></li>
+      <li><a href="#banquet">宴会・コース</a></li>
+      <li><a href="#reviews">お客様の声</a></li>
+      <li><a href="#access">アクセス</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 にこいち All Rights Reserved.</p>
+    <p class="footer-disclaimer">
+      ※これは提案用サンプルです。掲載している電話番号・住所・営業時間・定休日・価格・お客様の声・写真はいずれも仮のものです。実際の情報・写真に差し替えてからご利用ください。
+    </p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var bg = document.querySelector('.hero-bg');
+      if (bg) {
+        setTimeout(function () { bg.style.transform = 'scale(1)'; }, 100);
+      }
+    });
+  </script>
+
+</body>
+</html>

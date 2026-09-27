@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>泰由（たいゆう）｜三田駅前の隠れ家居酒屋</title>
+  <meta name="description" content="三田駅から徒歩約2分。旬の一品と地酒を楽しむ大人の隠れ家居酒屋「泰由（たいゆう）」。静かな灯りの下で、ゆっくりと一杯いかがですか。">
+  <meta property="og:title" content="泰由（たいゆう）｜三田駅前の隠れ家居酒屋">
+  <meta property="og:description" content="三田駅から徒歩約2分。旬の一品と地酒を楽しむ大人の隠れ家居酒屋。静かな灯りの下で、ゆっくりと一杯いかがですか。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    /* ===== リセット & ベース ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:      #0e1117;
+      --ink-mid:  #1c2230;
+      --ink-soft: #2a3344;
+      --gold:     #c8973a;
+      --gold-lt:  #e0b86a;
+      --cream:    #f5ede0;
+      --cream-dk: #e8d8c4;
+      --text-main: #f0e8d8;
+      --text-sub:  #b8a898;
+      --divider:  rgba(200,151,58,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+      background: var(--ink);
+      color: var(--text-main);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+
+    /* ===== ナビ ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(14, 17, 23, 0.88);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--divider);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a {
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-lt); }
+    @media (max-width: 600px) { .nav-links { display: none; } }
+
+    /* ===== ヒーロー ===== */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(10,12,18,0.72) 0%,
+        rgba(20,14,8,0.55) 50%,
+        rgba(10,12,18,0.80) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      text-align: center;
+      padding: 80px 24px 60px;
+      max-width: 680px;
+    }
+    .hero-en {
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(52px, 12vw, 96px);
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--text-main);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .hero-read {
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      color: var(--text-sub);
+      margin-bottom: 28px;
+    }
+    .hero-catch {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(14px, 3.5vw, 20px);
+      font-weight: 300;
+      color: var(--cream);
+      letter-spacing: 0.1em;
+      line-height: 1.9;
+      margin-bottom: 48px;
+    }
+    .hero-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 48px;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      transition: background 0.25s, color 0.25s;
+    }
+    .btn-primary:hover { background: var(--gold); color: var(--ink); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-sub);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--text-sub), transparent);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ===== セクション共通 ===== */
+    section { padding: 88px 0; }
+    .inner      { max-width: 900px;  margin: 0 auto; padding: 0 24px; }
+    .inner-wide { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    .sec-label {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .sec-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--text-main);
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    .sec-rule {
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 36px;
+    }
+    .sec-body {
+      color: var(--text-sub);
+      font-size: 14px;
+      line-height: 2;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== 雰囲気セクション ===== */
+    .atmosphere { background: var(--ink-mid); }
+    .atm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (max-width: 720px) { .atm-grid { grid-template-columns: 1fr; } }
+
+    .atm-img-wrap { position: relative; }
+    .atm-img-wrap img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .atm-img-caption {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(14,17,23,0.75);
+      color: var(--text-sub);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      padding: 4px 10px;
+    }
+    .atm-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .atm-tag {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      border: 1px solid var(--divider);
+      padding: 4px 14px;
+      border-radius: 2px;
+    }
+
+    /* ===== お品書き ===== */
+    .menu-sec { background: var(--ink); }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 640px) { .menu-grid { grid-template-columns: 1fr 1fr; } }
+
+    .menu-card {
+      background: var(--ink-mid);
+      padding: 24px 20px;
+      border-top: 1px solid var(--divider);
+    }
+    .menu-card-cat {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      gap: 8px;
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-name  { font-size: 13px; color: var(--text-main); flex: 1; }
+    .menu-price { font-size: 11px; color: var(--text-sub); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+    .menu-photo-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 40px;
+    }
+    @media (max-width: 500px) { .menu-photo-row { grid-template-columns: 1fr; } }
+    .menu-photo-row img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .menu-photo-label { font-size: 11px; color: var(--text-sub); letter-spacing: 0.1em; margin-top: 8px; }
+    .menu-note { font-size: 11px; color: var(--text-sub); margin-top: 24px; text-align: right; letter-spacing: 0.06em; }
+
+    .ph-val {
+      color: var(--ink-soft);
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    /* ===== 宴会 ===== */
+    .banquet { background: var(--ink-mid); }
+    .banquet-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 720px) { .banquet-inner { grid-template-columns: 1fr; } }
+
+    .banquet-plans { display: flex; flex-direction: column; gap: 16px; }
+    .banquet-plan {
+      background: var(--ink-soft);
+      padding: 20px 22px;
+      border-left: 3px solid var(--gold);
+    }
+    .banquet-plan-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 16px;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .banquet-plan-detail { font-size: 12px; color: var(--text-sub); line-height: 1.9; }
+    .banquet-plan-price  { font-size: 13px; color: var(--gold); margin-top: 10px; }
+
+    /* ===== お客様の声 ===== */
+    .reviews { background: var(--ink); }
+    .review-sample-note {
+      display: inline-block;
+      font-size: 10px;
+      color: var(--text-sub);
+      border: 1px solid var(--divider);
+      padding: 2px 10px;
+      letter-spacing: 0.1em;
+      margin-bottom: 36px;
+      border-radius: 2px;
+    }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 720px) { .review-grid { grid-template-columns: 1fr; } }
+
+    .review-card {
+      background: var(--ink-mid);
+      padding: 28px 24px;
+      border-radius: 2px;
+      border-top: 2px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .review-stars { color: var(--gold); letter-spacing: 3px; font-size: 14px; }
+    .review-text  { font-size: 13px; color: var(--text-sub); line-height: 1.9; flex: 1; }
+    .review-text em { font-style: normal; color: var(--cream); }
+    .review-author { font-size: 11px; color: var(--gold); letter-spacing: 0.12em; }
+
+    /* ===== アクセス ===== */
+    .access { background: var(--ink-mid); }
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 720px) { .access-grid { grid-template-columns: 1fr; } }
+
+    .map-wrap { border-radius: 12px; overflow: hidden; border: 1px solid var(--divider); }
+    .access-walk {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      color: var(--text-sub);
+      font-size: 13px;
+    }
+    .access-walk::before { content: '●'; color: var(--gold); font-size: 8px; }
+
+    .access-info-list  { list-style: none; display: flex; flex-direction: column; }
+    .access-info-row {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 8px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--divider);
+    }
+    .access-info-row:first-child { border-top: 1px solid var(--divider); }
+    .access-info-label { font-size: 11px; letter-spacing: 0.12em; color: var(--gold); }
+    .access-info-val   { font-size: 13px; color: var(--text-sub); line-height: 1.8; }
+
+    /* ===== 営業案内 ===== */
+    .hours { background: var(--ink); }
+    .hours-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+    .hours-table { width: 100%; border-collapse: collapse; margin-top: 32px; }
+    .hours-table th, .hours-table td { padding: 12px 16px; text-align: left; font-size: 13px; }
+    .hours-table thead th {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      border-bottom: 1px solid var(--divider);
+    }
+    .hours-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .hours-table td { color: var(--text-sub); }
+    .hours-cta {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .hours-tel-label { font-size: 10px; letter-spacing: 0.2em; color: var(--gold); }
+    .hours-tel { font-family: 'Noto Serif JP', serif; font-size: 28px; color: var(--text-main); letter-spacing: 0.12em; text-decoration: none; }
+
+    /* ===== フッター ===== */
+    footer {
+      background: #080a0e;
+      padding: 48px 24px 32px;
+      text-align: center;
+      border-top: 1px solid var(--divider);
+    }
+    .footer-logo { font-family: 'Noto Serif JP', serif; font-size: 28px; font-weight: 300; letter-spacing: 0.3em; color: var(--gold); margin-bottom: 8px; }
+    .footer-tagline { font-size: 11px; letter-spacing: 0.18em; color: var(--text-sub); margin-bottom: 32px; }
+    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; list-style: none; margin-bottom: 40px; }
+    .footer-links a { font-size: 11px; letter-spacing: 0.12em; color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 10px; color: var(--ink-soft); letter-spacing: 0.08em; line-height: 2; }
+    .sample-notice {
+      margin-top: 28px;
+      padding: 14px 20px;
+      background: rgba(200,151,58,0.06);
+      border: 1px solid var(--divider);
+      border-radius: 4px;
+      font-size: 11px;
+      color: var(--text-sub);
+      line-height: 1.8;
+      letter-spacing: 0.06em;
+    }
+
+    /* ===== ユーティリティ ===== */
+    .text-center { text-align: center; }
+    .mt-8  { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+  </style>
+</head>
+<body>
+
+  <!-- ナビゲーション -->
+  <nav>
+    <a href="#top" class="nav-logo">泰由</a>
+    <ul class="nav-links">
+      <li><a href="#atmosphere">雰囲気</a></li>
+      <li><a href="#menu">お品書き</a></li>
+      <li><a href="#banquet">宴会</a></li>
+      <li><a href="#reviews">お客様の声</a></li>
+      <li><a href="#access">アクセス</a></li>
+    </ul>
+  </nav>
+
+  <!-- ヒーロー -->
+  <section class="hero" id="top">
+    <img
+      class="hero-bg"
+      src="img/hero.jpg"
+      alt="暖かいペンダント照明が灯る泰由の店内"
+      width="1920"
+      height="1080"
+      fetchpriority="high"
+    >
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-en">Izakaya Taiyu — Sanda</p>
+      <h1 class="hero-name">泰由</h1>
+      <p class="hero-read">たいゆう</p>
+      <div class="hero-divider"></div>
+      <p class="hero-catch">
+        三田の夜を、ゆっくりと。<br>
+        旬の一品と地酒が待つ、<br>大人のひとときへ。
+      </p>
+      <a href="#access" class="btn-primary">アクセスを確認する</a>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">SCROLL</div>
+  </section>
+
+  <!-- お店の雰囲気 -->
+  <section class="atmosphere" id="atmosphere">
+    <div class="inner">
+      <div class="atm-grid">
+        <div class="atm-img-wrap">
+          <img
+            src="img/dish1.jpg"
+            alt="仲間と囲む賑やかな泰由の食卓"
+            loading="lazy"
+            width="800"
+            height="600"
+          >
+          <span class="atm-img-caption">仲間とともに</span>
+        </div>
+        <div class="atm-text">
+          <p class="sec-label">About</p>
+          <h2 class="sec-title">一杯やりに<br>立ち寄れる場所</h2>
+          <div class="sec-rule"></div>
+          <p class="sec-body">
+            三田駅からほんの数歩。暖色のペンダント照明が灯る店内は、騒がしくなく、されど孤独でもない。カウンターひとりでも、大切な人との夜でも、気づけばいつもここに座っている。そんな居心地のいい「行きつけ」を目指しています。<br><br>
+            季節が変わるたびに仕入れを見直し、旬の食材を丁寧に仕立てた一品料理と、兵庫の地酒を中心に揃えたドリンクで、三田の夜をゆっくりとお過ごしください。
+          </p>
+          <div class="atm-tags">
+            <span class="atm-tag">旬の一品料理</span>
+            <span class="atm-tag">地酒・日本酒</span>
+            <span class="atm-tag">三田駅徒歩2分</span>
+            <span class="atm-tag">カウンター席あり</span>
+            <span class="atm-tag">個室・宴会対応</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- お品書き -->
+  <section class="menu-sec" id="menu">
+    <div class="inner">
+      <p class="sec-label">Menu</p>
+      <h2 class="sec-title">お品書き</h2>
+      <div class="sec-rule"></div>
+
+      <div class="menu-grid">
+        <div class="menu-card">
+          <p class="menu-card-cat">旬の一品</p>
+          <div class="menu-item"><span class="menu-name">本日のお造り盛り合わせ</span><span class="menu-price"><span class="ph-val">●●●</span>円〜</span></div>
+          <div class="menu-item"><span class="menu-name">旬野菜の炊き合わせ</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">だし巻き玉子</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">板わさ</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">豆腐田楽</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+        </div>
+
+        <div class="menu-card">
+          <p class="menu-card-cat">焼物</p>
+          <div class="menu-item"><span class="menu-name">塩焼き（本日の魚）</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">とり串盛り</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">豚バラ西京焼き</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">野菜焼き</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">銀ダラ西京焼き</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+        </div>
+
+        <div class="menu-card">
+          <p class="menu-card-cat">揚物</p>
+          <div class="menu-item"><span class="menu-name">季節の天ぷら盛り</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">鶏の唐揚げ</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">揚げ出し豆腐</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">コロッケ（本日仕立て）</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+        </div>
+
+        <div class="menu-card">
+          <p class="menu-card-cat">〆もの</p>
+          <div class="menu-item"><span class="menu-name">だしラーメン</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">おにぎり（梅・鮭・昆布）</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">お茶漬け</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">小うどん</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+        </div>
+
+        <div class="menu-card">
+          <p class="menu-card-cat">地酒・ドリンク</p>
+          <div class="menu-item"><span class="menu-name">生ビール</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">兵庫地酒（冷/燗）</span><span class="menu-price"><span class="ph-val">●●●</span>円〜</span></div>
+          <div class="menu-item"><span class="menu-name">焼酎（芋・麦・そば）</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">ハイボール</span><span class="menu-price"><span class="ph-val">●●●</span>円</span></div>
+          <div class="menu-item"><span class="menu-name">ノンアルコール各種</span><span class="menu-price"><span class="ph-val">●●●</span>円〜</span></div>
+        </div>
+
+        <div class="menu-card">
+          <p class="menu-card-cat">本日のおすすめ</p>
+          <div class="menu-item"><span class="menu-name">黒板メニュー（旬の特選）</span><span class="menu-price">店頭にて</span></div>
+          <div class="menu-item"><span class="menu-name">季節の一合酒</span><span class="menu-price">店頭にて</span></div>
+          <div class="menu-item"><span class="menu-name">厨房おまかせ一品</span><span class="menu-price">店頭にて</span></div>
+          <p class="sec-body mt-16" style="font-size:11px;padding-top:8px;">仕入れにより変わります。詳しくはスタッフまで。</p>
+        </div>
+      </div>
+
+      <div class="menu-photo-row">
+        <div>
+          <img src="img/dish1.jpg" alt="みんなで囲む賑やかな泰由の食卓" loading="lazy" width="600" height="450">
+          <p class="menu-photo-label">— 仲間と囲む夜の食卓</p>
+        </div>
+        <div>
+          <img src="img/dish2.jpg" alt="〆のラーメンとビール" loading="lazy" width="600" height="450">
+          <p class="menu-photo-label">— 夜の〆に、一杯と一杯</p>
+        </div>
+      </div>
+
+      <p class="menu-note">※価格はすべてサンプルです。実際の価格は店頭またはメニューにてご確認ください。</p>
+    </div>
+  </section>
+
+  <!-- ご宴会案内 -->
+  <section class="banquet" id="banquet">
+    <div class="inner">
+      <p class="sec-label">Party &amp; Reservation</p>
+      <h2 class="sec-title">ご宴会・ご予約</h2>
+      <div class="sec-rule"></div>
+
+      <div class="banquet-inner">
+        <div>
+          <p class="sec-body">
+            歓送迎会、職場の打ち上げ、同窓会、誕生日会——人数やご予算に応じてご相談ください。飲み放題プランのご用意や、お料理内容のカスタマイズにも柔軟に対応しております。前日までのご予約をおすすめしております。
+          </p>
+          <div class="atm-tags mt-24">
+            <span class="atm-tag">2名〜対応</span>
+            <span class="atm-tag">貸切相談可</span>
+            <span class="atm-tag">飲み放題プランあり</span>
+            <span class="atm-tag">コース料理</span>
+          </div>
+        </div>
+
+        <div class="banquet-plans">
+          <div class="banquet-plan">
+            <p class="banquet-plan-name">スタンダードコース</p>
+            <p class="banquet-plan-detail">全<span class="ph-val">●</span>品＋飲み放題<span class="ph-val">●●</span>分 / <span class="ph-val">●</span>名様〜承ります</p>
+            <p class="banquet-plan-price">お一人 <span class="ph-val">●,●●●</span>円〜</p>
+          </div>
+          <div class="banquet-plan">
+            <p class="banquet-plan-name">プレミアムコース</p>
+            <p class="banquet-plan-detail">全<span class="ph-val">●</span>品＋飲み放題<span class="ph-val">●●</span>分<br>旬の特選食材を使ったコース仕立て</p>
+            <p class="banquet-plan-price">お一人 <span class="ph-val">●,●●●</span>円〜</p>
+          </div>
+          <div class="banquet-plan">
+            <p class="banquet-plan-name">おまかせコース</p>
+            <p class="banquet-plan-detail">ご予算・人数・アレルギーをお知らせください。シェフが当日の食材で組み立てます。</p>
+            <p class="banquet-plan-price">ご相談のうえ決定</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- お客様の声 -->
+  <section class="reviews" id="reviews">
+    <div class="inner">
+      <p class="sec-label">Reviews</p>
+      <h2 class="sec-title">お客様の声</h2>
+      <div class="sec-rule"></div>
+      <span class="review-sample-note">※掲載イメージ（サンプル）</span>
+
+      <div class="review-grid">
+        <div class="review-card">
+          <div class="review-stars" aria-label="星5つ">★★★★★</div>
+          <p class="review-text">
+            三田に来るたびに必ず寄ります。<em>カウンターでひとりでも居心地がよく</em>、大将との話も楽しくて。日本酒のラインナップが季節ごとに変わるので、何度来ても飽きません。〆のラーメンで締める流れが完璧すぎます。
+          </p>
+          <p class="review-author">— T.K さん（40代・会社員）</p>
+        </div>
+        <div class="review-card">
+          <div class="review-stars" aria-label="星5つ">★★★★★</div>
+          <p class="review-text">
+            職場の歓送迎会で貸切利用させていただきました。<em>コース料理が本当においしく</em>、お刺身の盛り合わせには皆が歓声を上げていました。スタッフの方の気遣いも細かく、幹事として大助かりでした。また必ず利用します。
+          </p>
+          <p class="review-author">— M.O さん（30代・会社員）</p>
+        </div>
+        <div class="review-card">
+          <div class="review-stars" aria-label="星4つ">★★★★☆</div>
+          <p class="review-text">
+            駅前でこんなに<em>落ち着いた雰囲気のお店</em>があるとは知りませんでした。暖かい照明と木の温もりがあって、日常の疲れをほぐしてもらえる感じ。焼き鳥と地酒の組み合わせがたまらないです。三田の宝です。
+          </p>
+          <p class="review-author">— Y.N さん（50代・自営業）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- アクセス -->
+  <section class="access" id="access">
+    <div class="inner">
+      <p class="sec-label">Access</p>
+      <h2 class="sec-title">アクセス</h2>
+      <div class="sec-rule"></div>
+
+      <div class="access-grid">
+        <div>
+          <div class="map-wrap">
+            <iframe
+              title="地図"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=135.2248%2C34.8863%2C135.2308%2C34.8883&layer=mapnik&marker=34.8873198%2C135.2278059"
+              style="width:100%;height:300px;border:0;border-radius:12px"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <p class="access-walk">三田駅から徒歩約2分</p>
+        </div>
+
+        <div>
+          <ul class="access-info-list">
+            <li class="access-info-row">
+              <span class="access-info-label">店名</span>
+              <span class="access-info-val">居酒屋 泰由（たいゆう）</span>
+            </li>
+            <li class="access-info-row">
+              <span class="access-info-label">住所</span>
+              <span class="access-info-val">兵庫県三田市駅前町付近<br><span class="ph-val" style="font-size:11px">[詳細住所は要確認]</span></span>
+            </li>
+            <li class="access-info-row">
+              <span class="access-info-label">アクセス</span>
+              <span class="access-info-val">JR宝塚線・神戸電鉄 三田駅より徒歩約2分</span>
+            </li>
+            <li class="access-info-row">
+              <span class="access-info-label">電話</span>
+              <span class="access-info-val"><span class="ph-val">[電話番号は要確認]</span></span>
+            </li>
+            <li class="access-info-row">
+              <span class="access-info-label">営業時間</span>
+              <span class="access-info-val"><span class="ph-val">[営業時間は要確認]</span></span>
+            </li>
+            <li class="access-info-row">
+              <span class="access-info-label">定休日</span>
+              <span class="access-info-val"><span class="ph-val">[定休日は要確認]</span></span>
+            </li>
+            <li class="access-info-row">
+              <span class="access-info-label">席数</span>
+              <span class="access-info-val"><span class="ph-val">[席数は要確認]</span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 営業案内 -->
+  <section class="hours" id="hours">
+    <div class="inner">
+      <div class="hours-inner">
+        <p class="sec-label text-center">Hours &amp; Contact</p>
+        <h2 class="sec-title text-center">営業案内・ご予約</h2>
+        <div class="sec-rule" style="margin-left:auto;margin-right:auto;"></div>
+
+        <table class="hours-table">
+          <thead>
+            <tr>
+              <th>曜日</th>
+              <th>営業時間</th>
+              <th>備考</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>月〜金</td>
+              <td><span class="ph-val">[要確認]</span></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>土・日・祝</td>
+              <td><span class="ph-val">[要確認]</span></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>定休日</td>
+              <td><span class="ph-val">[要確認]</span></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="hours-cta">
+          <p class="hours-tel-label">TEL</p>
+          <span class="hours-tel ph-val" style="font-size:16px;">[電話番号を入力]</span>
+          <p class="sec-body mt-8" style="font-size:12px;text-align:center;">
+            ご予約はお電話にて承っております。<br>
+            大人数・貸切のご相談もお気軽にどうぞ。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer>
+    <p class="footer-logo">泰由</p>
+    <p class="footer-tagline">— 三田の夜を、ゆっくりと —</p>
+    <ul class="footer-links">
+      <li><a href="#atmosphere">雰囲気</a></li>
+      <li><a href="#menu">お品書き</a></li>
+      <li><a href="#banquet">宴会</a></li>
+      <li><a href="#reviews">お客様の声</a></li>
+      <li><a href="#access">アクセス</a></li>
+    </ul>
+    <p class="footer-copy">
+      兵庫県三田市 駅前町付近 ／ 三田駅より徒歩約2分<br>
+      &copy; 2024 泰由. All rights reserved.
+    </p>
+    <div class="sample-notice">
+      ※これは提案用サンプルです。情報・写真は仮のもので、実際の内容（住所・電話・営業時間・定休日・価格・写真・お客様の声）に差し替えてご利用ください。
+    </div>
+  </footer>
+
+</body>
+</html>

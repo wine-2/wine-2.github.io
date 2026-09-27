@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>いろり燻 | 炭火・燻製の隠れ家 | 三田駅すぐ</title>
+  <meta name="description" content="いろり燻（いろりくん）— 兵庫県三田市、三田駅徒歩約3分。囲炉裏を囲む炭火と燻製の香り漂う、大人のための隠れ家的飲食店。">
+  <meta property="og:title" content="いろり燻 | 炭火・燻製の隠れ家 | 三田駅すぐ">
+  <meta property="og:description" content="囲炉裏を囲む炭火と燻製の香り。兵庫県三田市・三田駅から徒歩約3分の大人のための隠れ家飲食店。">
+  <meta property="og:image" content="img/hero.jpg">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:locale" content="ja_JP">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:        #0d0b09;
+      --charcoal:     #1a1512;
+      --ash:          #2a2320;
+      --smoke:        #3d3530;
+      --ember:        #c4521a;
+      --ember-bright: #e06530;
+      --ember-glow:   #f08040;
+      --gold:         #c89a46;
+      --gold-light:   #e4b96a;
+      --cream:        #f0e8d8;
+      --mist:         #b8a898;
+      --text-main:    #e8dece;
+      --text-sub:     #a89880;
+      --radius:       10px;
+      --radius-lg:    18px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--black);
+      color: var(--text-main);
+      line-height: 1.8;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== UTILITY ===== */
+    .section-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-label {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--ember);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--cream);
+      margin-bottom: 28px;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--ember), var(--ember-glow));
+      margin: 0 0 36px;
+      border-radius: 2px;
+    }
+
+    .badge-sample {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--text-sub);
+      border: 1px solid var(--smoke);
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-left: 10px;
+      vertical-align: middle;
+      position: relative;
+      top: -2px;
+    }
+
+    /* ===== HEADER / NAV ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13, 11, 9, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196, 82, 26, 0.18);
+    }
+
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+    }
+
+    .logo span { color: var(--ember-glow); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    nav ul li a {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: var(--mist);
+      transition: color 0.25s;
+    }
+
+    nav ul li a:hover { color: var(--ember-glow); }
+
+    @media (max-width: 600px) {
+      nav ul { display: none; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/hero.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      transform: scale(1.04);
+      transition: transform 8s ease-out;
+      will-change: transform;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top,
+          rgba(13,11,9,0.98) 0%,
+          rgba(13,11,9,0.55) 40%,
+          rgba(26,17,10,0.30) 70%,
+          rgba(30,14,6,0.55) 100%
+        );
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 80%,
+        rgba(200, 70, 20, 0.22) 0%,
+        transparent 70%
+      );
+      animation: flicker 4s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes flicker {
+      0%   { opacity: 0.6; }
+      40%  { opacity: 1.0; }
+      70%  { opacity: 0.75; }
+      100% { opacity: 0.9; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 700px;
+    }
+
+    .hero-sub {
+      font-size: 12px;
+      letter-spacing: 0.32em;
+      color: var(--ember-glow);
+      font-family: 'Noto Serif JP', serif;
+      margin-bottom: 22px;
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2.8rem, 10vw, 5rem);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #fff;
+      line-height: 1.15;
+      text-shadow: 0 4px 32px rgba(0,0,0,0.7), 0 0 60px rgba(196,82,26,0.25);
+      margin-bottom: 18px;
+    }
+
+    .hero-catch {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(0.85rem, 2.4vw, 1.05rem);
+      color: var(--cream);
+      opacity: 0.85;
+      line-height: 1.9;
+      margin-bottom: 44px;
+      letter-spacing: 0.06em;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--ember) 0%, var(--ember-bright) 50%, var(--ember-glow) 100%);
+      color: #fff;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      padding: 16px 44px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: box-shadow 0.3s, transform 0.2s;
+      box-shadow: 0 6px 28px rgba(196,82,26,0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(196,82,26,0.6);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.5;
+    }
+
+    .scroll-hint span {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--mist);
+    }
+
+    .scroll-hint-line {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, var(--ember), transparent);
+      animation: scrollDown 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollDown {
+      0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+      50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      100% { transform: scaleY(1); transform-origin: top; opacity: 0; }
+    }
+
+    /* ===== CONCEPT ===== */
+    .concept {
+      padding: 110px 0 100px;
+      background: linear-gradient(180deg, var(--black) 0%, var(--charcoal) 100%);
+    }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .concept-text p {
+      color: var(--text-sub);
+      line-height: 2.1;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .concept-text p:last-child { margin-bottom: 0; }
+
+    .concept-card {
+      background: var(--ash);
+      border: 1px solid rgba(196,82,26,0.15);
+      border-radius: var(--radius-lg);
+      padding: 40px 34px;
+    }
+
+    .concept-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+
+    .concept-item:last-child { margin-bottom: 0; }
+
+    .concept-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--ember) 0%, var(--ember-glow) 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .concept-item-text h4 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 6px;
+      letter-spacing: 0.06em;
+    }
+
+    .concept-item-text p {
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 700px) {
+      .concept-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ===== MENU ===== */
+    .menu-section {
+      padding: 100px 0;
+      background: var(--charcoal);
+      position: relative;
+    }
+
+    .menu-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,82,26,0.35), transparent);
+    }
+
+    .menu-intro { margin-bottom: 56px; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+
+    .menu-card {
+      background: var(--ash);
+      border: 1px solid rgba(196,82,26,0.1);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.25s;
+    }
+
+    .menu-card:hover {
+      border-color: rgba(196,82,26,0.35);
+      transform: translateY(-4px);
+    }
+
+    .menu-card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    .menu-card-body { padding: 22px 22px 24px; }
+
+    .menu-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--ember-glow);
+      border: 1px solid rgba(196,82,26,0.4);
+      border-radius: 3px;
+      padding: 2px 8px;
+      margin-bottom: 10px;
+    }
+
+    .menu-card-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    .menu-card-desc {
+      font-size: 12.5px;
+      color: var(--text-sub);
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+
+    .menu-price {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      color: var(--gold-light);
+      letter-spacing: 0.06em;
+    }
+
+    .menu-list-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      color: var(--cream);
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .menu-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(196,82,26,0.12);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .menu-list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(196,82,26,0.08);
+      border-right: 1px solid rgba(196,82,26,0.08);
+      font-size: 13px;
+    }
+
+    .menu-list-item:nth-child(even) { border-right: none; }
+    .menu-list-item:nth-last-child(-n+2) { border-bottom: none; }
+    .menu-list-item-name { color: var(--text-main); }
+    .menu-list-item-price { color: var(--gold); font-family: 'Noto Serif JP', serif; font-size: 12px; }
+
+    @media (max-width: 540px) {
+      .menu-list { grid-template-columns: 1fr; }
+      .menu-list-item { border-right: none; }
+      .menu-list-item:nth-last-child(1) { border-bottom: none; }
+      .menu-list-item:nth-last-child(2) { border-bottom: 1px solid rgba(196,82,26,0.08); }
+    }
+
+    /* ===== REVIEWS ===== */
+    .reviews-section {
+      padding: 100px 0;
+      background: linear-gradient(180deg, var(--charcoal) 0%, var(--ash) 100%);
+      position: relative;
+    }
+
+    .reviews-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,82,26,0.35), transparent);
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 22px;
+      margin-top: 16px;
+    }
+
+    .review-card {
+      background: var(--smoke);
+      border: 1px solid rgba(196,82,26,0.1);
+      border-radius: var(--radius-lg);
+      padding: 28px 26px 30px;
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-size: 60px;
+      font-family: Georgia, serif;
+      color: rgba(196,82,26,0.12);
+      line-height: 1;
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 14px;
+    }
+
+    .review-stars span {
+      font-size: 15px;
+      color: var(--gold-light);
+    }
+
+    .review-text {
+      font-size: 13.5px;
+      line-height: 1.95;
+      color: var(--text-sub);
+      margin-bottom: 22px;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--ember) 0%, var(--gold) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 14px;
+      color: #fff;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .review-meta { font-size: 12px; }
+    .review-name { color: var(--cream); font-weight: 500; margin-bottom: 2px; }
+    .review-date { color: var(--text-sub); font-size: 11px; }
+
+    /* ===== ACCESS ===== */
+    .access-section {
+      padding: 100px 0;
+      background: var(--ash);
+      position: relative;
+    }
+
+    .access-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,82,26,0.35), transparent);
+    }
+
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .access-map-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(196,82,26,0.18);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+
+    .access-caption {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .access-caption::before {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ember-glow);
+      flex-shrink: 0;
+    }
+
+    .info-table { width: 100%; border-collapse: collapse; }
+
+    .info-table th,
+    .info-table td {
+      text-align: left;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(196,82,26,0.1);
+      font-size: 13.5px;
+      vertical-align: top;
+    }
+
+    .info-table th {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 600;
+      color: var(--ember-glow);
+      width: 96px;
+      letter-spacing: 0.06em;
+    }
+
+    .info-table td { color: var(--text-sub); line-height: 1.8; }
+    .info-table tr:last-child th,
+    .info-table tr:last-child td { border-bottom: none; }
+
+    .placeholder {
+      color: var(--smoke);
+      font-style: italic;
+      font-size: 12px;
+    }
+
+    @media (max-width: 700px) {
+      .access-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    /* ===== HOURS ===== */
+    .hours-section {
+      padding: 80px 0;
+      background: var(--charcoal);
+      position: relative;
+    }
+
+    .hours-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,82,26,0.35), transparent);
+    }
+
+    .hours-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+
+    .hours-block {
+      background: var(--ash);
+      border: 1px solid rgba(196,82,26,0.12);
+      border-radius: var(--radius-lg);
+      padding: 32px 30px;
+    }
+
+    .hours-block-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--ember-glow);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hours-block-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(196,82,26,0.18);
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 13px;
+    }
+
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row .day { color: var(--text-sub); }
+    .hours-row .time { color: var(--cream); font-family: 'Noto Serif JP', serif; }
+
+    @media (max-width: 540px) {
+      .hours-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      padding: 88px 0;
+      background: linear-gradient(135deg,
+        rgba(26,17,10,1) 0%,
+        rgba(40,22,10,1) 40%,
+        rgba(50,25,10,1) 70%,
+        rgba(26,17,10,1) 100%
+      );
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 110%,
+        rgba(196,82,26,0.2) 0%,
+        transparent 65%
+      );
+    }
+
+    .cta-banner-inner { position: relative; z-index: 1; }
+    .cta-banner .section-title { margin-bottom: 14px; }
+
+    .cta-banner-sub {
+      color: var(--text-sub);
+      font-size: 14px;
+      margin-bottom: 38px;
+      line-height: 1.9;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid var(--ember);
+      color: var(--ember-glow);
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      padding: 14px 42px;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .btn-outline:hover { background: var(--ember); color: #fff; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(196,82,26,0.1);
+      padding: 52px 0 32px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+
+    .footer-logo span { color: var(--ember-glow); }
+
+    .footer-tagline {
+      font-size: 12px;
+      color: var(--text-sub);
+      letter-spacing: 0.15em;
+      margin-bottom: 30px;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .footer-nav li a {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--text-sub);
+      transition: color 0.2s;
+    }
+
+    .footer-nav li a:hover { color: var(--ember-glow); }
+
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(168,152,128,0.45);
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+
+    .footer-disclaimer {
+      font-size: 11px;
+      color: rgba(168,152,128,0.4);
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.9;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding-top: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-inner">
+      <div class="logo">いろり<span>燻</span></div>
+      <nav aria-label="メインナビゲーション">
+        <ul>
+          <li><a href="#concept">コンセプト</a></li>
+          <li><a href="#menu">メニュー</a></li>
+          <li><a href="#reviews">お客様の声</a></li>
+          <li><a href="#access">アクセス</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="ヒーローセクション">
+    <div class="hero-bg" role="img" aria-label="炭火でじっくり焼いた燻製スペアリブ（まな板盛り）"></div>
+    <div class="hero-content">
+      <p class="hero-sub">囲炉裏と炭の香り — 三田の隠れ家</p>
+      <h1 class="hero-title">いろり燻</h1>
+      <p class="hero-catch">
+        炭がおこり、煙がたちのぼる。<br>
+        囲炉裏を囲む、大人のための一夜。
+      </p>
+      <a href="#menu" class="btn-primary">メニューを見る</a>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <span>SCROLL</span>
+      <div class="scroll-hint-line"></div>
+    </div>
+  </section>
+
+  <!-- CONCEPT -->
+  <section id="concept" class="concept">
+    <div class="section-wrap">
+      <div class="concept-grid">
+        <div class="concept-text">
+          <span class="section-label">Our Concept</span>
+          <h2 class="section-title">囲炉裏を囲む、<br>炭火と燻製の宵</h2>
+          <div class="divider"></div>
+          <p>「いろり燻」は、囲炉裏（いろり）と燻製（くん）を組み合わせた店名が示すように、炭火の揺らぎと燻しの香りを中心に据えた飲食店です。</p>
+          <p>三田の静かな夜に、じっくりと時間をかけた炭火料理と、心地よい煙の記憶を。日常の喧騒を離れ、囲炉裏を囲んで過ごす、大人のための特別な場所です。</p>
+          <p style="font-size:12px;color:var(--smoke);font-style:italic;">※業態・コンセプトは店名からの推察を含みます。詳細は実際の店舗にご確認ください。</p>
+        </div>
+        <div>
+          <div class="concept-card">
+            <div class="concept-item">
+              <div class="concept-icon" aria-hidden="true">🔥</div>
+              <div class="concept-item-text">
+                <h4>炭火の旨み</h4>
+                <p>備長炭のじっくりとした火力が、食材の水分を保ちながら旨みを凝縮。表面の香ばしさと、中からあふれる肉汁が特長です。</p>
+              </div>
+            </div>
+            <div class="concept-item">
+              <div class="concept-icon" aria-hidden="true">🪵</div>
+              <div class="concept-item-text">
+                <h4>燻製の奥行き</h4>
+                <p>チップの種類にこだわった自家製燻製は、素材それぞれに合わせてスモークの香りを丁寧に纏わせます。</p>
+              </div>
+            </div>
+            <div class="concept-item">
+              <div class="concept-icon" aria-hidden="true">🍶</div>
+              <div class="concept-item-text">
+                <h4>地酒との調和</h4>
+                <p>兵庫・灘の地酒や地域の銘柄を中心に、炭火・燻製料理の味わいを引き立てるお酒を取りそろえています。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="menu-section">
+    <div class="section-wrap">
+      <div class="menu-intro">
+        <span class="section-label">Menu</span>
+        <h2 class="section-title">炭と煙が生む、<br>一皿一皿</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="menu-grid">
+        <article class="menu-card">
+          <img
+            src="img/dish1.jpg"
+            alt="炭火燻製料理（サンプル）"
+            class="menu-card-img"
+            loading="lazy"
+            width="400"
+            height="300"
+          >
+          <div class="menu-card-body">
+            <span class="menu-tag">SMOKED</span>
+            <h3 class="menu-card-title">自家製燻製盛り合わせ</h3>
+            <p class="menu-card-desc">チーズ・ゆで卵・豚バラ・鮭など、その日の食材を丁寧にスモーク。お酒がすすむ、定番の一皿。</p>
+            <p class="menu-price">¥ ●,●●● <span style="font-size:11px;color:var(--text-sub)">（価格は確認中）</span></p>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <img
+            src="img/dish2.jpg"
+            alt="炭火焼き料理（サンプル）"
+            class="menu-card-img"
+            loading="lazy"
+            width="400"
+            height="300"
+          >
+          <div class="menu-card-body">
+            <span class="menu-tag">CHARCOAL</span>
+            <h3 class="menu-card-title">炭火焼き　本日の一串</h3>
+            <p class="menu-card-desc">備長炭の遠赤外線で焼き上げる、シンプルで力強い炭火の味。旬の食材を使った日替わりメニュー。</p>
+            <p class="menu-price">¥ ●●● <span style="font-size:11px;color:var(--text-sub)">（価格は確認中）</span></p>
+          </div>
+        </article>
+      </div>
+
+      <div style="margin-top:12px">
+        <p class="menu-list-title">その他のメニュー <span style="font-size:12px;color:var(--text-sub)">（サンプル・価格は確認中）</span></p>
+        <div class="menu-list" role="list">
+          <div class="menu-list-item" role="listitem">
+            <span class="menu-list-item-name">燻製スペアリブ</span>
+            <span class="menu-list-item-price">¥ ●,●●●</span>
+          </div>
+          <div class="menu-list-item" role="listitem">
+            <span class="menu-list-item-name">炭火焼きとり（各種）</span>
+            <span class="menu-list-item-price">¥ ●●●〜</span>
+          </div>
+          <div class="menu-list-item" role="listitem">
+            <span class="menu-list-item-name">燻製チーズ盛り</span>
+            <span class="menu-list-item-price">¥ ●,●●●</span>
+          </div>
+          <div class="menu-list-item" role="listitem">
+            <span class="menu-list-item-name">焼き野菜の炭火盛り</span>
+            <span class="menu-list-item-price">¥ ●●●</span>
+          </div>
+          <div class="menu-list-item" role="listitem">
+            <span class="menu-list-item-name">地酒（兵庫・灘）</span>
+            <span class="menu-list-item-price">¥ ●●●〜</span>
+          </div>
+          <div class="menu-list-item" role="listitem">
+            <span class="menu-list-item-name">クラフトビール（地元産）</span>
+            <span class="menu-list-item-price">¥ ●,●●●</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="reviews-section">
+    <div class="section-wrap">
+      <span class="section-label">Reviews</span>
+      <h2 class="section-title">お客様の声 <span class="badge-sample">※掲載イメージ（サンプル）</span></h2>
+      <div class="divider"></div>
+
+      <div class="review-grid">
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="評価: 5つ星">
+            <span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+            <span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+            <span aria-hidden="true">★</span>
+          </div>
+          <p class="review-text">
+            炭の香りが店内に満ちていて、入った瞬間から気分が上がりました。スペアリブは外はしっかりスモーキーで、中はほろほろ。三田でこんなお店があったとは。また必ず来ます。
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">K</div>
+            <div class="review-meta">
+              <div class="review-name">K.M さん</div>
+              <div class="review-date">三田市在住 / 40代</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="評価: 5つ星">
+            <span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+            <span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+            <span aria-hidden="true">★</span>
+          </div>
+          <p class="review-text">
+            燻製盛り合わせとチーズが絶品でした。地酒との相性も抜群で、気づいたら3時間いました（笑）。落ち着いた雰囲気で、大人の飲み場としては三田で一番だと思います。
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">T</div>
+            <div class="review-meta">
+              <div class="review-name">T.H さん</div>
+              <div class="review-date">神戸からの来訪 / 30代</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="評価: 5つ星">
+            <span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+            <span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+            <span aria-hidden="true">★</span>
+          </div>
+          <p class="review-text">
+            三田駅からすぐのロケーションなのに、店内は完全に非日常。囲炉裏を意識した雰囲気が独特で、炭火の赤い光と燻しの香りが心地よかったです。接客もさりげなく温かい。
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">Y</div>
+            <div class="review-meta">
+              <div class="review-name">Y.A さん</div>
+              <div class="review-date">三田市在住 / 50代</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESS -->
+  <section id="access" class="access-section">
+    <div class="section-wrap">
+      <span class="section-label">Access</span>
+      <h2 class="section-title">アクセス</h2>
+      <div class="divider"></div>
+
+      <div class="access-grid">
+        <div>
+          <div class="access-map-wrap">
+            <iframe
+              title="地図 — いろり燻（兵庫県三田市）"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=135.2254%2C34.8861%2C135.2314%2C34.8881&layer=mapnik&marker=34.887072%2C135.22837"
+              style="width:100%;height:300px;border:0;border-radius:12px"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <p class="access-caption">三田駅（JR宝塚線・神戸電鉄三田線）から徒歩約3分</p>
+        </div>
+
+        <div>
+          <table class="info-table">
+            <caption style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">店舗情報</caption>
+            <tbody>
+              <tr>
+                <th scope="row">店名</th>
+                <td>いろり燻（いろりくん）</td>
+              </tr>
+              <tr>
+                <th scope="row">住所</th>
+                <td>〒669-1526<br>兵庫県三田市駅前町付近<br><span class="placeholder">（正式住所は確認中）</span></td>
+              </tr>
+              <tr>
+                <th scope="row">電話</th>
+                <td><span class="placeholder">確認中</span></td>
+              </tr>
+              <tr>
+                <th scope="row">営業時間</th>
+                <td><span class="placeholder">確認中</span></td>
+              </tr>
+              <tr>
+                <th scope="row">定休日</th>
+                <td><span class="placeholder">確認中</span></td>
+              </tr>
+              <tr>
+                <th scope="row">アクセス</th>
+                <td>JR宝塚線・神戸電鉄三田線<br>「三田駅」より徒歩約3分</td>
+              </tr>
+              <tr>
+                <th scope="row">駐車場</th>
+                <td><span class="placeholder">確認中（近隣にコインパーキングあり）</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS -->
+  <section class="hours-section">
+    <div class="section-wrap">
+      <span class="section-label">Hours</span>
+      <h2 class="section-title">営業案内</h2>
+      <div class="divider"></div>
+      <div class="hours-inner">
+        <div class="hours-block">
+          <p class="hours-block-title">営業時間</p>
+          <div class="hours-row">
+            <span class="day">月〜木・日</span>
+            <span class="time placeholder">確認中</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">金・土・祝前日</span>
+            <span class="time placeholder">確認中</span>
+          </div>
+        </div>
+        <div class="hours-block">
+          <p class="hours-block-title">ご予約・お問い合わせ</p>
+          <div class="hours-row">
+            <span class="day">電話</span>
+            <span class="time placeholder">確認中</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">定休日</span>
+            <span class="time placeholder">確認中</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">席数</span>
+            <span class="time placeholder">確認中</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="section-wrap">
+      <div class="cta-banner-inner">
+        <span class="section-label">Come &amp; Visit</span>
+        <h2 class="section-title">炭火の宵へ、ぜひ。</h2>
+        <p class="cta-banner-sub">
+          三田駅からわずか3分。<br>
+          日常を忘れる、囲炉裏と燻しの一夜があなたを待っています。
+        </p>
+        <a href="#access" class="btn-outline">アクセスを確認する</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="section-wrap">
+      <div class="footer-logo">いろり<span>燻</span></div>
+      <p class="footer-tagline">炭火・燻製の隠れ家 | 兵庫県三田市</p>
+      <ul class="footer-nav" aria-label="フッターナビゲーション">
+        <li><a href="#concept">コンセプト</a></li>
+        <li><a href="#menu">メニュー</a></li>
+        <li><a href="#reviews">お客様の声</a></li>
+        <li><a href="#access">アクセス</a></li>
+      </ul>
+      <p class="footer-copy">&copy; 2026 いろり燻. All rights reserved.</p>
+      <p class="footer-disclaimer">
+        ※これは提案用サンプルです。情報・写真は仮のもので、実際の内容に差し替えてご利用ください。<br>
+        掲載の営業時間・電話番号・住所・価格・お客様の声はすべてサンプルであり、実際のものとは異なります。
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Hero BG scale-in after paint
+      var bg = document.querySelector('.hero-bg');
+      if (bg) setTimeout(function () { bg.style.transform = 'scale(1)'; }, 80);
+
+      // Scroll-reveal via IntersectionObserver
+      if (!('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'translateY(0)';
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      var revealEls = document.querySelectorAll('.menu-card, .review-card, .concept-item, .hours-block');
+      revealEls.forEach(function (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(22px)';
+        el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+        io.observe(el);
+      });
+      // 保険: スクロールが起きなくても読込後に必ず表示する
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          revealEls.forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
+        }, 1500);
+      });
+    })();
+  </script>
+
+</body>
+</html>

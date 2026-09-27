@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>炭焼きホルモン水産 | 三田駅前・炭火焼肉・ホルモン</title>
+  <meta name="description" content="三田駅から徒歩2分。新鮮ホルモンを炭火の直火で豪快に。コスパ最強の大衆焼肉「炭焼きホルモン水産」へどうぞ。">
+  <meta property="og:title" content="炭焼きホルモン水産 | 三田駅前・炭火焼肉">
+  <meta property="og:description" content="三田駅2分。炭火直火の新鮮ホルモン・焼肉。コスパ最強の大衆酒場。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/hero.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Zen+Antique+Soft&display=swap" rel="stylesheet">
+  <style>
+    /* ===== リセット & ベース ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --char:  #1a1008;
+      --ember: #c44b00;
+      --flame: #e8730a;
+      --gold:  #f0b840;
+      --ash:   #2a1f12;
+      --smoke: #3d2e1c;
+      --cream: #fdf4e3;
+      --r: 14px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--char);
+      color: var(--cream);
+      line-height: 1.7;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== ナビ ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(20,10,4,0.88);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.6rem 1.2rem;
+      border-bottom: 1px solid rgba(200,80,0,0.3);
+    }
+    .nav-logo {
+      font-family: 'Zen Antique Soft', serif;
+      font-size: 1.05rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+    .nav-links {
+      display: flex; gap: 1.4rem; list-style: none;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+    }
+    .nav-links a { color: var(--cream); opacity: 0.85; transition: opacity 0.2s; }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    /* ===== ヒーロー ===== */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('img/hero.jpg') center/cover no-repeat;
+      filter: brightness(0.35) saturate(1.1);
+      transform: scale(1.03);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(20,8,0,0.15) 0%,
+        rgba(180,55,0,0.08) 45%,
+        rgba(20,8,0,0.7) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 2rem 1.2rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--ember);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      padding: 0.3rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.1rem;
+    }
+    .hero-title {
+      font-family: 'Zen Antique Soft', serif;
+      font-size: clamp(2.2rem, 9vw, 3.8rem);
+      line-height: 1.15;
+      color: #fff;
+      text-shadow: 0 2px 24px rgba(200,60,0,0.55);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.7rem;
+    }
+    .hero-title span { color: var(--gold); }
+    .hero-sub {
+      font-size: clamp(0.9rem, 3.5vw, 1.15rem);
+      color: var(--cream);
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .hero-catch {
+      font-size: clamp(0.82rem, 2.8vw, 1rem);
+      color: rgba(255,240,200,0.75);
+      margin-bottom: 2rem;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--ember), var(--flame));
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      padding: 0.85rem 2.4rem;
+      border-radius: 4px;
+      box-shadow: 0 4px 24px rgba(200,70,0,0.55);
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(200,70,0,0.7);
+    }
+    .hero-scroll {
+      position: absolute; bottom: 1.6rem; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      font-size: 0.68rem; letter-spacing: 0.14em; opacity: 0.55; color: var(--gold);
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block; width: 1px; height: 36px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollLine { 0%,100%{opacity:0.3}50%{opacity:1} }
+
+    /* ===== セクション共通 ===== */
+    section { padding: 4rem 1.2rem; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      color: var(--ember);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Zen Antique Soft', serif;
+      font-size: clamp(1.7rem, 5.5vw, 2.6rem);
+      color: var(--gold);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-lead {
+      font-size: 0.95rem;
+      color: rgba(253,244,227,0.8);
+      max-width: 560px;
+    }
+    .divider {
+      width: 52px; height: 3px;
+      background: linear-gradient(90deg, var(--ember), var(--gold));
+      margin: 1rem 0 1.8rem;
+      border-radius: 2px;
+    }
+
+    /* ===== こだわり ===== */
+    #kodawari { background: var(--ash); }
+    .kodawari-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.4rem;
+      max-width: 900px;
+    }
+    .kodawari-card {
+      background: var(--smoke);
+      border: 1px solid rgba(200,80,0,0.18);
+      border-radius: var(--r);
+      padding: 1.8rem 1.4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .kodawari-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--ember), var(--gold));
+    }
+    .kodawari-icon {
+      font-size: 2rem;
+      margin-bottom: 0.7rem;
+      display: block;
+      line-height: 1;
+    }
+    .kodawari-card h3 {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+    .kodawari-card p {
+      font-size: 0.84rem;
+      color: rgba(253,244,227,0.75);
+      line-height: 1.75;
+    }
+
+    /* ===== お品書き ===== */
+    #menu { background: var(--char); }
+    .menu-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 2.4rem;
+      max-width: 640px;
+    }
+    .menu-images figure {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .menu-images img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .menu-images figure:hover img { transform: scale(1.05); }
+    .menu-images figcaption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 0.5rem 0.7rem;
+      background: linear-gradient(transparent, rgba(10,4,0,0.8));
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      max-width: 900px;
+    }
+    .menu-category {
+      background: var(--smoke);
+      border-radius: var(--r);
+      padding: 1.4rem 1.4rem 1.2rem;
+      border: 1px solid rgba(200,80,0,0.15);
+    }
+    .menu-category h3 {
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      color: var(--ember);
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(200,80,0,0.2);
+    }
+    .menu-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 0.42rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.88rem;
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item-name { color: var(--cream); font-weight: 700; }
+    .menu-item-price {
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+      margin-left: 0.5rem;
+    }
+    .price-note {
+      font-size: 0.72rem;
+      color: rgba(253,244,227,0.45);
+      margin-top: 1.4rem;
+    }
+
+    /* ===== お客様の声 ===== */
+    #voice { background: var(--ash); }
+    .voice-sample-note {
+      display: inline-block;
+      font-size: 0.7rem;
+      color: rgba(253,244,227,0.45);
+      background: rgba(255,255,255,0.05);
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      margin-bottom: 1.6rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      max-width: 900px;
+    }
+    .voice-card {
+      background: var(--smoke);
+      border-radius: var(--r);
+      padding: 1.6rem 1.4rem;
+      border: 1px solid rgba(200,80,0,0.12);
+      position: relative;
+    }
+    .voice-card::before {
+      content: '\201C';
+      position: absolute; top: 0.5rem; left: 1rem;
+      font-size: 3.5rem;
+      color: rgba(200,80,0,0.18);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .stars {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.06em;
+    }
+    .voice-text {
+      font-size: 0.86rem;
+      color: rgba(253,244,227,0.85);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .voice-meta {
+      font-size: 0.75rem;
+      color: rgba(253,244,227,0.45);
+      font-weight: 700;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .voice-meta::before {
+      content: '';
+      display: block; width: 18px; height: 1px;
+      background: rgba(200,80,0,0.4);
+    }
+
+    /* ===== アクセス ===== */
+    #access { background: var(--char); }
+    .access-inner {
+      max-width: 900px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media(min-width: 640px) {
+      .access-inner { grid-template-columns: 1fr 1fr; align-items: start; }
+    }
+    .map-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(200,80,0,0.22);
+    }
+    .access-info dt {
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      color: var(--ember);
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+      margin-top: 1rem;
+    }
+    .access-info dt:first-child { margin-top: 0; }
+    .access-info dd {
+      font-size: 0.9rem;
+      color: var(--cream);
+      opacity: 0.85;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .walk-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: linear-gradient(135deg, var(--ember), var(--flame));
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 900;
+      padding: 0.35rem 0.9rem;
+      border-radius: 3px;
+      margin-top: 0.8rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* ===== 営業案内 ===== */
+    #hours { background: var(--ash); }
+    .hours-inner { max-width: 480px; }
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 0.5rem;
+    }
+    .hours-table th,
+    .hours-table td {
+      padding: 0.7rem 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      text-align: left;
+    }
+    .hours-table th {
+      color: rgba(253,244,227,0.5);
+      font-weight: 700;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      width: 40%;
+    }
+    .hours-table td { color: var(--cream); }
+    .placeholder {
+      color: rgba(253,244,227,0.35);
+      font-style: italic;
+    }
+    .cta-block {
+      margin-top: 2.4rem;
+      padding: 1.6rem;
+      background: var(--smoke);
+      border-radius: var(--r);
+      border: 1px solid rgba(200,80,0,0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      align-items: flex-start;
+    }
+    .cta-block p {
+      font-size: 0.84rem;
+      color: rgba(253,244,227,0.7);
+    }
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid var(--ember);
+      color: var(--ember);
+      font-size: 0.9rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      padding: 0.65rem 1.8rem;
+      border-radius: 4px;
+      transition: background 0.18s, color 0.18s;
+    }
+    .btn-outline:hover {
+      background: var(--ember);
+      color: #fff;
+    }
+
+    /* ===== フッター ===== */
+    footer {
+      background: #0d0804;
+      padding: 2.4rem 1.2rem 1.6rem;
+      text-align: center;
+      border-top: 1px solid rgba(200,80,0,0.2);
+    }
+    .footer-logo {
+      font-family: 'Zen Antique Soft', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .footer-sub {
+      font-size: 0.75rem;
+      color: rgba(253,244,227,0.35);
+      margin-bottom: 1.6rem;
+      letter-spacing: 0.06em;
+    }
+    .footer-note {
+      font-size: 0.68rem;
+      color: rgba(253,244,227,0.3);
+      max-width: 520px;
+      margin: 0 auto 1rem;
+      line-height: 1.8;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 1rem;
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      color: rgba(253,244,227,0.2);
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== レスポンシブ ===== */
+    @media(max-width: 480px) {
+      .nav-links { display: none; }
+      section { padding: 3rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ナビ -->
+  <nav aria-label="メインナビゲーション">
+    <div class="nav-logo">炭焼きホルモン水産</div>
+    <ul class="nav-links">
+      <li><a href="#kodawari">こだわり</a></li>
+      <li><a href="#menu">お品書き</a></li>
+      <li><a href="#voice">お客様の声</a></li>
+      <li><a href="#access">アクセス</a></li>
+      <li><a href="#hours">営業案内</a></li>
+    </ul>
+  </nav>
+
+  <!-- ヒーロー -->
+  <section id="hero" aria-label="ヒーロー">
+    <div class="hero-bg" role="img" aria-label="炭火で炙られた艶やかな肉のビジュアル"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">三田駅前 炭火焼肉・ホルモン</div>
+      <h1 class="hero-title">炭の直火で、<br><span>本気の旨さ</span>を。</h1>
+      <p class="hero-sub">炭焼きホルモン水産</p>
+      <p class="hero-catch">新鮮ホルモンを炭火で豪快に。三田の夜を、煙と焔で彩る大衆酒場。</p>
+      <a href="#menu" class="btn-primary">お品書きを見る</a>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">SCROLL</div>
+  </section>
+
+  <!-- こだわり -->
+  <section id="kodawari">
+    <div class="section-label">Our Quality</div>
+    <h2 class="section-title">三つのこだわり</h2>
+    <div class="divider"></div>
+    <p class="section-lead">素材・火・値段。どれひとつ妥協しない。それが「水産」の流儀です。</p>
+    <div class="kodawari-grid">
+      <div class="kodawari-card">
+        <span class="kodawari-icon" aria-hidden="true">🫀</span>
+        <h3>新鮮ホルモン直仕入れ</h3>
+        <p>毎日目利きで選んだ鮮度抜群のホルモン。鮮度が命だから、その日仕入れた分だけを出す。臭みゼロ、プリプリの食感が違います。</p>
+      </div>
+      <div class="kodawari-card">
+        <span class="kodawari-icon" aria-hidden="true">🔥</span>
+        <h3>炭火の直火にこだわる</h3>
+        <p>備長炭の遠赤外線が肉の芯まで火を通す。電気・ガスじゃ出せない香ばしさと、じゅわっと弾ける肉汁。これが炭火焼の真骨頂。</p>
+      </div>
+      <div class="kodawari-card">
+        <span class="kodawari-icon" aria-hidden="true">🍺</span>
+        <h3>コスパ最強の大衆価格</h3>
+        <p>旨いものは、高くなくていい。地元・三田のお客様に毎週来てもらえるよう、良心的な値段を守り続けます。飲んで食べて笑って帰れる。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- お品書き -->
+  <section id="menu">
+    <div class="section-label">Menu</div>
+    <h2 class="section-title">お品書き</h2>
+    <div class="divider"></div>
+
+    <div class="menu-images">
+      <figure>
+        <img src="img/dish1.jpg" alt="ミディアムレアの炙り肉・質感ショット" width="400" height="300" loading="lazy">
+        <figcaption>炙りカルビ</figcaption>
+      </figure>
+      <figure>
+        <img src="img/dish2.jpg" alt="炭火で焼いた肉料理と付け合わせ野菜" width="400" height="300" loading="lazy">
+        <figcaption>炭火盛り合わせ</figcaption>
+      </figure>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-category">
+        <h3>ホルモン各種</h3>
+        <div class="menu-item">
+          <span class="menu-item-name">シロ（小腸）</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">ハチノス</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">レバー</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">ハツ（心臓）</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">ミノ</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">コブクロ</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3>炭火焼肉</h3>
+        <div class="menu-item">
+          <span class="menu-item-name">カルビ</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">ロース</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">上カルビ</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">タン塩</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">ハラミ</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">盛り合わせ（2名〜）</span>
+          <span class="menu-item-price placeholder">¥●●●〜</span>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3>ホルモン鍋</h3>
+        <div class="menu-item">
+          <span class="menu-item-name">ホルモン鍋（1人前）</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">ホルモン鍋（2名〜）</span>
+          <span class="menu-item-price placeholder">¥●●●〜</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">〆めし / 〆うどん</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3>ドリンク</h3>
+        <div class="menu-item">
+          <span class="menu-item-name">生ビール</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">角ハイボール</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">レモンサワー</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">焼酎（芋/麦）</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">ソフトドリンク各種</span>
+          <span class="menu-item-price placeholder">¥●●●</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="price-note">※価格・品目は仮のサンプルです。実際の内容に差し替えてご利用ください。税込・税別は店舗ご確認を。</p>
+  </section>
+
+  <!-- お客様の声 -->
+  <section id="voice">
+    <div class="section-label">Reviews</div>
+    <h2 class="section-title">お客様の声</h2>
+    <div class="divider"></div>
+    <div class="voice-sample-note">※掲載イメージ（サンプル）— 実際のお客様レビューに差し替えてご利用ください</div>
+
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="stars" aria-label="星5つ">★★★★★</div>
+        <p class="voice-text">ホルモンの鮮度が段違い！シロがプリプリで、臭みが全くなくて感動しました。炭火の香りと相まって最高の一皿でした。また来週も来ます！</p>
+        <div class="voice-meta">三田市在住・40代男性</div>
+      </div>
+      <div class="voice-card">
+        <div class="stars" aria-label="星5つ">★★★★★</div>
+        <p class="voice-text">駅から2分でこのクオリティはすごい。ハイボールとカルビの組み合わせが最強で、気づいたら3時間いました（笑）。値段も良心的で毎月通っています。</p>
+        <div class="voice-meta">三田駅近くで勤務・30代女性</div>
+      </div>
+      <div class="voice-card">
+        <div class="stars" aria-label="星5つ">★★★★★</div>
+        <p class="voice-text">ホルモン鍋が絶品！スープが濃くて旨くて、〆のご飯が止まらない。グループで行ったら大盛り上がりでした。三田で一番好きなお店です。</p>
+        <div class="voice-meta">神戸から遠征・20代男性</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- アクセス -->
+  <section id="access">
+    <div class="section-label">Access</div>
+    <h2 class="section-title">アクセス</h2>
+    <div class="divider"></div>
+    <div class="access-inner">
+      <div>
+        <div class="map-wrap">
+          <iframe
+            title="地図"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=135.2263%2C34.8866%2C135.2323%2C34.8886&layer=mapnik&marker=34.8876187%2C135.2293025"
+            style="width:100%;height:300px;border:0;border-radius:12px"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="walk-badge">
+          <span aria-hidden="true">🚶</span> 三田駅から徒歩約2分
+        </div>
+      </div>
+      <dl class="access-info">
+        <dt>店名</dt>
+        <dd>炭焼きホルモン水産</dd>
+        <dt>住所</dt>
+        <dd class="placeholder">兵庫県三田市●●●（詳細住所は差し替えてください）</dd>
+        <dt>最寄り駅</dt>
+        <dd>JR福知山線 / 神戸電鉄 三田駅 徒歩約2分</dd>
+        <dt>電話</dt>
+        <dd class="placeholder">●●●-●●●●-●●●●（差し替えてください）</dd>
+        <dt>駐車場</dt>
+        <dd class="placeholder">●●台（差し替えてください）</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 営業案内 -->
+  <section id="hours">
+    <div class="section-label">Hours</div>
+    <h2 class="section-title">営業案内</h2>
+    <div class="divider"></div>
+    <div class="hours-inner">
+      <table class="hours-table">
+        <caption style="display:none">営業時間</caption>
+        <thead>
+          <tr>
+            <th scope="col">曜日</th>
+            <th scope="col">時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>月〜金</td>
+            <td class="placeholder">●●:●● 〜 ●●:●●</td>
+          </tr>
+          <tr>
+            <td>土・日・祝</td>
+            <td class="placeholder">●●:●● 〜 ●●:●●</td>
+          </tr>
+          <tr>
+            <td>定休日</td>
+            <td class="placeholder">●曜日（差し替えてください）</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cta-block">
+        <p>ご予約・お問い合わせはお電話で。<br>宴会・グループ利用もお気軽に！</p>
+        <a href="tel:" class="btn-outline">電話で予約する</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer>
+    <div class="footer-logo">炭焼きホルモン水産</div>
+    <div class="footer-sub">三田駅前・炭火焼肉・ホルモン</div>
+    <p class="footer-note">
+      ※これは提案用サンプルです。情報・写真は仮のもので、実際の内容に差し替えてご利用ください。<br>
+      営業時間・定休日・電話番号・住所・価格はすべてプレースホルダーです。
+    </p>
+    <div class="footer-copy">&copy; 炭焼きホルモン水産 — Sample Site</div>
+  </footer>
+
+</body>
+</html>

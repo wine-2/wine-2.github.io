@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="三田駅から徒歩約3分。朝引き鶏×炭火焼き×秘伝のタレ。兵庫県三田市の鶏料理・焼き鳥店「とりちゃん」へようこそ。">
+  <meta property="og:title" content="とりちゃん｜三田の鶏料理・焼き鳥店">
+  <meta property="og:description" content="三田駅から徒歩約3分。朝引き鶏×炭火焼き×秘伝のタレ。三田市の焼き鳥店「とりちゃん」。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <title>とりちゃん｜三田の鶏料理・焼き鳥店</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== リセット & ベース ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --charcoal:   #1a1410;
+      --ash:        #2e2620;
+      --tare:       #8b3a12;
+      --tare-light: #b84f1a;
+      --amber:      #d4820a;
+      --gold:       #e8a825;
+      --cream:      #fdf6ed;
+      --ivory:      #f7ede0;
+      --warm-white: #fefaf5;
+      --text-dark:  #1e1208;
+      --text-mid:   #4a3520;
+      --text-soft:  #7a5c40;
+      --ff-serif:   'Noto Serif JP', serif;
+      --ff-sans:    'Noto Sans JP', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff-sans);
+      background: var(--warm-white);
+      color: var(--text-dark);
+      line-height: 1.75;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== ナビゲーション ===== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,20,16,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.25rem;
+      height: 52px;
+    }
+    .nav__logo {
+      font-family: var(--ff-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+    .nav__links {
+      display: flex; gap: 1.4rem; list-style: none;
+    }
+    .nav__links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #d4c8b8;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav__links a:hover { color: var(--gold); }
+
+    /* ===== ヒーロー ===== */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute; inset: 0;
+      background-image: url('img/hero.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      transform: scale(1.04);
+      transition: transform 8s ease-out;
+    }
+    .hero__bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(18,10,4,0.55) 0%,
+        rgba(18,10,4,0.30) 40%,
+        rgba(18,10,4,0.70) 100%
+      );
+    }
+    .hero__content {
+      position: relative; z-index: 1;
+      padding: 5rem 1.5rem 3rem;
+      max-width: 640px;
+    }
+    .hero__label {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      border: 1px solid rgba(228,168,37,0.5);
+      padding: 0.3em 1em;
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+    .hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: 0.05em;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.6);
+      margin-bottom: 0.8rem;
+    }
+    .hero__sub {
+      font-family: var(--ff-serif);
+      font-size: clamp(1rem, 3.5vw, 1.3rem);
+      color: rgba(255,255,255,0.88);
+      letter-spacing: 0.06em;
+      line-height: 1.85;
+      margin-bottom: 2.2rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+    }
+    .hero__sub span {
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .hero__cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--tare);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 0.85em 2.2em;
+      border-radius: 3px;
+      border: 2px solid var(--tare-light);
+      transition: background 0.22s, transform 0.18s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .hero__cta:hover {
+      background: var(--tare-light);
+      transform: translateY(-2px);
+    }
+    .hero__scroll {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      z-index: 1;
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    }
+    .hero__scroll span {
+      font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.5);
+    }
+    .scroll-arrow {
+      width: 20px; height: 20px;
+      border-right: 2px solid rgba(255,255,255,0.4);
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      transform: rotate(45deg);
+      animation: bounce 1.6s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(6px); }
+    }
+
+    /* ===== セクション共通 ===== */
+    .section { padding: 5rem 1.25rem; }
+    .section--dark { background: var(--ash); color: var(--cream); }
+    .section--ivory { background: var(--ivory); }
+    .section__inner { max-width: 900px; margin: 0 auto; }
+    .section__eyebrow {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      font-weight: 500;
+      color: var(--amber);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+    }
+    .section__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 1rem;
+      letter-spacing: 0.03em;
+    }
+    .section__title--light { color: var(--cream); }
+    .section__lead {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      line-height: 2;
+      max-width: 600px;
+    }
+    .section__lead--light { color: rgba(253,246,237,0.75); }
+    .divider {
+      width: 40px; height: 3px;
+      background: linear-gradient(90deg, var(--tare), var(--amber));
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+
+    /* ===== こだわり ===== */
+    .kodawari__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    @media (min-width: 640px) {
+      .kodawari__grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    }
+    .kodawari__card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .kodawari__card:hover { background: rgba(255,255,255,0.07); }
+    .kodawari__icon {
+      font-size: 2.4rem;
+      margin-bottom: 0.8rem;
+      line-height: 1;
+    }
+    .kodawari__name {
+      font-family: var(--ff-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+    }
+    .kodawari__desc {
+      font-size: 0.85rem;
+      color: rgba(253,246,237,0.7);
+      line-height: 1.9;
+    }
+    .kodawari__photo {
+      margin-top: 3.5rem;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 16/9;
+      max-height: 420px;
+    }
+    .kodawari__photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .kodawari__photo__caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.5rem 1.25rem 1rem;
+      background: linear-gradient(to top, rgba(18,10,4,0.85), transparent);
+      font-family: var(--ff-serif);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.06em;
+    }
+
+    /* ===== お品書き ===== */
+    .menu__wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+    @media (min-width: 720px) {
+      .menu__wrapper { grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+    }
+    .menu__cat-title {
+      font-family: var(--ff-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--tare);
+      letter-spacing: 0.06em;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--ivory);
+      margin-bottom: 1.1rem;
+    }
+    .menu__cat-title::before {
+      content: '\25B8 ';
+      color: var(--amber);
+    }
+    .menu__item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 0.55rem 0;
+      border-bottom: 1px dashed rgba(139,58,18,0.15);
+      gap: 0.5rem;
+    }
+    .menu__item-name {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      flex: 1;
+    }
+    .menu__item-note {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      margin-left: 0.4rem;
+    }
+    .menu__item-price {
+      font-family: var(--ff-serif);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--tare);
+      white-space: nowrap;
+    }
+    .menu__photo {
+      margin-top: 2.5rem;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    @media (min-width: 720px) {
+      .menu__photo { grid-column: 1 / -1; max-height: 360px; }
+    }
+    .menu__photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .menu__note {
+      margin-top: 1.5rem;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      text-align: center;
+      line-height: 1.9;
+    }
+
+    /* ===== お客様の声 ===== */
+    .reviews { background: var(--charcoal); }
+    .reviews__sample-note {
+      display: inline-block;
+      font-size: 0.7rem;
+      color: rgba(253,246,237,0.45);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.2em 0.8em;
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      letter-spacing: 0.1em;
+    }
+    .reviews__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    @media (min-width: 640px) {
+      .reviews__grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .review-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 1.75rem 1.5rem;
+      position: relative;
+    }
+    .review-card::before {
+      content: '\201C';
+      position: absolute; top: -0.5rem; left: 1rem;
+      font-family: Georgia, serif;
+      font-size: 4rem;
+      color: var(--tare);
+      line-height: 1;
+      opacity: 0.4;
+    }
+    .review-stars {
+      color: var(--gold);
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.8rem;
+    }
+    .review-text {
+      font-size: 0.88rem;
+      color: rgba(253,246,237,0.82);
+      line-height: 1.95;
+      margin-bottom: 1.2rem;
+    }
+    .review-author {
+      font-size: 0.78rem;
+      color: rgba(253,246,237,0.45);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== アクセス ===== */
+    .access__layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+    @media (min-width: 720px) {
+      .access__layout { grid-template-columns: 1fr 1fr; align-items: start; }
+    }
+    .access__map {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+    .access__direction {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 0.9rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--tare);
+    }
+    .access__info { display: flex; flex-direction: column; gap: 1.4rem; }
+    .access__row {
+      display: flex; gap: 1rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid rgba(139,58,18,0.12);
+    }
+    .access__row:last-child { border-bottom: none; padding-bottom: 0; }
+    .access__row-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--tare);
+      min-width: 60px;
+      padding-top: 0.15rem;
+    }
+    .access__row-body {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+    .access__row-body .placeholder {
+      color: var(--text-soft);
+      font-style: italic;
+    }
+    .access__row-body .tel-placeholder {
+      font-size: 1.1rem;
+      font-family: var(--ff-serif);
+      font-weight: 700;
+      color: var(--tare);
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== 営業案内 ===== */
+    .hours { background: var(--ivory); }
+    .hours__table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      font-size: 0.88rem;
+    }
+    .hours__table th,
+    .hours__table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(139,58,18,0.12);
+    }
+    .hours__table th {
+      font-weight: 700;
+      color: var(--tare);
+      background: rgba(139,58,18,0.06);
+      letter-spacing: 0.05em;
+      font-size: 0.8rem;
+    }
+    .hours__table td { color: var(--text-mid); }
+    .hours__table .placeholder { color: var(--text-soft); font-style: italic; }
+    .hours__note {
+      margin-top: 1.2rem;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      line-height: 1.9;
+    }
+
+    /* ===== CTAバー ===== */
+    .cta-bar {
+      background: linear-gradient(135deg, var(--tare) 0%, #7a2d0f 100%);
+      padding: 3rem 1.25rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-bar::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.02) 0px,
+        rgba(255,255,255,0.02) 1px,
+        transparent 1px,
+        transparent 12px
+      );
+    }
+    .cta-bar__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      position: relative; z-index: 1;
+      margin-bottom: 0.6rem;
+    }
+    .cta-bar__sub {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+      position: relative; z-index: 1;
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.05em;
+    }
+    .cta-bar__btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--charcoal);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      padding: 0.85em 2.5em;
+      border-radius: 3px;
+      position: relative; z-index: 1;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      transition: background 0.2s, transform 0.18s;
+    }
+    .cta-bar__btn:hover { background: #f0bc30; transform: translateY(-2px); }
+
+    /* ===== フッター ===== */
+    .footer {
+      background: var(--charcoal);
+      color: rgba(253,246,237,0.55);
+      text-align: center;
+      padding: 2.5rem 1.25rem 2rem;
+    }
+    .footer__logo {
+      font-family: var(--ff-serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+    .footer__tagline {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.8rem;
+      color: rgba(253,246,237,0.4);
+    }
+    .footer__copy {
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+    }
+    .footer__sample-note {
+      display: block;
+      margin-top: 1.2rem;
+      font-size: 0.68rem;
+      color: rgba(253,246,237,0.3);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 480px) {
+      .nav__links { gap: 1rem; }
+      .nav__links a { font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ナビゲーション -->
+  <nav class="nav" aria-label="メインナビゲーション">
+    <div class="nav__logo">とりちゃん</div>
+    <ul class="nav__links">
+      <li><a href="#kodawari">こだわり</a></li>
+      <li><a href="#menu">お品書き</a></li>
+      <li><a href="#reviews">お客様の声</a></li>
+      <li><a href="#access">アクセス</a></li>
+    </ul>
+  </nav>
+
+  <!-- ヒーロー -->
+  <section class="hero" aria-label="メインビジュアル">
+    <div class="hero__bg" role="img" aria-label="タレ絡みの照り艶ある手羽のアップ"></div>
+    <div class="hero__content">
+      <div class="hero__label">兵庫県三田市 ／ 焼き鳥・鶏料理</div>
+      <h1 class="hero__title">とりちゃん</h1>
+      <p class="hero__sub">
+        朝引き鶏を、<span>炭火</span>で。<br>
+        秘伝のタレが絡む、<span>三田の一串</span>。
+      </p>
+      <a href="#menu" class="hero__cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+        お品書きを見る
+      </a>
+    </div>
+    <div class="hero__scroll" aria-hidden="true">
+      <div class="scroll-arrow"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- こだわり -->
+  <section class="section section--dark" id="kodawari" aria-labelledby="kodawari-title">
+    <div class="section__inner">
+      <span class="section__eyebrow">Our Policy</span>
+      <h2 class="section__title section__title--light" id="kodawari-title">三つのこだわり</h2>
+      <div class="divider"></div>
+      <p class="section__lead section__lead--light">
+        「うまい鶏を、正直に出す。」それだけです。<br>
+        素材・火・タレ。三つが揃ってはじめて、とりちゃんの一串ができます。
+      </p>
+      <div class="kodawari__grid">
+        <div class="kodawari__card">
+          <div class="kodawari__icon" aria-hidden="true">&#x1F413;</div>
+          <p class="kodawari__name">朝引き鶏</p>
+          <p class="kodawari__desc">毎朝仕入れる新鮮な国産鶏。鮮度が命の焼き鳥は、当日分だけを仕込みます。余らせない、誤魔化さない。それが地元への誠実さです。</p>
+        </div>
+        <div class="kodawari__card">
+          <div class="kodawari__icon" aria-hidden="true">&#x1F525;</div>
+          <p class="kodawari__name">備長炭 直火焼き</p>
+          <p class="kodawari__desc">備長炭の遠赤外線が鶏の旨みを内側から引き出し、表面に香ばしい焦げを刻みます。ガスでは出せない、炭の仕事があります。</p>
+        </div>
+        <div class="kodawari__card">
+          <div class="kodawari__icon" aria-hidden="true">&#x1F376;</div>
+          <p class="kodawari__name">秘伝のタレ</p>
+          <p class="kodawari__desc">継ぎ足し続ける醤油ダレは、創業から変わらない味。甘さと深みのバランスが、炭火の香りと絡み合って一口目から唸らせます。</p>
+        </div>
+      </div>
+      <div class="kodawari__photo">
+        <img
+          src="img/dish1.jpg"
+          alt="備長炭の火でじっくり焼かれる焼き鳥の串。煙が立ち上る炭火グリルの上で、鶏肉が香ばしく焼き色をつけている"
+          width="900" height="506"
+          loading="lazy"
+        >
+        <p class="kodawari__photo__caption">備長炭で丁寧に、一本一本。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- お品書き -->
+  <section class="section" id="menu" aria-labelledby="menu-title">
+    <div class="section__inner">
+      <span class="section__eyebrow">Menu</span>
+      <h2 class="section__title" id="menu-title">お品書き</h2>
+      <div class="divider"></div>
+      <p class="section__lead">
+        焼き鳥から定食、鶏鍋まで。鶏の旨みを余すところなく味わえるメニューを揃えました。
+      </p>
+      <div class="menu__wrapper">
+        <div>
+          <h3 class="menu__cat-title">焼き鳥（串焼き）</h3>
+          <div class="menu__item">
+            <span class="menu__item-name">もも<span class="menu__item-note">（タレ／塩）</span></span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">ねぎま<span class="menu__item-note">（タレ／塩）</span></span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">つくね<span class="menu__item-note">（タレ）</span></span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">かわ</span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">砂肝</span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">手羽先<span class="menu__item-note">（タレ）</span></span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="menu__cat-title">一品料理・定食</h3>
+          <div class="menu__item">
+            <span class="menu__item-name">とりちゃん唐揚げ<span class="menu__item-note">（3個〜）</span></span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">唐揚げ定食</span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">親子丼</span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">鶏鍋<span class="menu__item-note">（2名〜）</span></span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">焼き鳥盛り合わせ</span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="menu__cat-title">ドリンク</h3>
+          <div class="menu__item">
+            <span class="menu__item-name">生ビール</span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">ハイボール</span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">梅酒・サワー各種</span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">ソフトドリンク</span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="menu__cat-title">サイドメニュー</h3>
+          <div class="menu__item">
+            <span class="menu__item-name">漬け物盛り</span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">鶏スープ</span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+          <div class="menu__item">
+            <span class="menu__item-name">ご飯</span>
+            <span class="menu__item-price">&#165;&#9675;&#9675;&#9675;〜</span>
+          </div>
+        </div>
+        <figure class="menu__photo">
+          <img
+            src="img/dish2.jpg"
+            alt="唐揚げ付きの和定食。大ぶりの唐揚げが並び、ご飯・味噌汁・漬け物が添えられた定食"
+            width="900" height="675"
+            loading="lazy"
+          >
+        </figure>
+      </div>
+      <p class="menu__note">
+        &#x203B; 仕入れ状況により、一部メニューをご提供できない場合がございます。<br>
+        &#x203B; 価格・メニューは変更になる場合がございます。詳しくはお問い合わせください。
+      </p>
+    </div>
+  </section>
+
+  <!-- お客様の声 -->
+  <section class="section reviews section--dark" id="reviews" aria-labelledby="reviews-title">
+    <div class="section__inner">
+      <span class="section__eyebrow">Reviews</span>
+      <h2 class="section__title section__title--light" id="reviews-title">お客様の声</h2>
+      <div class="divider"></div>
+      <span class="reviews__sample-note">&#x203B; 掲載イメージ（サンプル）&#x2014; 実際のお客様の声に差し替えてご利用ください</span>
+      <div class="reviews__grid">
+        <article class="review-card">
+          <div class="review-stars" aria-label="星5つ">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">三田駅を降りてすぐ来れるのが最高です。炭火の香りが漂ってきて、もうその瞬間からテンションが上がります。もも串のタレが絶品で、何本でも食べられます。地元民としてずっと通い続けたいお店。</p>
+          <p class="review-author">&#x2014; 30代 男性・三田市在住</p>
+        </article>
+        <article class="review-card">
+          <div class="review-stars" aria-label="星5つ">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">唐揚げ定食を頼んだら、ジューシーさにびっくり。衣がサクッとして中がふわっと。タレ、塩どちらで食べても合います。親子丼も出汁が効いていて優しい味。また必ず来ます！</p>
+          <p class="review-author">&#x2014; 40代 女性・神戸市からの来店</p>
+        </article>
+        <article class="review-card">
+          <div class="review-stars" aria-label="星5つ">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">会社の同僚と焼き鳥を食べに行きました。盛り合わせを頼んだら種類が多くて大満足。つくねのタレが特にたまらない。ビールが進みすぎて困りました（笑）。雰囲気もアットホームで居心地最高でした。</p>
+          <p class="review-author">&#x2014; 20代 男性・グループ利用</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- アクセス -->
+  <section class="section section--ivory" id="access" aria-labelledby="access-title">
+    <div class="section__inner">
+      <span class="section__eyebrow">Access</span>
+      <h2 class="section__title" id="access-title">アクセス</h2>
+      <div class="divider"></div>
+      <div class="access__layout">
+        <div>
+          <div class="access__map">
+            <iframe
+              title="地図"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=135.2262%2C34.8858%2C135.2322%2C34.8878&layer=mapnik&marker=34.8868253%2C135.2292145"
+              style="width:100%;height:300px;border:0;border-radius:12px"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <p class="access__direction">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            三田駅から徒歩約3分
+          </p>
+        </div>
+        <div class="access__info">
+          <div class="access__row">
+            <span class="access__row-label">店名</span>
+            <span class="access__row-body">とりちゃん</span>
+          </div>
+          <div class="access__row">
+            <span class="access__row-label">住所</span>
+            <span class="access__row-body">
+              <span class="placeholder">〒669-XXXX 兵庫県三田市駅前町&#9675;-&#9675;（要確認）</span>
+            </span>
+          </div>
+          <div class="access__row">
+            <span class="access__row-label">電話</span>
+            <span class="access__row-body">
+              <span class="tel-placeholder placeholder">079-XXX-XXXX（要確認）</span>
+            </span>
+          </div>
+          <div class="access__row">
+            <span class="access__row-label">最寄駅</span>
+            <span class="access__row-body">JR福知山線・神戸電鉄公園都市線<br>「三田駅」から徒歩約3分</span>
+          </div>
+          <div class="access__row">
+            <span class="access__row-label">駐車場</span>
+            <span class="access__row-body"><span class="placeholder">要確認</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 営業案内 -->
+  <section class="section hours" id="hours" aria-labelledby="hours-title">
+    <div class="section__inner">
+      <span class="section__eyebrow">Business Hours</span>
+      <h2 class="section__title" id="hours-title">営業案内</h2>
+      <div class="divider"></div>
+      <table class="hours__table">
+        <thead>
+          <tr>
+            <th scope="col">曜日</th>
+            <th scope="col">ランチ</th>
+            <th scope="col">ディナー</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>月〜金</td>
+            <td class="placeholder">要確認</td>
+            <td class="placeholder">要確認</td>
+          </tr>
+          <tr>
+            <td>土・日・祝</td>
+            <td class="placeholder">要確認</td>
+            <td class="placeholder">要確認</td>
+          </tr>
+          <tr>
+            <td>定休日</td>
+            <td colspan="2" class="placeholder">要確認</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="hours__note">
+        &#x203B; 営業時間・定休日は変更になる場合がございます。<br>
+        &#x203B; 最新情報はお電話またはSNSにてご確認ください。
+      </p>
+    </div>
+  </section>
+
+  <!-- CTAバー -->
+  <section class="cta-bar" aria-label="ご予約・お問い合わせ">
+    <p class="cta-bar__title">今夜は炭火焼きで一杯いかがですか？</p>
+    <p class="cta-bar__sub">三田駅から徒歩約3分。お気軽にお電話ください。</p>
+    <a href="tel:" class="cta-bar__btn" aria-label="電話でお問い合わせ（番号要確認）">
+      ご予約・お問い合わせ
+    </a>
+  </section>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <p class="footer__logo">とりちゃん</p>
+    <p class="footer__tagline">鶏料理・焼き鳥 ／ 兵庫県三田市</p>
+    <p class="footer__copy">&copy; とりちゃん All Rights Reserved.</p>
+    <small class="footer__sample-note">
+      &#x203B; これは提案用サンプルです。情報・写真は仮のもので、実際の内容に差し替えてご利用ください。
+    </small>
+  </footer>
+
+  <script>
+    // ヒーロー背景のケン・バーンズ効果
+    var heroBg = document.querySelector('.hero__bg');
+    if (heroBg) {
+      requestAnimationFrame(function() { heroBg.style.transform = 'scale(1)'; });
+    }
+    // スムーススクロール（iOS補完）
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
